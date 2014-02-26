@@ -4,7 +4,7 @@ import datetime
 import utils
 
 
-SHELL_COMMAND = ["/usr/bin/free", "-h"]
+SHELL_COMMAND = ["/usr/bin/free", "-m"]
 
 
 def get_system_memory():
