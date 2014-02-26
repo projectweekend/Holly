@@ -1,5 +1,4 @@
 0 * * * * /home/brian/cron_jobs/system_memory.sh
 0 * * * * /home/brian/cron_jobs/system_storage.sh
-5 0 * * * /home/brian/cron_jobs/system_config.sh
 30 16 * * * /home/brian/cron_jobs/news_builder.sh
 10 * * * * /home/brian/cron_jobs/environment_tweets.sh
