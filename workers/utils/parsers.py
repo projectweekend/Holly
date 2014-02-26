@@ -27,7 +27,7 @@ def parse_memory_values(system_result):
 def parse_storage_values(system_result):
     result_lines = system_result.splitlines()
     header_list = ['used', 'available', 'percent']
-    data_line = strip_values(result_lines[1], ["rootfs", "M", "B", "%", "/"])
+    data_line = strip_values(result_lines[1], ["/dev/mapper/ubuntu--vg-root", "M", "B", "%", "/"])
     data_list = [int(x) for x in data_line.strip().split()[1:]]
     return zip(header_list, data_list)
 
