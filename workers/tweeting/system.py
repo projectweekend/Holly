@@ -25,7 +25,7 @@ class CPUTemperatureTweeter(object):
         return dt.strftime("%m/%d/%Y - %H:%M")
 
     def _build_status_message(self):
-        message_template = "My current CPU temperature is: {0} F/{1} C ({2}) #raspberrypi"
+        message_template = "My current CPU temperature is: {0} F/{1} C ({2})"
         if self.temperature_data:
             celsius = self.temperature_data['celsius']
             fahrenheit = self.temperature_data['fahrenheit']
