@@ -53,34 +53,6 @@ SystemStorageDataSchema = Schema( {
 SystemStorageData = mongoose.model( 'SystemStorageData', SystemStorageDataSchema );
 
 
-SystemConfigDataSchema = Schema( {
-	id: ObjectId,
-	date: Date,
-	arm_freq: Number,
-	config_hdmi_boost: Number,
-	core_freq: Number,
-	disable_overscan: Number,
-	disable_splash: Number,
-	emmc_pll_core: Number,
-	force_pwm_open: Number,
-	hdmi_force_hotplug: Number,
-	hdmi_group: Number,
-	hdmi_ignore_edid: String,
-	hdmi_mode: Number,
-	hdmi_safe: Number,
-	overscan_bottom: Number,
-	overscan_left: Number,
-	overscan_right: Number,
-	overscan_top: Number,
-	pause_burst_frames: Number,
-	program_serial_random: Number,
-	sdram_freq: Number,
-	second_boot: Number,
-	temp_limit: Number
-} );
-SystemConfigData = mongoose.model( 'SystemConfigData', SystemConfigDataSchema );
-
-
 StarbugTemperatureDataSchema = Schema( {
 	id: ObjectId,
 	date: Date,

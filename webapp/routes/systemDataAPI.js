@@ -93,20 +93,3 @@ exports.systemStorageData = function ( req, res ) {
     } );
 
 };
-
-
-exports.systemConfigData = function ( req, res ) {
-
-    var query = SystemConfigData.findOne( ).sort( '-date' );
-
-    query.exec( function ( err, data ) {
-        
-        if ( err ) {
-            return errorHandler( err, res);
-        }
-
-        res.json( data );
-        
-    } );
-
-};

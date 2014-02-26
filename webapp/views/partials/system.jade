@@ -126,23 +126,4 @@ div(class="row")
     canvas(chart, id="systemMemoryChart", type="Pie", options="systemCurrentStorage.currentStorageChart.options", data="systemCurrentStorage.currentStorageChart.data", width="370", height="300")
 
   div(class="col-md-4")
-    h3 Config 
-      small as of {{ systemCurrentConfig.values.date | date:'medium' }}
-    div(class="chart-spacer")
-    dl
-      dt Temperature Limit:
-      dd
-        div(ng-if="systemCurrentConfig.values.temp_limit", class="system-config-wrapper")
-          span(class="text-primary system-config-value") {{systemCurrentConfig.values.temp_limit}}&deg; F
-      dt Arm Frequency:
-      dd
-        div(ng-if="systemCurrentConfig.values.arm_freq", class="system-config-wrapper")
-          span(class="text-primary system-config-value") {{systemCurrentConfig.values.arm_freq}} MHz
-      dt Core Frequency:
-      dd
-        div(ng-if="systemCurrentConfig.values.core_freq", class="system-config-wrapper")
-          span(class="text-primary system-config-value") {{systemCurrentConfig.values.core_freq}} MHz
-      dt SDRAM Frequency:
-      dd
-        div(ng-if="systemCurrentConfig.values.sdram_freq", class="system-config-wrapper")
-          span(class="text-primary system-config-value") {{systemCurrentConfig.values.sdram_freq}} MHz
+    h3 Coming soon...

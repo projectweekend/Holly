@@ -105,7 +105,6 @@ app.get('/api/system/temperature/stats/month', systemTempStatsAPI.systemTemperat
 
 app.get('/api/system/memory', systemDataAPI.systemMemoryData);
 app.get('/api/system/storage', systemDataAPI.systemStorageData);
-app.get('/api/system/config', systemDataAPI.systemConfigData);
 
 app.get('/api/news-source/config', newsAPI.newsSourceConfig);
 app.post('/api/news-source/config', newsAPI.newsSourceConfig);
