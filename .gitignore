@@ -13,3 +13,11 @@ results
 
 npm-debug.log
 node_modules
+
+.idea
+env
+
+*.pyc
+
+start_dev_app.sh
+.vagrant
