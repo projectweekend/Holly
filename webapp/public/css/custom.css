@@ -1,0 +1,62 @@
+/* app css stylesheet */
+.clickable {
+    cursor: pointer;
+}
+
+.system-config-value,
+.temp-stat-value {
+  font-size: 1.75em;
+}
+
+.system-config-wrapper,
+.temp-stat-wrapper {
+    margin-bottom: 10px;
+}
+
+.chart-spacer {
+    height: 30px;
+}
+
+.article-img-wrapper {
+    margin-bottom: 10px;
+}
+
+#hue-lighting-control,
+#bus-stop-config,
+#l-stop-config {
+    margin-top: 60px;
+}
+
+.brightness-control {
+    margin-top: 10px;
+}
+
+.brightness-slider {
+    width: 100%;
+}
+
+.bus-stop {
+    margin-bottom: 50px;
+}
+
+
+.stats-panel .stats-panel-options {
+    margin-bottom: 15px;
+}
+
+.stat-wrapper {
+    display: table;
+    width: 100%;
+    font-size: 2em;
+}
+
+.stat-wrapper > .stat-label,
+.stat-wrapper > .stat-value {
+    width: 50%;
+    float: left;
+    padding: 2.33%;
+}
+
+.stat-wrapper > .stat-value {
+    text-align: right
+}

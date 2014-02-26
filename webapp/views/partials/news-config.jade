@@ -1,0 +1,30 @@
+div(class="row")
+  div(class="col-xs-12")
+    form(id="news-source", role="form")
+      div(class="form-group")
+        label Source URL
+        input(ng-model="newsSourceConfig.editing.url", class="form-control", type="url", required)
+      div(class="btn-toolbar")
+        button(ng-click="newsSourceConfig.save()", class="btn btn-primary") Save
+        button(ng-click="newsSourceConfig.cancel()", class="btn btn-default") Cancel
+    br
+
+div(class="row")
+  div(class="col-xs-12")
+    h3 News Sources
+    table(class="table")
+      thead
+        tr
+          th URL
+          th Date Added
+          th Edit
+          th Delete
+      tbody
+        tr(ng-repeat="s in newsSourceConfig.sources")
+          td 
+            a(ng-href="{{ s.url }}", target="_blank") {{ s.url }}
+          td {{ s.date | date }}
+          td
+            span(ng-click="newsSourceConfig.edit(s)", class="glyphicon glyphicon-pencil text-primary clickable")
+          td
+            span(ng-click="newsSourceConfig.remove(s._id)", class="glyphicon glyphicon-remove text-danger clickable")

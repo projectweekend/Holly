@@ -1,0 +1,148 @@
+div(class="row")
+
+  div(class="page-header")
+    h1 Holly Temperature: 
+      span(class="text-primary") {{systemCurrentTemp.values.fahrenheit | number:2}}&deg; F
+
+  div(class="col-md-8")
+    canvas(chart, id="systemTempChart", type="Line", options="systemTempReporting.recentTempChart.options", data="systemTempReporting.recentTempChart.data", width="700", height="350")
+
+  div(class="col-md-4")
+    div(class="stats-panel")
+      
+      div(class="stats-panel-options btn-group btn-group-justified")
+        a( ng-click="systemTempStats.getValues('today')", ng-class="{ active: systemTempStats.values.label == 'Today' }", class="btn btn-default") Today
+        a( ng-click="systemTempStats.getValues('week')", ng-class="{ active: systemTempStats.values.label == 'Last 7 Days' }", class="btn btn-default") 7 Days
+        a( ng-click="systemTempStats.getValues('month')", ng-class="{ active: systemTempStats.values.label == 'Last 30 Days' }", class="btn btn-default") 30 Days
+        a( ng-click="systemTempStats.getValues('overall')", ng-class="{ active: systemTempStats.values.label == 'Overall' }", class="btn btn-default") Overall
+
+      div(ng-if="systemTempStats.loadingValues && !systemTempStats.loadingError", class="alert alert-info")
+        strong Calculating stats...
+      
+      div(ng-if="!systemTempStats.loadingValues && systemTempStats.loadingError", class="alert alert-danger")
+        strong Something went wrong...
+
+      div(ng-if="!systemTempStats.loadingValues && !systemTempStats.loadingError", class="stat-wrapper")
+        div(class="stat-label") Average:
+        div(class="stat-value")
+          span(ng-hide="systemTempStats.values.average.fahrenheit == 'No data'", class="text-primary") {{systemTempStats.values.average.fahrenheit | number:2}}&deg; F
+          span(ng-show="systemTempStats.values.average.fahrenheit == 'No data'", class="text-primary") No data
+      
+      hr
+      
+      div(ng-if="!systemTempStats.loadingValues && !systemTempStats.loadingError", class="stat-wrapper")
+        div(class="stat-label") High:
+        div(class="stat-value") 
+          span(ng-hide="systemTempStats.values.max.fahrenheit == 'No data'", class="text-primary") {{systemTempStats.values.max.fahrenheit | number:2}}&deg; F
+          span(ng-show="systemTempStats.values.max.fahrenheit == 'No data'", class="text-primary") No data
+      
+      hr
+      
+      div(ng-if="!systemTempStats.loadingValues && !systemTempStats.loadingError", class="stat-wrapper")
+        div(class="stat-label") Low:
+        div(class="stat-value")        
+          span(ng-hide="systemTempStats.values.min.fahrenheit == 'No data'", class="text-primary") {{systemTempStats.values.min.fahrenheit | number:2}}&deg; F
+          span(ng-show="systemTempStats.values.min.fahrenheit == 'No data'", class="text-primary") No data
+
+div(class="row")
+
+  div(class="page-header")
+    h1 Starbug Temperature: 
+      span(class="text-primary") {{starbugCurrentTemp.values.fahrenheit | number:2}}&deg; F
+
+  div(class="col-md-8")
+    canvas(chart, id="starbugTempChart", type="Line", options="starbugTempReporting.chart.options", data="starbugTempReporting.chart.data", width="700", height="350")
+
+  div(class="col-md-4")
+
+    div(class="stats-panel")
+      
+      div(class="stats-panel-options btn-group btn-group-justified")
+        a( ng-click="starbugTempStats.getValues('today')", ng-class="{ active: starbugTempStats.values.label == 'Today' }", class="btn btn-default") Today
+        a( ng-click="starbugTempStats.getValues('week')", ng-class="{ active: starbugTempStats.values.label == 'Last 7 Days' }", class="btn btn-default") 7 Days
+        a( ng-click="starbugTempStats.getValues('month')", ng-class="{ active: starbugTempStats.values.label == 'Last 30 Days' }", class="btn btn-default") 30 Days
+        a( ng-click="starbugTempStats.getValues('overall')", ng-class="{ active: starbugTempStats.values.label == 'Overall' }", class="btn btn-default") Overall
+
+      div(ng-if="starbugTempStats.loadingValues && !starbugTempStats.loadingError", class="alert alert-info")
+        strong Calculating stats...
+      
+      div(ng-if="!starbugTempStats.loadingValues && starbugTempStats.loadingError", class="alert alert-danger")
+        strong Something went wrong...
+
+      div(ng-if="!starbugTempStats.loadingValues && !starbugTempStats.loadingError", class="stat-wrapper")
+        div(class="stat-label") Average:
+        div(class="stat-value")
+          span(ng-hide="starbugTempStats.values.average.fahrenheit == 'No data'", class="text-primary") {{starbugTempStats.values.average.fahrenheit | number:2}}&deg; F
+          span(ng-show="starbugTempStats.values.average.fahrenheit == 'No data'", class="text-primary") No data
+      
+      hr
+      
+      div(ng-if="!starbugTempStats.loadingValues && !starbugTempStats.loadingError", class="stat-wrapper")
+        div(class="stat-label") High:
+        div(class="stat-value") 
+          span(ng-hide="starbugTempStats.values.max.fahrenheit == 'No data'", class="text-primary") {{starbugTempStats.values.max.fahrenheit | number:2}}&deg; F
+          span(ng-show="starbugTempStats.values.max.fahrenheit == 'No data'", class="text-primary") No data
+      
+      hr
+      
+      div(ng-if="!starbugTempStats.loadingValues && !starbugTempStats.loadingError", class="stat-wrapper")
+        div(class="stat-label") Low:
+        div(class="stat-value")        
+          span(ng-hide="starbugTempStats.values.min.fahrenheit == 'No data'", class="text-primary") {{starbugTempStats.values.min.fahrenheit | number:2}}&deg; F
+          span(ng-show="starbugTempStats.values.min.fahrenheit == 'No data'", class="text-primary") No data
+
+
+div(class="row")
+
+  div(class="page-header")
+    h1 Holly Information
+
+  div(class="col-md-4")
+    h3 Memory 
+      small as of {{ systemCurrentMemory.values.date | date:'medium' }}
+    ul(class="list-inline")
+      li(style="color: #F7464A;") 
+        strong Used
+      li(style="color: #4D5360;") 
+        strong Free
+      li(style="color: #7EC5BC;")
+        strong Shared
+      li(style="color: #949FB1;")
+        strong Buffers
+      li(style="color: #D4CCC5;")
+        strong Cached
+
+    canvas(chart, id="systemMemoryChart", type="Pie", options="systemCurrentMemory.currentMemoryChart.options", data="systemCurrentMemory.currentMemoryChart.data", width="370", height="300")
+
+  div(class="col-md-4")
+    h3 Storage 
+      small as of {{ systemCurrentStorage.values.date | date:'medium' }}
+    ul(class="list-inline")
+      li(style="color: #F7464A;")
+        strong Used
+      li(style="color: #4D5360;")
+        strong Available
+
+    canvas(chart, id="systemMemoryChart", type="Pie", options="systemCurrentStorage.currentStorageChart.options", data="systemCurrentStorage.currentStorageChart.data", width="370", height="300")
+
+  div(class="col-md-4")
+    h3 Config 
+      small as of {{ systemCurrentConfig.values.date | date:'medium' }}
+    div(class="chart-spacer")
+    dl
+      dt Temperature Limit:
+      dd
+        div(ng-if="systemCurrentConfig.values.temp_limit", class="system-config-wrapper")
+          span(class="text-primary system-config-value") {{systemCurrentConfig.values.temp_limit}}&deg; F
+      dt Arm Frequency:
+      dd
+        div(ng-if="systemCurrentConfig.values.arm_freq", class="system-config-wrapper")
+          span(class="text-primary system-config-value") {{systemCurrentConfig.values.arm_freq}} MHz
+      dt Core Frequency:
+      dd
+        div(ng-if="systemCurrentConfig.values.core_freq", class="system-config-wrapper")
+          span(class="text-primary system-config-value") {{systemCurrentConfig.values.core_freq}} MHz
+      dt SDRAM Frequency:
+      dd
+        div(ng-if="systemCurrentConfig.values.sdram_freq", class="system-config-wrapper")
+          span(class="text-primary system-config-value") {{systemCurrentConfig.values.sdram_freq}} MHz

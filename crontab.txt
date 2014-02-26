@@ -1,0 +1,6 @@
+0 * * * * /home/pi/cron_jobs/cron_system_temperature.sh
+0 * * * * /home/pi/cron_jobs/cron_system_memory.sh
+0 * * * * /home/pi/cron_jobs/cron_system_storage.sh
+5 0 * * * /home/pi/cron_jobs/cron_system_config.sh
+30 16 * * * /home/pi/cron_jobs/cron_news_builder.sh
+10 * * * * /home/pi/cron_jobs/environment_tweets.sh
