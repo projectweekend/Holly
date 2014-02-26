@@ -19,7 +19,7 @@ def parse_temp_value(system_result):
 def parse_memory_values(system_result):
     result_lines = system_result.splitlines()
     header_list = result_lines[0].strip().split()
-    data_line = strip_values(result_lines[1], ["Mem:", "M", "B"])
+    data_line = strip_values(result_lines[1], ["Mem:", "M", "B", "G"])
     data_list = [int(x) for x in data_line.strip().split()]
     return zip(header_list, data_list)
 
