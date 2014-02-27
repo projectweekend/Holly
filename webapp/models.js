@@ -99,3 +99,12 @@ BusStopConfigSchema = Schema( {
 	route: String
 } );
 BusStopConfig = mongoose.model( 'BusStopConfig', BusStopConfigSchema );
+
+SystemStatusMessageSchema = Schema( {
+	id: ObjectId,
+	date: Date,
+	from: String,
+	body: String
+} );
+
+SystemStatusMessage = mongoose.model( 'SystemStatusMessage', SystemStatusMessageSchema );
