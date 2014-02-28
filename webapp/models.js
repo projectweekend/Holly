@@ -53,6 +53,16 @@ SystemStorageDataSchema = Schema( {
 SystemStorageData = mongoose.model( 'SystemStorageData', SystemStorageDataSchema );
 
 
+SystemStatusMessageSchema = Schema( {
+	id: ObjectId,
+	date: Date,
+	from: String,
+	body: String
+} );
+
+SystemStatusMessage = mongoose.model( 'SystemStatusMessage', SystemStatusMessageSchema );
+
+
 StarbugTemperatureDataSchema = Schema( {
 	id: ObjectId,
 	date: Date,
@@ -99,12 +109,3 @@ BusStopConfigSchema = Schema( {
 	route: String
 } );
 BusStopConfig = mongoose.model( 'BusStopConfig', BusStopConfigSchema );
-
-SystemStatusMessageSchema = Schema( {
-	id: ObjectId,
-	date: Date,
-	from: String,
-	body: String
-} );
-
-SystemStatusMessage = mongoose.model( 'SystemStatusMessage', SystemStatusMessageSchema );
