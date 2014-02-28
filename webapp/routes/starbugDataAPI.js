@@ -49,6 +49,36 @@ exports.starbugTemperatureData = function ( req, res ) {
 };
 
 
+exports.starbugTemperatureDataBulk = function ( req, res ) {
+
+    var newStarbugTemperatureData = req.body.temperature_data;
+
+    var buildAsyncCallback = function ( temperatureDataItem ) {
+        
+        return function ( callback ) {
+            StarbugTemperatureData.create( temperatureDataItem, function ( err, newData ) {
+                if ( err ) {
+                    callback( err );
+                } else {
+                    callback();
+                }
+            } );
+        };
+
+    };
+
+    var asyncTaskList = newStarbugTemperatureData.map( buildAsyncCallback );
+
+    async.parallel( asyncTaskList, function ( err ) {
+        if ( err ) {
+            return errorHandler( err, res );
+        }
+        return res.send( 201 );
+    } );
+
+};
+
+
 exports.starbugTemperatureDataRecent = function ( req, res ) {
 
     var numberOfReadings = req.query.numberOfReadings || 6;
