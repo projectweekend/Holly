@@ -2,6 +2,7 @@ BeautifulSoup==3.2.1
 Pillow==2.3.0
 PyYAML==3.10
 cssselect==0.9.1
+hammock==0.2.4
 httplib2==0.8
 ipython==1.1.0
 lxml==3.2.5
