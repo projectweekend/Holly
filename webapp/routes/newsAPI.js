@@ -143,7 +143,7 @@ var addNewKeyWord = function ( newKeyword, startingScore, callback ) {
 var removeArticle = function ( articleID ) {
     NewsArticle.findById( articleID, function ( err, article ) {
         if ( err ) {
-            return next( errorHandler( err, res ) );
+            return errorHandler( err, res );
         } else {
             article.remove();
         }
@@ -181,7 +181,7 @@ exports.readArticle = function ( req, res ) {
 
     async.parallel( asyncTaskList, function ( err ) {
         if ( err ) {
-            return next( errorHandler( err, res ) );
+            return errorHandler( err, res );
         }
         removeArticle( req.body._id );
         return res.send( 200 );
@@ -220,7 +220,7 @@ exports.ignoreArticle = function ( req, res ) {
 
     async.parallel( asyncTaskList, function ( err ) {
         if ( err ) {
-            return next( errorHandler( err, res ) );
+            return errorHandler( err, res );
         }
         removeArticle( req.body._id );
         return res.send( 200 );

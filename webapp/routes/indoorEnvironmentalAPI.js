@@ -76,7 +76,7 @@ exports.indoorTemperatureDataBulk = function ( req, res ) {
 
     async.parallel( asyncTaskList, function ( err ) {
         if ( err ) {
-            return next( errorHandler( err, res ) );
+            return errorHandler( err, res );
         }
         return res.send( 201 );
     } );
@@ -151,7 +151,7 @@ exports.indoorHumidityDataBulk = function ( req, res ) {
 
     async.parallel( asyncTaskList, function ( err ) {
         if ( err ) {
-            return next( errorHandler( err, res ) );
+            return errorHandler( err, res );
         }
         return res.send( 201 );
     } );
