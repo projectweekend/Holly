@@ -66,6 +66,25 @@ svcMod.factory( "IndoorHumidityReporting", function ( $http, socket ) {
             chart.data.labels = [];
             chart.data.datasets[0].data = [];
         },
+        listenForUpdates: function ( ) {
+            var chart = this.chart;
+            
+            socket.on( 'updates:indoor:humidity', function ( data ) {
+            
+                var newLabel = makeHoursMinutesTimeString( data.date );
+                var latestLabel = chart.data.labels[0];
+
+                if ( newLabel != latestLabel ) {
+                    // remove oldest one
+                    chart.data.labels.pop();
+                    chart.data.datasets[0].data.pop();
+                    // add new one
+                    chart.data.labels.unshift( newLabel );
+                    chart.data.datasets[0].data.unshift( data.percent );
+                }
+
+            } );
+        },
         init: function () {
             var IndoorHumidityReporting = this;
             var currentData = IndoorHumidityReporting.chart.data.datasets[0].data;
