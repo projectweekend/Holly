@@ -70,6 +70,30 @@ svcMod.factory( "IndoorTempReporting", function ( $http, socket ) {
             chart.data.labels = [];
             chart.data.datasets[0].data = [];
         },
+        listenForUpdates: function ( display_units ) {
+            var chart = this.chart;
+            
+            socket.on( 'updates:indoor:temp', function ( data ) {
+            
+                var newLabel = makeHoursMinutesTimeString( data.date );
+                var latestLabel = chart.data.labels[0];
+
+                if ( newLabel != latestLabel ) {
+                    // remove oldest one
+                    chart.data.labels.pop();
+                    chart.data.datasets[0].data.pop();
+                    // add new one
+                    chart.data.labels.unshift( newLabel );
+                    if ( display_units == 'F' ) {
+                        chart.data.datasets[0].data.unshift( data.fahrenheit );
+                    } else {
+                        chart.data.datasets[0].data.unshift( data.celsius );
+                    }
+
+                }
+
+            } );
+        },
         init: function ( display_units ) {
             var IndoorTempReporting = this;
             var currentData = IndoorTempReporting.chart.data.datasets[0].data;
