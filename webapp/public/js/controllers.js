@@ -29,6 +29,7 @@ cMod.controller( 'HomeCtrl', function (
 
     $scope.indoorTemperatureCurrent = IndoorTemperatureCurrent;
     $scope.indoorTemperatureCurrent.init();
+    $scope.indoorTemperatureCurrent.listenForUpdates();
 
     $scope.indoorTemperatureStats = IndoorTemperatureStats;
     $scope.indoorTemperatureStats.init();
@@ -39,6 +40,7 @@ cMod.controller( 'HomeCtrl', function (
 
     $scope.indoorHumidityCurrent = IndoorHumidityCurrent;
     $scope.indoorHumidityCurrent.init();
+    $scope.indoorHumidityCurrent.listenForUpdates();
 
     $scope.indoorHumidityStats = IndoorHumidityStats;
     $scope.indoorHumidityStats.init();
