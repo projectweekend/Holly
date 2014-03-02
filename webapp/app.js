@@ -107,9 +107,11 @@ app.get('/api/system/temperature/stats/month', systemTempStatsAPI.systemTemperat
 
 app.get('/api/system/memory', systemDataAPI.systemMemoryData);
 app.get('/api/system/storage', systemDataAPI.systemStorageData);
-app.get('/api/system/status', systemStatusAPI.messages);
-app.post('/api/system/status', systemStatusAPI.messages);
-app.delete('/api/system/status', systemStatusAPI.messages);
+
+app.get('/api/system/messages', systemStatusAPI.messagesList);
+app.post('/api/system/messages', systemStatusAPI.messagesList);
+app.get('/api/system/messages/:id', systemStatusAPI.messagesDetail);
+app.delete('/api/system/messages/:id', systemStatusAPI.messagesDetail);
 
 app.get('/api/news-source/config', newsAPI.newsSourceConfig);
 app.post('/api/news-source/config', newsAPI.newsSourceConfig);
