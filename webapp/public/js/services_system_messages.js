@@ -2,22 +2,43 @@
 
 
 var logError = function ( data ) {
-    console.log( data );
-};
-
-
-var makeHoursMinutesTimeString = function ( dateString ) {
-
-    var d = new Date( dateString );
-    var h = d.getHours();
-    var m = d.getMinutes();
-
-    if ( m === 0 ) {
-        m = "00";
-    }
-
-    return h + ":" + m;
+	console.log( data );
 };
 
 
 var svcMod = angular.module('myApp.services_system_messages', []);
+
+
+svcMod.factory( "SystemMessages", function ( $http, socket ) {
+
+	return {
+		values: {
+			messages: []
+		},
+		getValues: function () {
+			var SystemMessages = this;
+			var apiUrl = "/api/system/messages";
+
+			$http.get( apiUrl ).
+				success( function ( status, data ) {
+					SystemMessages.values.messages = data;
+				} ).
+				error( function ( status, data ) {
+					logError( data );
+				} );
+		},
+		listenForUpdates: function () {
+			var SystemMessages = this;
+			socket.on( 'updates:system:messages', function ( data ) {
+				// TODO: make this do something
+			} );
+		},
+		init: function () {
+			var SystemMessages = this;
+			if ( SystemMessages.values.messages.length === 0 ) {
+				SystemMessages.getValues();
+			}
+		}
+	};
+
+} );
