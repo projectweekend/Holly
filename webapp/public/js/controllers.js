@@ -59,7 +59,18 @@ cMod.controller( 'LightsCtrl', function ( $scope, HueLighting ) {
 } );
 
 
-cMod.controller( 'SystemCtrl', function ( $scope, SystemTempReporting, SystemTempCurrent, SystemTempStats, SystemMemoryCurrent, SystemStorageCurrent, SystemConfigCurrent, StarbugTempCurrent, StarbugTempReporting, StarbugTempStats ) {
+cMod.controller( 'SystemCtrl', function (
+    $scope,
+    SystemTempReporting,
+    SystemTempCurrent,
+    SystemTempStats,
+    SystemMemoryCurrent,
+    SystemStorageCurrent,
+    SystemConfigCurrent,
+    SystemMessages,
+    StarbugTempCurrent,
+    StarbugTempReporting,
+    StarbugTempStats ) {
 
     $scope.systemTempReporting = SystemTempReporting;
     $scope.systemTempReporting.init( 'F' );
@@ -80,6 +91,9 @@ cMod.controller( 'SystemCtrl', function ( $scope, SystemTempReporting, SystemTem
 
     $scope.systemCurrentConfig = SystemConfigCurrent;
     $scope.systemCurrentConfig.init();
+
+    $scope.systemMessages = SystemMessages;
+    $scope.systemMessages.init();
 
     $scope.starbugCurrentTemp = StarbugTempCurrent;
     $scope.starbugCurrentTemp.init();
