@@ -7,7 +7,7 @@ var errorHandler = function ( err, res ) {
     res.send( 500 );
 };
 
-exports.systemStatusMessages = function ( req, res ) {
+exports.messages = function ( req, res ) {
 
 	if ( req.method == 'POST' ) {
 
@@ -15,6 +15,6 @@ exports.systemStatusMessages = function ( req, res ) {
 
 	if ( req.method == 'GET' ) {
 		// get all, using an optional limit parameter
-	}	
+	}
 
 };
