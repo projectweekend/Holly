@@ -20,10 +20,10 @@ svcMod.factory( "SystemMessages", function ( $http, socket ) {
 			var apiUrl = "/api/system/messages";
 
 			$http.get( apiUrl ).
-				success( function ( status, data ) {
+				success( function ( data, status ) {
 					SystemMessages.values.messages = data;
 				} ).
-				error( function ( status, data ) {
+				error( function ( data, status ) {
 					logError( data );
 				} );
 		},
