@@ -1,7 +1,22 @@
 div(class="row")
 
   div(class="page-header")
-    h1 Status Messages
+    h1 Messages
+
+  div(ng-if="systemMessages.values.messages.length > 0", ng-repeat="m in systemMessages.values.messages", class="col-md-4")
+    div(class="system-message")
+      div
+        span(class="system-message-label") Date: 
+        span(class="text-primary") {{ m.date | date:'medium' }}
+      div
+        span(class="system-message-label") From: 
+        span(class="text-primary") {{ m.from }}
+      p(class="lead") {{ m.body }}
+
+  div(ng-if="!systemMessages.values.messages.length > 0", class="col-md-12")
+    div(class="alert alert-success")
+      strong No recent system messages to display :)
+
 
 div(class="row")
 

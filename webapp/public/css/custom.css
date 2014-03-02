@@ -60,3 +60,12 @@
 .stat-wrapper > .stat-value {
     text-align: right
 }
+
+.system-message {
+    height: 100px;
+    margin-bottom: 20px;
+}
+
+.system-message .system-message-label {
+    font-weight: bold;
+}
