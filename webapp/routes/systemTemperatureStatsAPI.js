@@ -28,11 +28,13 @@ exports.systemTemperatureStatsOverall = function ( req, res ) {
         }
     };
 
+    var systemName = req.query.systemName || "Holly";
+
     var getFahrenheitAverage = asyncCallbackHelpers.buildFahrenheitAverageCallback (
         {
             model: SystemTemperatureData,
             collection: "AverageSystemTempFahrenheit",
-            query: {}
+            query: { "from": systemName }
         },
         output
     );
@@ -41,7 +43,7 @@ exports.systemTemperatureStatsOverall = function ( req, res ) {
         {
             model: SystemTemperatureData,
             collection: "AverageSystemTempCelsius",
-            query: {}
+            query: { "from": systemName }
         },
         output
     );
@@ -50,7 +52,7 @@ exports.systemTemperatureStatsOverall = function ( req, res ) {
         {
             model: SystemTemperatureData,
             collection: "MinMaxSystemTempFahrenheit",
-            query: {}
+            query: { "from": systemName }
         },
         output
     );
@@ -59,7 +61,7 @@ exports.systemTemperatureStatsOverall = function ( req, res ) {
         {
             model: SystemTemperatureData,
             collection: "MinMaxSystemTempCelsius",
-            query: {}
+            query: { "from": systemName }
         },
         output
     );
@@ -101,6 +103,8 @@ exports.systemTemperatureStatsDay = function ( req, res ) {
         }
     };
 
+    var systemName = req.query.systemName || "Holly";
+
     var d = new Date();
     var currentDate = d.getDate();
     var currentMonth = d.getMonth();
@@ -110,7 +114,8 @@ exports.systemTemperatureStatsDay = function ( req, res ) {
         "date": {
             "$gte": new Date( currentYear, currentMonth, currentDate ),
             "$lt": new Date( currentYear, currentMonth, currentDate + 1 )
-        }
+        },
+        "from": systemName
     };
 
     var getFahrenheitAverage = asyncCallbackHelpers.buildFahrenheitAverageCallback (
@@ -186,6 +191,8 @@ exports.systemTemperatureStatsWeek = function ( req, res ) {
         }
     };
 
+    var systemName = req.query.systemName || "Holly";
+
     var d = new Date();
     var currentDate = d.getDate();
     var currentMonth = d.getMonth();
@@ -195,7 +202,8 @@ exports.systemTemperatureStatsWeek = function ( req, res ) {
         "date": {
             "$gte": new Date( currentYear, currentMonth, currentDate - 7 ),
             "$lt": new Date( currentYear, currentMonth, currentDate + 1 )
-        }
+        },
+        "from": systemName
     };
 
     var getFahrenheitAverage = asyncCallbackHelpers.buildFahrenheitAverageCallback (
@@ -271,6 +279,8 @@ exports.systemTemperatureStatsMonth = function ( req, res ) {
         }
     };
 
+    var systemName = req.query.systemName || "Holly";
+
     var d = new Date();
     var currentDate = d.getDate();
     var currentMonth = d.getMonth();
@@ -280,7 +290,8 @@ exports.systemTemperatureStatsMonth = function ( req, res ) {
         "date": {
             "$gte": new Date( currentYear, currentMonth, currentDate - 30 ),
             "$lt": new Date( currentYear, currentMonth, currentDate + 1 )
-        }
+        },
+        "from": systemName
     };
 
     var getFahrenheitAverage = asyncCallbackHelpers.buildFahrenheitAverageCallback (
