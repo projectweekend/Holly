@@ -168,7 +168,7 @@ svcMod.factory( "StarbugTempStats", function ( $http, socket ) {
         loadingError: false,
         getValues: function ( breakdownType ) {
             var StarbugTempStats = this;
-            var apiUrl = "/api/starbug/temperature/stats/" + breakdownType;
+            var apiUrl = "/api/system/temperature/stats/" + breakdownType + "?systemName=Starbug";
             StarbugTempStats.loadingValues = true;
             $http.get( apiUrl ).
                 success( function ( data, status ) {
