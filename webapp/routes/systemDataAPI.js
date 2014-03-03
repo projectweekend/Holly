@@ -50,23 +50,6 @@ exports.systemTemperatureDataBulk = function ( req, res ) {
             return errorHandler( err, res );
         }
         return res.send( 201 );
-    } );    
-
-};
-
-
-exports.systemTemperatureDataReportingAll = function ( req, res ) {
-
-    var query = SystemTemperatureData.find().sort( '-date' );
-
-    query.exec( function ( err, data ) {
-
-        if ( err ) {
-            return errorHandler( err, res);
-        }
-
-        return res.json( data );
-
     } );
 
 };
