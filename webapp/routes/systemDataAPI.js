@@ -11,7 +11,7 @@ var errorHandler = function ( err, res ) {
 exports.systemTemperatureData = function ( req, res ) {
 
     var queryFilter = {};
-    
+
     var systemName = req.query.systemName || "";
     if ( systemName ) {
         queryFilter.from = systemName;
@@ -64,9 +64,15 @@ exports.systemTemperatureDataBulk = function ( req, res ) {
 
 exports.systemTemperatureDataReportingRecent = function ( req, res ) {
 
+    var queryFilter = {};
     var numberOfReadings = req.query.numberOfReadings || 6;
+    var systemName = req.query.systemName || "";
 
-    var query = SystemTemperatureData.find().sort( '-date' ).limit( numberOfReadings );
+    if ( systemName ) {
+        queryFilter.from = systemName;
+    }
+
+    var query = SystemTemperatureData.find( queryFilter ).sort( '-date' ).limit( numberOfReadings );
 
     query.exec( function ( err, data ) {
 
