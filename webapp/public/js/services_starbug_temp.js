@@ -47,7 +47,7 @@ svcMod.factory( "StarbugTempReporting", function ( $http, socket ) {
         },
         buildChart: function ( display_units ) {
             var chart = this.chart;
-            var apiUrl = "/api/starbug/temperature/recent?numberOfReadings=18";
+            var apiUrl = "/api/system/temperature/recent?numberOfReadings=18&systemName=Starbug";
 
             $http.get( apiUrl ).
                 success( function ( data, status ) {
@@ -76,6 +76,7 @@ svcMod.factory( "StarbugTempReporting", function ( $http, socket ) {
         listenForUpdates: function ( display_units ) {
             var chart = this.chart;
             
+            // TODO: fix this to make sure it works with system temp setup in a single collection
             socket.on( 'updates:starbug:temp', function ( data ) {
             
                 var newLabel = makeHoursMinutesTimeString( data.date );
