@@ -120,7 +120,7 @@ svcMod.factory( "StarbugTempCurrent", function ( $http, socket ) {
         },
         getValues: function () {
             var values = this.values;
-            var apiUrl = "/api/starbug/temperature";
+            var apiUrl = "/api/system/temperature?systemName=Starbug";
 
             $http.get( apiUrl ).
                 success( function ( data, status) {
