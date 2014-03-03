@@ -86,11 +86,13 @@ app.get('/api/indoor/humidity/stats/today', indoorHumidStatsAPI.indoorHumiditySt
 app.get('/api/indoor/humidity/stats/week', indoorHumidStatsAPI.indoorHumidityStatsWeek);
 app.get('/api/indoor/humidity/stats/month', indoorHumidStatsAPI.indoorHumidityStatsMonth);
 
+// All of these starbug temp routes need to move over to system temp routes
 app.get('/api/starbug/temperature', starbugDataAPI.starbugTemperatureData);
 app.post('/api/starbug/temperature', starbugDataAPI.starbugTemperatureData);
 app.post('/api/starbug/temperature/bulk', starbugDataAPI.starbugTemperatureDataBulk);
 app.get('/api/starbug/temperature/recent', starbugDataAPI.starbugTemperatureDataRecent);
 
+// All of these starbug temp routes need to move over to system temp routes
 app.get('/api/starbug/temperature/stats/overall', starbugTempStatsAPI.starbugTemperatureStatsOverall);
 app.get('/api/starbug/temperature/stats/today', starbugTempStatsAPI.starbugTemperatureStatsDay);
 app.get('/api/starbug/temperature/stats/week', starbugTempStatsAPI.starbugTemperatureStatsWeek);
