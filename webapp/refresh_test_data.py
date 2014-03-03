@@ -72,26 +72,61 @@ SYSTEM_TEMPERATURE_DATA = [
     {
         'celsius': 47.6,
         'date': datetime.datetime(2014, 1, 27, 2, 23, 22, 761000),
+        'from': 'Starbug',
         'fahrenheit': 117.68
     },
     {
         'celsius': 47.1,
         'date': datetime.datetime(2014, 1, 27, 2, 30, 6, 788000),
+        'from': 'Starbug',
         'fahrenheit': 116.78
     },
     {
         'celsius': 48.7,
         'date': datetime.datetime(2014, 1, 27, 3, 0, 16, 898000),
+        'from': 'Starbug',
         'fahrenheit': 119.66000000000001
     },
     {
         'celsius': 47.6,
         'date': datetime.datetime(2014, 1, 27, 3, 30, 6, 222000),
+        'from': 'Starbug',
         'fahrenheit': 117.68
     },
     {
         'celsius': 48.7,
         'date': datetime.datetime(2014, 1, 27, 4, 0, 17, 136000),
+        'from': 'Starbug',
+        'fahrenheit': 119.66000000000001
+    },
+    {
+        'celsius': 47.6,
+        'date': datetime.datetime(2014, 1, 27, 2, 23, 22, 761000),
+        'from': 'Holly',
+        'fahrenheit': 117.68
+    },
+    {
+        'celsius': 47.1,
+        'date': datetime.datetime(2014, 1, 27, 2, 30, 6, 788000),
+        'from': 'Holly',
+        'fahrenheit': 116.78
+    },
+    {
+        'celsius': 48.7,
+        'date': datetime.datetime(2014, 1, 27, 3, 0, 16, 898000),
+        'from': 'Holly',
+        'fahrenheit': 119.66000000000001
+    },
+    {
+        'celsius': 47.6,
+        'date': datetime.datetime(2014, 1, 27, 3, 30, 6, 222000),
+        'from': 'Holly',
+        'fahrenheit': 117.68
+    },
+    {
+        'celsius': 48.7,
+        'date': datetime.datetime(2014, 1, 27, 4, 0, 17, 136000),
+        'from': 'Holly',
         'fahrenheit': 119.66000000000001
     }
 ]
@@ -204,34 +239,6 @@ SYSTEM_CONFIG_DATA = [
     }
 ]
 
-STARBUG_TEMPERATURE_DATA = [
-    {
-        'celsius': 44.4,
-        'date': datetime.datetime(2014, 1, 31, 2, 23, 48, 479000),
-        'fahrenheit': 111.92
-    },
-    {
-        'celsius': 44.4,
-        'date': datetime.datetime(2014, 1, 31, 3, 0, 5, 900000),
-        'fahrenheit': 111.92
-    },
-    {
-        'celsius': 45.5,
-        'date': datetime.datetime(2014, 1, 31, 3, 15, 6, 107000),
-        'fahrenheit': 113.9
-    },
-    {
-        'celsius': 45.5,
-        'date': datetime.datetime(2014, 1, 31, 4, 0, 5, 112000),
-        'fahrenheit': 113.9
-    },
-    {
-        'celsius': 45.5,
-        'date': datetime.datetime(2014, 1, 31, 5, 0, 5, 319000),
-        'fahrenheit': 113.9
-    }
-]
-
 BUS_STOP_CONFIG_DATA = [
     {
         'route': '8',
@@ -335,7 +342,6 @@ if __name__ == "__main__":
     rebuild_data(database['systemmemorydatas'], SYSTEM_MEMORY_DATA)
     rebuild_data(database['systemstoragedatas'], SYSTEM_STORAGE_DATA)
     rebuild_data(database['systemconfigdatas'], SYSTEM_CONFIG_DATA)
-    rebuild_data(database['starbugtemperaturedatas'], STARBUG_TEMPERATURE_DATA)
     rebuild_data(database['busstopconfigs'], BUS_STOP_CONFIG_DATA)
     rebuild_data(database['newssourceconfigs'], NEWS_SOURCE_CONFIG_DATA)
     rebuild_data(database['newsarticlekeywords'], NEWS_ARTICLE_KEYWORD_DATA)
