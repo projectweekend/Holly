@@ -25,6 +25,36 @@ exports.systemTemperatureData = function ( req, res ) {
 };
 
 
+exports.systemTemperatureDataBulk = function ( req, res ) {
+    
+    var newTemperatureData = req.body.temperature_data;
+
+    var buildAsyncCallback = function ( temperatureDataItem ) {
+        
+        return function ( callback ) {
+            SystemTemperatureData.create( temperatureDataItem, function ( err, newData ) {
+                if ( err ) {
+                    callback( err );
+                } else {
+                    callback();
+                }
+            } );
+        };
+
+    };
+
+    var asyncTaskList = newTemperatureData.map( buildAsyncCallback );
+
+    async.parallel( asyncTaskList, function ( err ) {
+        if ( err ) {
+            return errorHandler( err, res );
+        }
+        return res.send( 201 );
+    } );    
+
+};
+
+
 exports.systemTemperatureDataReportingAll = function ( req, res ) {
 
     var query = SystemTemperatureData.find().sort( '-date' );

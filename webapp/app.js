@@ -98,6 +98,7 @@ app.get('/api/starbug/temperature/stats/month', starbugTempStatsAPI.starbugTempe
 
 app.get('/api/system/temperature', systemDataAPI.systemTemperatureData);
 app.get('/api/system/temperature/all', systemDataAPI.systemTemperatureDataReportingAll);
+app.post('/api/system/temperature/bulk', systemDataAPI.systemTemperatureDataBulk);
 app.get('/api/system/temperature/recent', systemDataAPI.systemTemperatureDataReportingRecent);
 
 app.get('/api/system/temperature/stats/overall', systemTempStatsAPI.systemTemperatureStatsOverall);
