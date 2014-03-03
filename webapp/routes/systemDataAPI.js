@@ -10,7 +10,14 @@ var errorHandler = function ( err, res ) {
 
 exports.systemTemperatureData = function ( req, res ) {
 
-    var query = SystemTemperatureData.findOne( ).sort( '-date' );
+    var queryFilter = {};
+    
+    var systemName = req.query.systemName || "";
+    if ( systemName ) {
+        queryFilter.from = systemName;
+    }
+
+    var query = SystemTemperatureData.findOne( queryFilter ).sort( '-date' );
 
     query.exec( function ( err, data ) {
         
