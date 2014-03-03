@@ -24,6 +24,7 @@ IndoorHumidityData = mongoose.model( 'IndoorHumidityData', IndoorHumidityDataSch
 SystemTemperatureDataSchema = Schema( {
 	id: ObjectId,
 	date: Date,
+	from: String,
 	celsius: Number,
 	fahrenheit: Number
 } );
