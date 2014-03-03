@@ -10,24 +10,46 @@ var errorHandler = function ( err, res ) {
 
 exports.systemTemperatureData = function ( req, res ) {
 
-    var queryFilter = {};
+    if ( req.method == 'GET' ) {
 
-    var systemName = req.query.systemName || "";
-    if ( systemName ) {
-        queryFilter.from = systemName;
+        var queryFilter = {
+            "from": req.query.systemName || "Holly"
+        };
+
+        var query = SystemTemperatureData.findOne( queryFilter ).sort( '-date' );
+
+        query.exec( function ( err, data ) {
+            
+            if ( err ) {
+                return errorHandler( err, res);
+            }
+
+            res.json( data );
+
+        } );
+
     }
 
-    var query = SystemTemperatureData.findOne( queryFilter ).sort( '-date' );
+    if ( req.method == 'POST' ) {
 
-    query.exec( function ( err, data ) {
-        
-        if ( err ) {
-            return errorHandler( err, res);
-        }
+        var newSystemTemperatureData = {
+            date: req.body.date,
+            from: req.body.from,
+            celsius: req.body.celsius,
+            fahrenheit: req.body.fahrenheit
+        };
 
-        res.json( data );
+        SystemTemperatureData.create( newSystemTemperatureData, function ( err, data ) {
 
-    } );
+            if ( err ) {
+                return errorHandler( err, res );
+            }
+
+            res.send( 201 );
+            
+        } );
+
+    }
 
 };
 

@@ -85,6 +85,7 @@ app.get('/api/indoor/humidity/stats/week', indoorHumidStatsAPI.indoorHumiditySta
 app.get('/api/indoor/humidity/stats/month', indoorHumidStatsAPI.indoorHumidityStatsMonth);
 
 app.get('/api/system/temperature', systemDataAPI.systemTemperatureData);
+app.post('/api/system/temperature', systemDataAPI.systemTemperatureData);
 app.post('/api/system/temperature/bulk', systemDataAPI.systemTemperatureDataBulk);
 app.get('/api/system/temperature/recent', systemDataAPI.systemTemperatureDataReportingRecent);
 
