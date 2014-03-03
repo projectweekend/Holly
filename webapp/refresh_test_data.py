@@ -2,68 +2,70 @@ import sys
 import datetime
 from pymongo import MongoClient
 
+NOW = datetime.datetime.utcnow()
+
 INDOOR_TEMPERATURE_DATA = [
     {
         'celsius': 29.600000381469727,
-        'date': datetime.datetime(2014, 1, 27, 3, 46, 53, 20000),
+        'date': NOW,
         'fahrenheit': 85.28000068664551
     },
     {
         'celsius': 29.200000762939453,
-        'date': datetime.datetime(2014, 1, 27, 3, 51, 22, 875000),
+        'date': NOW + datetime.timedelta(days=-1),
         'fahrenheit': 84.56000137329102
     },
     {
         'celsius': 28.5,
-        'date': datetime.datetime(2014, 1, 28, 0, 55, 28, 826000),
+        'date': NOW + datetime.timedelta(days=-5),
         'fahrenheit': 83.30000000000001
     },
     {
         'celsius': 28.799999237060547,
-        'date': datetime.datetime(2014, 1, 28, 1, 10, 42, 159000),
+        'date': NOW + datetime.timedelta(days=-10),
         'fahrenheit': 83.83999862670899
     },
     {
         'celsius': 26.399999618530273,
-        'date': datetime.datetime(2014, 1, 29, 23, 30, 4, 658000),
+        'date': NOW + datetime.timedelta(days=-20),
         'fahrenheit': 79.5199993133545
     },
     {
         'celsius': 25.600000381469727,
-        'date': datetime.datetime(2014, 2, 19, 3, 51, 22, 875000),
+        'date': NOW + datetime.timedelta(days=-21),
         'fahrenheit': 78.08000068664552
     },
     {
         'celsius': 25.799999237060547,
-        'date': datetime.datetime(2014, 2, 19, 0, 55, 28, 826000),
+        'date': NOW + datetime.timedelta(days=-22),
         'fahrenheit': 78.43999862670898,
     },
     {
         'celsius': 26.299999237060547,    
-        'date': datetime.datetime(2014, 2, 19, 3, 46, 53, 20000),
+        'date': NOW + datetime.timedelta(days=-23),
         'fahrenheit': 79.33999862670899
     }    
 ]
 
 INDOOR_HUMIDITY_DATA = [
     {
-        'date': datetime.datetime(2014, 1, 27, 3, 34, 36, 885000),
+        'date': NOW,
         'percent': 20
     },
     {
-        'date': datetime.datetime(2014, 1, 27, 3, 45, 33, 379000),
+        'date': NOW + datetime.timedelta(days=-1),
         'percent': 20
     },
     {
-        'date': datetime.datetime(2014, 1, 27, 3, 46, 53, 939000),
+        'date': NOW + datetime.timedelta(days=-10),
         'percent': 18.899999618530273
     },
     {
-        'date': datetime.datetime(2014, 1, 27, 3, 51, 23, 173000),
+        'date': NOW + datetime.timedelta(days=-21),
         'percent': 18.899999618530273
     },
     {
-        'date': datetime.datetime(2014, 1, 28, 0, 55, 28, 829000),
+        'date': NOW + datetime.timedelta(days=-23),
         'percent': 12.800000190734863
     }
 ]
@@ -71,61 +73,61 @@ INDOOR_HUMIDITY_DATA = [
 SYSTEM_TEMPERATURE_DATA = [
     {
         'celsius': 47.6,
-        'date': datetime.datetime(2014, 1, 27, 2, 23, 22, 761000),
+        'date': NOW,
         'from': 'Starbug',
         'fahrenheit': 117.68
     },
     {
         'celsius': 47.1,
-        'date': datetime.datetime(2014, 1, 27, 2, 30, 6, 788000),
+        'date': NOW + datetime.timedelta(days=-1),
         'from': 'Starbug',
         'fahrenheit': 116.78
     },
     {
         'celsius': 48.7,
-        'date': datetime.datetime(2014, 1, 27, 3, 0, 16, 898000),
+        'date': NOW + datetime.timedelta(days=-10),
         'from': 'Starbug',
         'fahrenheit': 119.66000000000001
     },
     {
         'celsius': 47.6,
-        'date': datetime.datetime(2014, 1, 27, 3, 30, 6, 222000),
+        'date': NOW + datetime.timedelta(days=-15),
         'from': 'Starbug',
         'fahrenheit': 117.68
     },
     {
         'celsius': 48.7,
-        'date': datetime.datetime(2014, 1, 27, 4, 0, 17, 136000),
+        'date': NOW + datetime.timedelta(days=-20),
         'from': 'Starbug',
         'fahrenheit': 119.66000000000001
     },
     {
         'celsius': 47.6,
-        'date': datetime.datetime(2014, 1, 27, 2, 23, 22, 761000),
+        'date': NOW,
         'from': 'Holly',
         'fahrenheit': 117.68
     },
     {
         'celsius': 47.1,
-        'date': datetime.datetime(2014, 1, 27, 2, 30, 6, 788000),
+        'date': NOW + datetime.timedelta(days=-1),
         'from': 'Holly',
         'fahrenheit': 116.78
     },
     {
         'celsius': 48.7,
-        'date': datetime.datetime(2014, 1, 27, 3, 0, 16, 898000),
+        'date': NOW + datetime.timedelta(days=-10),
         'from': 'Holly',
         'fahrenheit': 119.66000000000001
     },
     {
         'celsius': 47.6,
-        'date': datetime.datetime(2014, 1, 27, 3, 30, 6, 222000),
+        'date': NOW + datetime.timedelta(days=-15),
         'from': 'Holly',
         'fahrenheit': 117.68
     },
     {
         'celsius': 48.7,
-        'date': datetime.datetime(2014, 1, 27, 4, 0, 17, 136000),
+        'date': NOW + datetime.timedelta(days=-20),
         'from': 'Holly',
         'fahrenheit': 119.66000000000001
     }
@@ -135,7 +137,7 @@ SYSTEM_MEMORY_DATA = [
     {
         'buffers': 52,
         'cached': 122,
-        'date': datetime.datetime(2014, 2, 3, 5, 0, 14, 347000),
+        'date': NOW,
         'free': 183,
         'shared': 0,
         'total': 485,
@@ -144,7 +146,7 @@ SYSTEM_MEMORY_DATA = [
     {
         'buffers': 52,
         'cached': 122,
-        'date': datetime.datetime(2014, 2, 3, 6, 0, 14, 227000),
+        'date': NOW + datetime.timedelta(days=-1),
         'free': 184,
         'shared': 0,
         'total': 485,
@@ -153,7 +155,7 @@ SYSTEM_MEMORY_DATA = [
     {
         'buffers': 52,
         'cached': 122,
-        'date': datetime.datetime(2014, 2, 3, 7, 0, 14, 523000),
+        'date': NOW + datetime.timedelta(days=-10),
         'free': 184,
         'shared': 0,
         'total': 485,
@@ -162,7 +164,7 @@ SYSTEM_MEMORY_DATA = [
     {
         'buffers': 52,
         'cached': 122,
-        'date': datetime.datetime(2014, 2, 3, 8, 0, 13, 982000),
+        'date': NOW + datetime.timedelta(days=-15),
         'free': 184,
         'shared': 0,
         'total': 485,
@@ -171,7 +173,7 @@ SYSTEM_MEMORY_DATA = [
     {
         'buffers': 52,
         'cached': 122,
-        'date': datetime.datetime(2014, 2, 3, 9, 0, 14, 224000),
+        'date': NOW + datetime.timedelta(days=-20),
         'free': 183,
         'shared': 0,
         'total': 485,
@@ -182,31 +184,31 @@ SYSTEM_MEMORY_DATA = [
 SYSTEM_STORAGE_DATA = [
     {
       'available': 3429,
-      'date': datetime.datetime(2014, 2, 2, 3, 0, 14, 146000),
+      'date': NOW,
       'percent': 41,
       'used': 2340
     },
     {
       'available': 3429,
-      'date': datetime.datetime(2014, 2, 2, 4, 0, 14, 396000),
+      'date': NOW + datetime.timedelta(days=-1),
       'percent': 41,
       'used': 2340
     },
     {
         'available': 3429,
-        'date': datetime.datetime(2014, 2, 2, 5, 0, 14, 62000),
+        'date': NOW + datetime.timedelta(days=-10),
         'percent': 41,
         'used': 2340
     },
     {
       'available': 3429,
-      'date': datetime.datetime(2014, 2, 2, 6, 0, 13, 856000),
+      'date': NOW + datetime.timedelta(days=-15),
       'percent': 41,
       'used': 2340
     },
     {
         'available': 3429,
-        'date': datetime.datetime(2014, 2, 2, 7, 0, 14, 412000),
+        'date': NOW + datetime.timedelta(days=-20),
         'percent': 41,
         'used': 2340
     }
@@ -217,7 +219,7 @@ SYSTEM_CONFIG_DATA = [
         'arm_freq': 800,
         'config_hdmi_boost': 4,
         'core_freq': 250,
-        'date': datetime.datetime(2014, 1, 27, 2, 23, 42, 612000),
+        'date': NOW,
         'disable_overscan': 1,
         'disable_splash': 1,
         'emmc_pll_core': 1,
