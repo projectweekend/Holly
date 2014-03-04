@@ -60,8 +60,15 @@ SystemStatusMessageSchema = Schema( {
 	from: String,
 	body: String
 } );
-
 SystemStatusMessage = mongoose.model( 'SystemStatusMessage', SystemStatusMessageSchema );
+
+
+ThirdPartyConfigSchema = Schema( {
+	id: ObjectId,
+	config_key: String,
+	config_value: String
+} );
+ThirdPartyConfig = mongoose.model( 'ThirdPartyConfig', ThirdPartyConfigSchema );
 
 
 StarbugTemperatureDataSchema = Schema( {
