@@ -11,6 +11,7 @@ var express = require('express'),
   systemStatusAPI = require('./routes/systemStatusAPI'),
   systemDataAPI = require('./routes/systemDataAPI'),
   systemTempStatsAPI = require('./routes/systemTemperatureStatsAPI'),
+  thirdPartyConfigAPI = require('./routes/thirdPartyConfigAPI'),
   newsAPI = require('./routes/newsAPI'),
   ctaBusAPI = require('./routes/ctaBusAPI'),
   http = require('http'),
@@ -101,6 +102,11 @@ app.get('/api/system/messages', systemStatusAPI.messagesList);
 app.post('/api/system/messages', systemStatusAPI.messagesList);
 app.get('/api/system/messages/:id', systemStatusAPI.messagesDetail);
 app.delete('/api/system/messages/:id', systemStatusAPI.messagesDetail);
+
+app.get('/api/system/third-party/config', thirdPartyConfigAPI.configManager);
+app.post('/api/system/third-party/config', thirdPartyConfigAPI.configManager);
+app.put('/api/system/third-party/config', thirdPartyConfigAPI.configManager);
+app.delete('/api/system/third-party/config', thirdPartyConfigAPI.configManager);
 
 app.get('/api/news-source/config', newsAPI.newsSourceConfig);
 app.post('/api/news-source/config', newsAPI.newsSourceConfig);
