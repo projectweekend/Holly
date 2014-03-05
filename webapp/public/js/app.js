@@ -10,6 +10,7 @@ angular.module('myApp', [
     'myApp.services_system_temp',
     'myApp.services_system_info',
     'myApp.services_system_messages',
+    'myApp.services_system_config',
     'myApp.services_starbug_temp',
     'myApp.services_news_articles',
     'myApp.services_hue_lighting',
