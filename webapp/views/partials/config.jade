@@ -1,4 +1,5 @@
 div(class="row")
+  h1 News Sources
   div(class="col-xs-12")
     form(id="news-source", role="form")
       div(class="form-group")
@@ -7,12 +8,10 @@ div(class="row")
       div(class="btn-toolbar")
         button(ng-click="newsSourceConfig.save()", class="btn btn-primary") Save
         button(ng-click="newsSourceConfig.cancel()", class="btn btn-default") Cancel
-        a(href="/news", class="btn btn-danger pull-right") Exit
     br
 
 div(class="row")
   div(class="col-xs-12")
-    h3 News Sources
     table(class="table")
       thead
         tr
@@ -29,3 +28,6 @@ div(class="row")
             span(ng-click="newsSourceConfig.edit(s)", class="glyphicon glyphicon-pencil text-primary clickable")
           td
             span(ng-click="newsSourceConfig.remove(s._id)", class="glyphicon glyphicon-remove text-danger clickable")
+
+div(class="row")
+  h1 System Variables
