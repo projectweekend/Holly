@@ -127,10 +127,13 @@ cMod.controller( 'NewsCtrl', function ( $scope, NewsArticles ) {
 } );
 
 
-cMod.controller( 'SystemConfigCtrl', function ( $scope, NewsSourceConfig ) {
+cMod.controller( 'SystemConfigCtrl', function ( $scope, NewsSourceConfig, VariablesConfig ) {
     
     $scope.newsSourceConfig = NewsSourceConfig;
     $scope.newsSourceConfig.getSources();
+
+    $scope.variablesConfig = VariablesConfig;
+    $scope.variablesConfig.getVariables();
 
 } );
 

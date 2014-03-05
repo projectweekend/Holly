@@ -91,3 +91,15 @@ svcMod.factory( "NewsSourceConfig", function ( $http ) {
     };
 
 } );
+
+
+svcMod.factory( "VariablesConfig", function ( $http ) {
+
+    return {
+        variables: [],
+        getVariables: function () {
+
+        }
+    };
+
+} );
