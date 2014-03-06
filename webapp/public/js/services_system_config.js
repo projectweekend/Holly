@@ -96,6 +96,24 @@ svcMod.factory( "NewsSourceConfig", function ( $http ) {
 svcMod.factory( "VariablesConfig", function ( $http ) {
 
     return {
+        editing: {
+            _id: "",
+            config_key: "",
+            config_value: "",
+            clearForm: function () {
+                var editing = this;
+                editing._id = "";
+                editing.config_key = "";
+                editing.config_value = "";
+            },
+            begin: function ( itemToEdit ) {
+                var editing = this;
+                editing.clearForm();
+                editing._id = itemToEdit._id;
+                editing.config_key = itemToEdit.config_key;
+                editing.config_value = itemToEdit.config_value;
+            }
+        },
         variables: [],
         getVariables: function () {
             var VariablesConfig = this;
