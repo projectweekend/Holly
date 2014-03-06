@@ -114,6 +114,51 @@ svcMod.factory( "VariablesConfig", function ( $http ) {
                 editing.config_value = itemToEdit.config_value;
             }
         },
+        save: function () {
+            var VariablesConfig = this;
+            var apiUrl = "/api/system/third-party/config";
+
+            if ( !VariablesConfig.editing._id ) {
+                $http.post( apiUrl, VariablesConfig.editing ).
+                    success( function ( data, status ) {
+                        VariablesConfig.editing.clearForm();
+                        VariablesConfig.getVariables();
+                    } ).
+                    error( function ( data, status ) {
+                        logError( data );
+                    } );
+            } else {
+                $http.put( apiUrl, VariablesConfig.editing ).
+                    success( function ( data, status ) {
+                        VariablesConfig.editing.clearForm();
+                        VariablesConfig.getVariables();
+                    } ).
+                    error( function ( data, status ) {
+                        logError( data );
+                    } );
+            }
+
+        },
+        cancel: function () {
+            var VariablesConfig = this;
+            VariablesConfig.editing.clearForm();
+        },
+        edit: function ( itemToEdit ) {
+            var VariablesConfig = this;
+            VariablesConfig.editing.begin( itemToEdit );
+        },
+        remove: function ( id ) {
+            var VariablesConfig = this;
+            var apiUrl = "/api/system/third-party/config?id=" + id;
+
+            $http.delete( apiUrl ).
+                success( function ( data, status ) {
+                    VariablesConfig.getVariables();
+                } ).
+                error( function ( data, status ) {
+                    logError( data );
+                } );
+        },
         variables: [],
         getVariables: function () {
             var VariablesConfig = this;
