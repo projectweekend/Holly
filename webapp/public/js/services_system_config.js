@@ -98,7 +98,15 @@ svcMod.factory( "VariablesConfig", function ( $http ) {
     return {
         variables: [],
         getVariables: function () {
-
+            var VariablesConfig = this;
+            var apiUrl = "/api/system/third-party/config";
+            $http.get( apiUrl ).
+                success( function ( data, status ) {
+                    VariablesConfig.variables = data;
+                } ).
+                error( function ( data, status ) {
+                    logError( data );
+                } );
         }
     };
 
