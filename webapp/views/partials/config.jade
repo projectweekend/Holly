@@ -34,16 +34,17 @@ div(class="row")
   div(class="col-xs-12")
     form(id="system-variables", role="form")
       div(class="row")
-        div(class="form-group")
-          div(class="col-xs-6")
-            label Name
-            input(type="text", class="form-control", required)
-          div(class="col-xs-6")
+        div(class="col-xs-6")
+          div(class="form-group")
+            label Key
+            input(ng-model="variablesConfig.editing.config_key", type="text", class="form-control", required)
+        div(class="col-xs-6")
+          div(class="form-group")
             label Value
-            input(type="text", class="form-control", required)
+            input(ng-model="variablesConfig.editing.config_value", type="text", class="form-control", required)
       div(class="btn-toolbar")
         button(ng-click="variablesConfig.save()", class="btn btn-primary") Save
-        button(ng-click="variablesConfig.cancel()", class="btn btn-default") Cancel        
+        button(ng-click="variablesConfig.cancel()", class="btn btn-default") Cancel      
     br
 
 div(class="row")
