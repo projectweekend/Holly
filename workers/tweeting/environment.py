@@ -3,6 +3,7 @@ import datetime
 import utils
 import database
 
+
 class IndoorTweeter(object):
     
     def __init__(self):

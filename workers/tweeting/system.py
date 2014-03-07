@@ -1,6 +1,7 @@
 import datetime
 
 import utils
+import database
 
 
 class CPUTemperatureTweeter(object):
@@ -18,7 +19,7 @@ class CPUTemperatureTweeter(object):
         return utils.get_twitter_client()
 
     def _get_temperature_data(self):
-        self.temperature_data = utils.get_latest_system_temperature()
+        self.temperature_data = database.get_latest_system_temperature()
 
     def _get_current_datetime(self):
         dt = datetime.datetime.now()

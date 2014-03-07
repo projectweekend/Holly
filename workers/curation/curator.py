@@ -1,4 +1,5 @@
 import utils
+import database
 
 
 class ArticleCurator(object):
@@ -17,7 +18,7 @@ class ArticleCurator(object):
         super(ArticleCurator, self).__init__()
 
     def _build_keyword_dictionaries(self):
-        result = utils.get_documents_for_collection('newsarticlekeywords')
+        result = database.get_documents_for_collection('newsarticlekeywords')
         for i in result:
             word = i['word']
             score = i['score']
