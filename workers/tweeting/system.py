@@ -1,7 +1,13 @@
 import datetime
+import twitter
 
-import utils
 import database
+
+
+TWITTER_CONSUMER_KEY = database.get_system_config_value('TWITTER_CONSUMER_KEY')
+TWITTER_CONSUMER_SECRET = database.get_system_config_value('TWITTER_CONSUMER_SECRET')
+TWITTER_ACCESS_TOKEN_KEY = database.get_system_config_value('TWITTER_ACCESS_TOKEN_KEY')
+TWITTER_ACCESS_TOKEN_SECRET = database.get_system_config_value('TWITTER_ACCESS_TOKEN_SECRET')
 
 
 class CPUTemperatureTweeter(object):
@@ -16,7 +22,10 @@ class CPUTemperatureTweeter(object):
         super(CPUTemperatureTweeter, self).__init__()
 
     def _connect_to_twitter(self):
-        return utils.get_twitter_client()
+        return twitter.Api(consumer_key=TWITTER_CONSUMER_KEY,
+                           consumer_secret=TWITTER_CONSUMER_SECRET,
+                           access_token_key=TWITTER_ACCESS_TOKEN_KEY,
+                           access_token_secret=TWITTER_ACCESS_TOKEN_SECRET)
 
     def _get_temperature_data(self):
         self.temperature_data = database.get_latest_system_temperature()
