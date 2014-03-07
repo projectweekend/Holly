@@ -29,3 +29,12 @@ def get_latest_indoor_temperature():
 def get_latest_indoor_humidity():
     collection = get_collection('indoorhumiditydatas')
     return collection.find_one(sort=[('date', -1)])
+
+
+def get_system_config_value(config_key):
+    config_collection = get_collection('thirdpartyconfigs')
+    config_dict = config_collection.find_one({'config_key': config_key})
+    try:
+        return config_dict['config_value']
+    except:
+        return ""
