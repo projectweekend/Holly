@@ -1,5 +1,5 @@
 import twitter
-import database
+from workers import database
 
 TWITTER_CONSUMER_KEY = database.get_system_config_value('TWITTER_CONSUMER_KEY')
 TWITTER_CONSUMER_SECRET = database.get_system_config_value('TWITTER_CONSUMER_SECRET')

@@ -16,7 +16,7 @@ def get_system_temp():
     return {
         'date': datetime.datetime.utcnow(),
         'from': 'Holly',
-        'celsius':celsius_temp, 
+        'celsius': celsius_temp,
         'fahrenheit': fahrenheit_temp
     }
 
