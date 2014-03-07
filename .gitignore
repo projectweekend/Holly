@@ -20,4 +20,5 @@ env
 *.pyc
 
 start_dev_app.sh
+refresh_secret_data.py
 .vagrant
