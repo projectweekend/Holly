@@ -2,6 +2,7 @@ import subprocess
 import datetime
 
 import utils
+import database
 
 
 SHELL_COMMAND = ["/bin/df", "-BM"]
@@ -17,7 +18,7 @@ def get_system_storage():
 
 def worker():
     storage_data = get_system_storage()
-    storage_data_collection = utils.get_collection('systemstoragedatas')
+    storage_data_collection = database.get_collection('systemstoragedatas')
     storage_data_collection.insert(storage_data)
 
 

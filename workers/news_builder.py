@@ -1,10 +1,11 @@
 import utils
+import database
 
 from curation import ArticleCurator
 
 
 def get_source_urls():
-    article_sources = utils.get_documents_for_collection('newssourceconfigs')
+    article_sources = database.get_documents_for_collection('newssourceconfigs')
     return [a['url'] for a in article_sources]
 
 
@@ -23,7 +24,7 @@ def worker():
     # Make sure we actually have new articles first
     if curator.curated_articles:
         # get and empty collection before filling with new articles
-        articles_collection = utils.get_collection('newsarticles')
+        articles_collection = database.get_collection('newsarticles')
         articles_collection.remove()
         # put new curated articles in the collection
         for article in curator.curated_articles:

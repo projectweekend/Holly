@@ -2,6 +2,7 @@ import subprocess
 import datetime
 
 import utils
+import database
 
 
 SHELL_COMMAND = ["/usr/bin/free", "-m"]
@@ -17,7 +18,7 @@ def get_system_memory():
 
 def worker():
     memory_data = get_system_memory()
-    memory_data_collection = utils.get_collection('systemmemorydatas')
+    memory_data_collection = database.get_collection('systemmemorydatas')
     memory_data_collection.insert(memory_data)
 
 

@@ -2,6 +2,7 @@ import subprocess
 import datetime
 
 import utils
+import database
 from tweeting import CPUTemperatureTweeter
 
 
@@ -22,7 +23,7 @@ def get_system_temp():
 
 def worker():
     temperature_data = get_system_temp()
-    temperature_data_collection = utils.get_collection('systemtemperaturedatas')
+    temperature_data_collection = database.get_collection('systemtemperaturedatas')
     try:
         temperature_data_collection.insert(temperature_data)
     except:
