@@ -10,12 +10,14 @@ var errorHandler = function ( err, res ) {
 };
 
 
-var busTrackerKey;
+var busTrackerKey = "Not defined";
 var loadThirdPartyConfig = function () {
 
 	var q = ThirdPartyConfig.findOne({config_key: 'BUS_TRACKER_API_KEY'});
 	q.exec( function ( err, data ) {
-		busTrackerKey = data.config_value || "Not defined";
+		if ( data ) {
+			busTrackerKey = data.config_value;
+		}
 	} );
 
 };
