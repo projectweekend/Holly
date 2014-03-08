@@ -44,7 +44,7 @@ Holly is named after the ship's computer in one of my all-time favorite televisi
 ![News Screen Shot](http://i.imgur.com/gVPEFek.jpg)
 
 # Twitter Integration
-Holly tweets the most recent **system CPU temperature** as well as the most recent **indoor temperature** and **indoor humidity** readings on an hourly basis. Currently, the frequency of the tweets is not configurable from the front-end, but I have plans to work on that. Auto-tweeting requires a [Twitter Developer](https://dev.twitter.com/) account so that the following environment variables can be defined on the Pi:
+Holly tweets the most recent **system CPU temperature** as well as the most recent **indoor temperature** and **indoor humidity** readings on an hourly basis. Currently, the frequency of the tweets is not configurable from the front-end, but I have plans to work on that. Auto-tweeting requires a [Twitter Developer](https://dev.twitter.com/) account so that the following variables can be defined using Holly's `/config` page.
 * `TWITTER_CONSUMER_KEY`
 * `TWITTER_CONSUMER_SECRET`
 * `TWITTER_ACCESS_TOKEN_KEY`
@@ -323,39 +323,55 @@ This returns an object with the current, average, min, and max temperatures.
  }
 ```
 
-## Get latest config data
+## Get third party config values
 
-**GET:** `/api/system/config`
+**GET:** `/api/system/third-party/config`
 
-**Respoonse:**
+**Response:**
+```
+ [
+     {
+         _id: "531b1a0acdde91000db5f817",
+         config_value: "alksdjfi4jalkdjf;jd",
+         config_key: "BUS_TRACKER_API_KEY"
+     },
+     {
+         _id: "531b1a0acdde91000db5f815",
+         config_value: "kpero9a83rjapojdppoj3-1eof",
+         config_key: "TWITTER_ACCESS_TOKEN_KEY"
+     }
+ ]
+```
+
+## Add a third party config value
+
+**POST:** `/api/system/third-party/config`
+
+**Payload:**
 ```
  {
-     date: "2014-01-17T01:07:41.655Z",
-     arm_freq: 800,
-     core_freq: 250,
-     sdram_freq: 400,
-     emmc_pll_core: 1,
-     force_pwm_open: 1,
-     config_hdmi_boost: 4,
-     hdmi_force_hotplug: 1,
-     hdmi_group: 2,
-     hdmi_ignore_edid: "0xa5000080",
-     hdmi_mode: 4,
-     hdmi_safe: 1,
-     disable_splash: 1,    
-     disable_overscan: 1,
-     overscan_bottom: 16,
-     overscan_left: 24,
-     overscan_right: 24,
-     overscan_top: 16,
-     pause_burst_frames: 1,
-     program_serial_random: 1,
-     second_boot: 1,
-     temp_limit: 185,
-     _id: "52d8825d858ee93205000004",
-     __v: 0
+     config_value: "kpero9a83rjapojdppoj3-1eof",
+     config_key: "TWITTER_ACCESS_TOKEN_KEY"
  }
 ```
+
+## Update a third party config value
+
+**PUT:** `/api/system/third-party/config`
+
+**Payload:**
+```
+ {
+     _id: "531b1a0acdde91000db5f815",
+     config_value: "kpero9a83rjapojdppoj3-1eof",
+     config_key: "TWITTER_ACCESS_TOKEN_KEY"
+ }
+```
+
+## Remove a third party config value
+
+**DELETE:** `/api/system/third-party/config?id=531b1a0acdde91000db5f815`
+
 
 ## Get news sources
 
