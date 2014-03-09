@@ -26,16 +26,13 @@ An example of the controls can be found in the **Home Temperature Chart** screen
 Holly is named after the ship's computer in one of my all-time favorite television shows, [Red Dwarf](http://en.wikipedia.org/wiki/Holly_(Red_Dwarf)). Growing up, I only caught this British Comedy/Sci-Fi sporadically on PBS, but it made a lasting impression. If it wasn't already obvious, this is definitely a work in progress. Stay tuned. :)
 
 ### Home Temperature Chart
-![Home Temperature Chart Screen Shot](http://i.imgur.com/1SEwUQ6.png)
+![Home Temperature Chart Screen Shot](http://i.imgur.com/CDp0Sza.png)
 
 ### Home Humidity Chart
-![Home Humidity Chart Screen Shot](http://i.imgur.com/fpbESXm.png)
+![Home Humidity Chart Screen Shot](http://i.imgur.com/HmFjkGy.png)
 
 ### System Temp Chart
-![System Temp Page Screen Shot](http://i.imgur.com/pVhWYt1.png)
-
-### System Info Charts
-![System Info Page Screen Shot](http://i.imgur.com/X24o0e7.png)
+![System Temp Page Screen Shot](http://i.imgur.com/9P9KqEQ.png)
 
 ### CTA Transit Info
 ![Transit Page Screen Shot](http://i.imgur.com/KTTnBJJ.png)
