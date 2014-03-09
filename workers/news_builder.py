@@ -1,7 +1,5 @@
-import utils
 import database
-
-from curation import ArticleCurator
+from curation import get_newspapers, process_articles_for_paper, ArticleCurator
 
 
 def get_source_urls():
@@ -12,11 +10,11 @@ def get_source_urls():
 def worker():
 
     source_urls = get_source_urls()
-    papers = utils.get_newspapers(source_urls)
+    papers = get_newspapers(source_urls)
 
     processed_articles = []
     for paper in papers:
-        processed_articles += utils.process_articles_for_paper(paper)
+        processed_articles += process_articles_for_paper(paper)
 
     curator = ArticleCurator(processed_articles)
     curator.curate()
