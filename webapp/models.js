@@ -21,6 +21,14 @@ IndoorHumidityDataSchema = Schema( {
 IndoorHumidityData = mongoose.model( 'IndoorHumidityData', IndoorHumidityDataSchema );
 
 
+IndoorMovementLogSchema = Schema( {
+	id: ObjectId,
+	date: Date,
+	from: String
+} );
+IndoorMovementLog = mongoose.model( 'IndoorMovementLog', IndoorMovementDataSchema );
+
+
 SystemTemperatureDataSchema = Schema( {
 	id: ObjectId,
 	date: Date,
