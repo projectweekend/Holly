@@ -26,7 +26,7 @@ IndoorMovementLogSchema = Schema( {
 	date: Date,
 	from: String
 } );
-IndoorMovementLog = mongoose.model( 'IndoorMovementLog', IndoorMovementDataSchema );
+IndoorMovementLog = mongoose.model( 'IndoorMovementLog', IndoorMovementLogSchema );
 
 
 SystemTemperatureDataSchema = Schema( {
