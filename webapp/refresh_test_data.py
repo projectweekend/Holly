@@ -70,6 +70,33 @@ INDOOR_HUMIDITY_DATA = [
     }
 ]
 
+INDOOR_MOVEMENT_DATA = [
+    {
+        'date': NOW,
+        'from': 'Nova5'
+    },
+    {
+        'date': NOW + datetime.timedelta(days=-1),
+        'from': 'Nova5'
+    },
+    {
+        'date': NOW + datetime.timedelta(days=-2),
+        'from': 'Nova5'
+    },
+    {
+        'date': NOW + datetime.timedelta(days=-3),
+        'from': 'Nova5'
+    },
+    {
+        'date': NOW + datetime.timedelta(days=-1),
+        'from': 'Nova5.1'
+    },
+    {
+        'date': NOW + datetime.timedelta(days=-4),
+        'from': 'Nova5.1'
+    }
+]
+
 SYSTEM_TEMPERATURE_DATA = [
     {
         'celsius': 47.6,
@@ -340,6 +367,7 @@ if __name__ == "__main__":
 
     rebuild_data(database['indoortemperaturedatas'], INDOOR_TEMPERATURE_DATA)
     rebuild_data(database['indoorhumiditydatas'], INDOOR_HUMIDITY_DATA)
+    rebuild_data(database['indoormovementlogs'], INDOOR_MOVEMENT_DATA)
     rebuild_data(database['systemtemperaturedatas'], SYSTEM_TEMPERATURE_DATA)
     rebuild_data(database['systemmemorydatas'], SYSTEM_MEMORY_DATA)
     rebuild_data(database['systemstoragedatas'], SYSTEM_STORAGE_DATA)
