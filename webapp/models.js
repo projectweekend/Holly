@@ -71,15 +71,6 @@ ThirdPartyConfigSchema = Schema( {
 ThirdPartyConfig = mongoose.model( 'ThirdPartyConfig', ThirdPartyConfigSchema );
 
 
-StarbugTemperatureDataSchema = Schema( {
-	id: ObjectId,
-	date: Date,
-	celsius: Number,
-	fahrenheit: Number
-} );
-StarbugTemperatureData = mongoose.model( 'StarbugTemperatureData', StarbugTemperatureDataSchema );
-
-
 NewsSourceConfigSchema = Schema( {
 	id: ObjectId,
 	date: Date,
