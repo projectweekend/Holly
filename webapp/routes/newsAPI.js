@@ -8,42 +8,76 @@ var errorHandler = function ( err, res ) {
 };
 
 
-exports.newsSourceConfig = function ( req, res ) {
+exports.newsSourceConfigList = function ( req, res ) {
 
     if ( req.method == 'GET' ) {
-
         var q = NewsSourceConfig.find( ).sort( {category: 1, url: 1} );
-
         q.exec( function ( err, data ) {
-
             if ( err ) {
                 return errorHandler( err, res );
             }
-
             res.json( data );
-
         } );
-
     }
 
     if ( req.method == 'POST' ) {
-
         var newConfigItem = {
             date: new Date(),
             url: req.body.url
         };
-
         NewsSourceConfig.create( newConfigItem, function ( err, configItemData) {
-
             if ( err ) {
                 return errorHandler( err, res );
             }
-
             res.send( 201 );
-
         } );
-
     }
+
+};
+
+
+exports.newsSourceConfigDetail = function ( req, res ) {
+
+    var configID = req.params.id;
+
+    if ( req.method == 'GET' ) {
+        NewsSourceConfig.findById( configID, function ( err, data ) {
+            if ( err ) {
+                return errorHandler( err, res );
+            }
+            return res.json( data );
+        } );
+    }
+
+    if ( req.method == 'PUT' ) {
+        var update = {
+            $set: {
+                url: req.body.url
+            }
+        };
+        var callback = function ( err, updatedItem ) {
+            if ( err ) {
+                return errorHandler( err, res );
+            }
+            res.json( updatedItem );
+        };
+        NewsSourceConfig.findByIdAndUpdate( configID, update, callback );
+    }
+
+    if ( req.method == 'DELETE' ) {
+        NewsSourceConfig.findById( configID, function ( err, itemToDelete ) {
+            if ( err ) {
+                return errorHandler( err, res );
+            }
+            itemToDelete.remove();
+            res.send( 200 );
+        } );
+    }
+    
+};
+
+
+exports.newsSourceConfig = function ( req, res ) {
 
     if ( req.method == 'PUT' ) {
 
