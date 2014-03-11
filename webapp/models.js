@@ -73,7 +73,7 @@ SystemStatusMessage = mongoose.model( 'SystemStatusMessage', SystemStatusMessage
 
 SystemConfigurationSchema = Schema( {
 	id: ObjectId,
-	system: {
+	name: {
 		type: String,
 		unique: true
 	},

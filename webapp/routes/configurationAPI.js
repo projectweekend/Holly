@@ -11,7 +11,7 @@ exports.systemConfigurationGetCreate = function ( req, res ) {
 
 	if (req.method == 'GET' ) {
 
-		var q = SystemConfiguration.findOne( { 'system': req.query.systemName } );
+		var q = SystemConfiguration.findOne( { 'name': req.query.systemName } );
 		q.exec( function ( err, data ) {
 			if ( err ) {
 				return errorHandler( err, res );
@@ -23,7 +23,7 @@ exports.systemConfigurationGetCreate = function ( req, res ) {
 
 	if (req.method == 'POST' ) {
 		var newConfigItem = {
-			system: req.body.system,
+			name: req.body.name,
 			options: req.body.options
 		};
 		SystemConfiguration.create( newConfigItem, function ( err, configItem ) {
