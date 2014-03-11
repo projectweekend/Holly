@@ -71,6 +71,15 @@ SystemStatusMessageSchema = Schema( {
 SystemStatusMessage = mongoose.model( 'SystemStatusMessage', SystemStatusMessageSchema );
 
 
+ConfigurationSchema = Schema( {
+	id: ObjectId,
+	system: String,
+	config_key: String,
+	config_value: String
+} );
+Configuration = mongoose.model( 'Configuration', ConfigurationSchema );
+
+
 ThirdPartyConfigSchema = Schema( {
 	id: ObjectId,
 	config_key: String,
