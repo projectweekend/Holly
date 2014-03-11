@@ -128,6 +128,7 @@ svcMod.factory( "VariablesConfig", function ( $http ) {
                         logError( data );
                     } );
             } else {
+                apiUrl = apiUrl + "/" + VariablesConfig.editing._id;
                 $http.put( apiUrl, VariablesConfig.editing ).
                     success( function ( data, status ) {
                         VariablesConfig.editing.clearForm();
@@ -149,7 +150,7 @@ svcMod.factory( "VariablesConfig", function ( $http ) {
         },
         remove: function ( id ) {
             var VariablesConfig = this;
-            var apiUrl = "/api/system/third-party/config?id=" + id;
+            var apiUrl = "/api/system/third-party/config/" + id;
 
             $http.delete( apiUrl ).
                 success( function ( data, status ) {
