@@ -77,47 +77,6 @@ exports.newsSourceConfigDetail = function ( req, res ) {
 };
 
 
-exports.newsSourceConfig = function ( req, res ) {
-
-    if ( req.method == 'PUT' ) {
-
-        var update = {
-            $set: {
-                url: req.body.url
-            }
-        };
-        var callback = function ( err, updatedItem ) {
-            
-            if ( err ) {
-                return errorHandler( err, res );
-            }
-
-            res.json( updatedItem );
-
-        };
-
-        NewsSourceConfig.findByIdAndUpdate( req.body._id, update, callback );
-
-    }
-
-    if ( req.method == 'DELETE' ) {
-
-        NewsSourceConfig.findById( req.query.id, function ( err, itemToDelete ) {
-            
-            if ( err ) {
-                return errorHandler( err, res );
-            }
-
-            itemToDelete.remove();
-            res.send( 200 );
-            
-        } );
-
-    }
-
-};
-
-
 exports.newsArticles = function ( req, res ) {
 
     if (  req.query.id ) {
