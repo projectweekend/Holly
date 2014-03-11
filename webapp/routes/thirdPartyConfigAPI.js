@@ -8,7 +8,7 @@ var errorHandler = function ( err, res ) {
 };
 
 
-exports.configManager = function ( req, res ) {
+exports.configManagerList = function ( req, res ) {
 
 	if ( req.method == 'GET' ) {
 		var q = ThirdPartyConfig.find( ).sort( 'config_key' );
@@ -34,6 +34,22 @@ exports.configManager = function ( req, res ) {
 		} );
 	}
 
+};
+
+
+exports.configManagerDetail = function ( req, res ) {
+
+	var configID = req.params.id;
+
+	if ( req.method == 'GET' ) {
+		ThirdPartyConfig.findById( configID, function ( err, data ) {
+			if ( err ) {
+				return errorHandler( err, res );
+			}
+			return res.json( data );
+		} );
+	}
+
 	if ( req.method == 'PUT' ) {
 		var update = {
 			$set: {
@@ -41,7 +57,7 @@ exports.configManager = function ( req, res ) {
 				config_value: req.body.config_value
 			}
 		};
-		ThirdPartyConfig.findByIdAndUpdate( req.body._id, update, function ( err, updatedItem ) {
+		ThirdPartyConfig.findByIdAndUpdate( configID, update, function ( err, updatedItem ) {
             if ( err ) {
                 return errorHandler( err, res );
             }
@@ -50,7 +66,7 @@ exports.configManager = function ( req, res ) {
 	}
 
 	if ( req.method == 'DELETE' ) {
-		ThirdPartyConfig.findById( req.query.id, function ( err, itemToDelete ) {
+		ThirdPartyConfig.findById( configID, function ( err, itemToDelete ) {
             if ( err ) {
                 return errorHandler( err, res );
             }

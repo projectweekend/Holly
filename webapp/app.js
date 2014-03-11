@@ -116,10 +116,11 @@ app.get('/api/system/configuration/:id', configurationAPI.systemConfigurationDet
 app.put('/api/system/configuration/:id', configurationAPI.systemConfigurationDetail);
 app.delete('/api/system/configuration/:id', configurationAPI.systemConfigurationDetail);
 
-app.get('/api/system/third-party/config', thirdPartyConfigAPI.configManager);
-app.post('/api/system/third-party/config', thirdPartyConfigAPI.configManager);
-app.put('/api/system/third-party/config', thirdPartyConfigAPI.configManager);
-app.delete('/api/system/third-party/config', thirdPartyConfigAPI.configManager);
+app.get('/api/system/third-party/config', thirdPartyConfigAPI.configManagerList);
+app.post('/api/system/third-party/config', thirdPartyConfigAPI.configManagerList);
+app.get('/api/system/third-party/config/:id', thirdPartyConfigAPI.configManagerDetail);
+app.put('/api/system/third-party/config/:id', thirdPartyConfigAPI.configManagerDetail);
+app.delete('/api/system/third-party/config/:id', thirdPartyConfigAPI.configManagerDetail);
 
 app.get('/api/news-source/config', newsAPI.newsSourceConfig);
 app.post('/api/news-source/config', newsAPI.newsSourceConfig);
