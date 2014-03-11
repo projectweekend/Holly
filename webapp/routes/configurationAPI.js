@@ -11,7 +11,7 @@ exports.systemConfigurationGetCreate = function ( req, res ) {
 
 	if (req.method == 'GET' ) {
 
-		var q = SystemConfiguration.findOne( { 'name': req.query.systemName } );
+		var q = Configuration.findOne( { 'system_name': req.query.systemName } );
 		q.exec( function ( err, data ) {
 			if ( err ) {
 				return errorHandler( err, res );
@@ -23,10 +23,10 @@ exports.systemConfigurationGetCreate = function ( req, res ) {
 
 	if (req.method == 'POST' ) {
 		var newConfigItem = {
-			name: req.body.name,
-			options: req.body.options
+			system_name: req.body.system_name,
+			system_options: req.body.system_options
 		};
-		SystemConfiguration.create( newConfigItem, function ( err, configItem ) {
+		Configuration.create( newConfigItem, function ( err, configItem ) {
             if ( err ) {
                 return errorHandler( err, res );
             }
@@ -44,10 +44,10 @@ exports.systemConfigurationUpdateDelete = function ( req, res ) {
 	if (req.method == 'PUT' ) {
 		var update = {
 			$set: {
-				options: req.body.options
+				system_options: req.body.system_options
 			}
 		};
-		SystemConfiguration.findByIdAndUpdate( configID, update, function ( err, updatedItem ) {
+		Configuration.findByIdAndUpdate( configID, update, function ( err, updatedItem ) {
             if ( err ) {
                 return errorHandler( err, res );
             }
@@ -56,7 +56,7 @@ exports.systemConfigurationUpdateDelete = function ( req, res ) {
 	}
 
 	if (req.method == 'DELETE' ) {
-		SystemConfiguration.findById( configID, function ( err, itemToDelete ) {
+		Configuration.findById( configID, function ( err, itemToDelete ) {
             if ( err ) {
                 return errorHandler( err, res );
             }
