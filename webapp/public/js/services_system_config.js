@@ -44,6 +44,7 @@ svcMod.factory( "NewsSourceConfig", function ( $http ) {
                         logError( data );
                     } );
             } else {
+                apiUrl = apiUrl + "/" + NewsSourceConfig.editing._id;
                 $http.put( apiUrl, NewsSourceConfig.editing ).
                     success( function ( data, status ) {
                         NewsSourceConfig.editing.clearForm();
@@ -65,7 +66,7 @@ svcMod.factory( "NewsSourceConfig", function ( $http ) {
         },
         remove: function ( id ) {
             var NewsSourceConfig = this;
-            var apiUrl = "/api/news-source/config?id=" + id;
+            var apiUrl = "/api/news-source/config/" + id;
 
             $http.delete( apiUrl ).
                 success( function ( data, status ) {
