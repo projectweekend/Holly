@@ -110,10 +110,11 @@ app.post('/api/system/messages', systemStatusAPI.messagesList);
 app.get('/api/system/messages/:id', systemStatusAPI.messagesDetail);
 app.delete('/api/system/messages/:id', systemStatusAPI.messagesDetail);
 
-app.get('/api/system/configuration', configurationAPI.systemConfigurationGetCreate);
-app.post('/api/system/configuration', configurationAPI.systemConfigurationGetCreate);
-app.put('/api/system/configuration/:id', configurationAPI.systemConfigurationUpdateDelete);
-app.delete('/api/system/configuration/:id', configurationAPI.systemConfigurationUpdateDelete);
+app.get('/api/system/configuration', configurationAPI.systemConfigurationList);
+app.post('/api/system/configuration', configurationAPI.systemConfigurationList);
+app.get('/api/system/configuration/:id', configurationAPI.systemConfigurationDetail);
+app.put('/api/system/configuration/:id', configurationAPI.systemConfigurationDetail);
+app.delete('/api/system/configuration/:id', configurationAPI.systemConfigurationDetail);
 
 app.get('/api/system/third-party/config', thirdPartyConfigAPI.configManager);
 app.post('/api/system/third-party/config', thirdPartyConfigAPI.configManager);

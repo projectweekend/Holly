@@ -7,11 +7,11 @@ var errorHandler = function ( err, res ) {
 };
 
 
-exports.systemConfigurationGetCreate = function ( req, res ) {
+exports.systemConfigurationList = function ( req, res ) {
 
 	if (req.method == 'GET' ) {
 
-		var q = Configuration.findOne( { 'system_name': req.query.system_name } );
+		var q = Configuration.find( );
 		q.exec( function ( err, data ) {
 			if ( err ) {
 				return errorHandler( err, res );
@@ -37,9 +37,20 @@ exports.systemConfigurationGetCreate = function ( req, res ) {
 };
 
 
-exports.systemConfigurationUpdateDelete = function ( req, res ) {
+exports.systemConfigurationDetail = function ( req, res ) {
 
 	var configID = req.params.id;
+
+	if (req.method == 'GET' ) {
+
+		Configuration.findById( configID, function ( err, data ) {
+			if ( err ) {
+				return errorHandler( err, res );
+			}
+			return res.json( data );
+		} );
+		
+	}
 
 	if (req.method == 'PUT' ) {
 		var update = {
