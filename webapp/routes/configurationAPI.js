@@ -11,7 +11,7 @@ exports.systemConfigurationGetCreate = function ( req, res ) {
 
 	if (req.method == 'GET' ) {
 
-		var q = Configuration.findOne( { 'system_name': req.query.systemName } );
+		var q = Configuration.findOne( { 'system_name': req.query.system_name } );
 		q.exec( function ( err, data ) {
 			if ( err ) {
 				return errorHandler( err, res );
