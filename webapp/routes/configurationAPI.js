@@ -11,7 +11,12 @@ exports.systemConfigurationList = function ( req, res ) {
 
 	if (req.method == 'GET' ) {
 
-		var q = Configuration.find( );
+		var findQuery = {};
+		if ( req.query.system_name || null ) {
+			findQuery = { system_name: req.query.system_name };
+		}
+
+		var q = Configuration.find( findQuery );
 		q.exec( function ( err, data ) {
 			if ( err ) {
 				return errorHandler( err, res );
