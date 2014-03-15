@@ -141,6 +141,7 @@ cMod.controller( 'SystemConfigCtrl', function (
 
     $scope.nova5 = Nova5Config;
     $scope.nova5.getConfiguration();
+    $scope.nova5.hue.init();
 
 } );
 

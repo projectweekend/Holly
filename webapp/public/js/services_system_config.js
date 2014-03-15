@@ -179,8 +179,9 @@ svcMod.factory( "VariablesConfig", function ( $http ) {
 
 
 svcMod.factory( "Nova5Config", function ( $http, HueLighting ) {
+
     return {
-        hue: HueLighting.init(),
+        hue: HueLighting,
         configuration: {},
         getConfiguration: function () {
             var Nova5Config = this;
@@ -245,6 +246,29 @@ svcMod.factory( "Nova5Config", function ( $http, HueLighting ) {
             var Nova5Config = this;
             Nova5Config.configuration.system_options.manually_disabled = false;
             Nova5Config.save();
+        },
+        lightIsSelected: function ( lightID ) {
+            var Nova5Config = this;
+            if ( Nova5Config.configuration.system_options.lights_enabled.indexOf(lightID) > -1 ) {
+                return true;
+            }
+            return false;
+        },
+        includeLight: function ( lightID ) {
+            var Nova5Config = this;
+            var existingIndex = Nova5Config.configuration.system_options.lights_enabled.indexOf( lightID );
+            if ( existingIndex == -1 ) {
+                Nova5Config.configuration.system_options.lights_enabled.push( lightID );
+                Nova5Config.save();
+            }
+        },
+        removeLight: function ( lightID ) {
+            var Nova5Config = this;
+            var indexToRemove = Nova5Config.configuration.system_options.lights_enabled.indexOf( lightID );
+            if ( indexToRemove > -1 ) {
+                Nova5Config.configuration.system_options.lights_enabled.splice( indexToRemove, 1 );
+                Nova5Config.save();
+            }
         }
     };
 } );
