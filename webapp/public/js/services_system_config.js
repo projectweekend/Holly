@@ -180,23 +180,6 @@ svcMod.factory( "VariablesConfig", function ( $http ) {
 
 svcMod.factory( "Nova5Config", function ( $http ) {
     return {
-        showNewConfiguration: false,
-        newConfiguration: {
-            system_name: "Nova5",
-            system_options: {
-                luminosity_threshold: 10,
-                lights_enabled: [],
-                manually_disabled: false,
-                disabled_time_start: {
-                    hour: 1,
-                    minute: 0
-                },
-                disabled_time_end: {
-                    hour: 8,
-                    minute: 0
-                }
-            }
-        },
         configuration: {},
         getConfiguration: function () {
             var Nova5Config = this;
