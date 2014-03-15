@@ -96,6 +96,7 @@ svcMod.factory( "HueLighting", function ( $http ) {
             var apiUrl = HueLighting.buildRouteURL( "/api/hollydotlocal/lights/" + lightID );
             $http.get( apiUrl ).
                 success( function ( data, status ) {
+                    lightItem.id = lightID;
                     lightItem.data = data;
                     lightItem.turnOn = function () {
                         var apiUrl = HueLighting.buildRouteURL( "/api/hollydotlocal/lights/" + lightID + "/state" );
