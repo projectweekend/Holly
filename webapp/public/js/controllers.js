@@ -139,8 +139,8 @@ cMod.controller( 'SystemConfigCtrl', function (
     $scope.variablesConfig = VariablesConfig;
     $scope.variablesConfig.getVariables();
 
-    $scope.nova5Config = Nova5Config;
-    $scope.nova5Config.getConfiguration();
+    $scope.nova5 = Nova5Config;
+    $scope.nova5.getConfiguration();
 
 } );
 
