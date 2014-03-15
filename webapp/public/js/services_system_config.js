@@ -176,3 +176,61 @@ svcMod.factory( "VariablesConfig", function ( $http ) {
     };
 
 } );
+
+
+svcMod.factory( "Nova5Config", function ( $http ) {
+    return {
+        newConfiguration: {
+            system_name: "Nova5",
+            system_options: {
+                luminosity_threshold: 10,
+                lights_enabled: [],
+                manually_disabled: false,
+                disabled_time_start: {
+                    hour: 1,
+                    minute: 0
+                },
+                disabled_time_end: {
+                    hour: 8,
+                    minute: 0
+                }
+            }
+        },
+        configuration: {},
+        getConfiguration: function () {
+            var Nova5Config = this;
+            var apiUrl = "/api/system/configuration?system_name=Nova5";
+            $http.get( apiUrl ).
+                success( function ( data, status ) {
+                    if ( data.length ) {
+                        Nova5Config.configuration = data[0];
+                    }
+                } ).
+                error( function ( data, status ) {
+                    logError( data );
+                } );
+        },
+        save: function () {
+            var Nova5Config = this;
+            var apiUrl = "/api/system/configuration";
+            if ( typeof Nova5Config.configuration._id == "undefined" ) {
+                $http.post( apiUrl, Nova5Config.newConfiguration ).
+                    success( function ( data, status ) {
+                        Nova5Config.configuration = data;
+                    } ).
+                    error( function ( data, status ) {
+                        logError( data );
+                    } );
+            } else {
+                apiUrl = apiUrl + "/" + Nova5Config.configuration._id;
+                $http.put( apiUrl, Nova5Config.configuration ).
+                    success( function ( data, status ) {
+                        Nova5Config.configuration = data;
+                    } ).
+                    error( function ( data, status ) {
+                        logError( data );
+                    } );
+            }
+        }
+    };
+} );
