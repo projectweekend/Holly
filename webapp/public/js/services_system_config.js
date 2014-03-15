@@ -180,6 +180,7 @@ svcMod.factory( "VariablesConfig", function ( $http ) {
 
 svcMod.factory( "Nova5Config", function ( $http ) {
     return {
+        showNewConfiguration: false,
         newConfiguration: {
             system_name: "Nova5",
             system_options: {
@@ -204,11 +205,41 @@ svcMod.factory( "Nova5Config", function ( $http ) {
                 success( function ( data, status ) {
                     if ( data.length ) {
                         Nova5Config.configuration = data[0];
+                    } else {
+                        Nova5Config.createDefaultConfiguration();
                     }
                 } ).
                 error( function ( data, status ) {
                     logError( data );
                 } );
+        },
+        createDefaultConfiguration: function () {
+            var Nova5Config = this;
+            var apiUrl = "/api/system/configuration";
+            var defaultConfiguration = {
+                system_name: "Nova5",
+                system_options: {
+                    luminosity_threshold: 10,
+                    lights_enabled: [],
+                    manually_disabled: false,
+                    disabled_time_start: {
+                        hour: 1,
+                        minute: 0
+                    },
+                    disabled_time_end: {
+                        hour: 8,
+                        minute: 0
+                    }
+                }
+            };
+            $http.post( apiUrl, defaultConfiguration ).
+                success( function ( data, status ) {
+                    Nova5Config.configuration = data;
+                } ).
+                error( function ( data, status ) {
+                    logError( data );
+                } );
+
         },
         save: function () {
             var Nova5Config = this;
