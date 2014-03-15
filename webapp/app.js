@@ -9,6 +9,7 @@ var express = require('express'),
   indoorTempStatsAPI = require('./routes/indoorTemperatureStatsAPI'),
   indoorHumidStatsAPI = require('./routes/indoorHumidityStatsAPI'),
   indoorMovementLogAPI = require('./routes/indoorMovementLogAPI'),
+  indoorMovementStatsAPI = require('./routes/indoorMovementStatsAPI'),
   systemStatusAPI = require('./routes/systemStatusAPI'),
   systemDataAPI = require('./routes/systemDataAPI'),
   systemTempStatsAPI = require('./routes/systemTemperatureStatsAPI'),
@@ -91,6 +92,8 @@ app.get('/api/indoor/movement', indoorMovementLogAPI.indoorMovementLog);
 app.post('/api/indoor/movement', indoorMovementLogAPI.indoorMovementLog);
 app.post('/api/indoor/movement/bulk', indoorMovementLogAPI.indoorMovementLogBulk);
 app.get('/api/indoor/movement/recent', indoorMovementLogAPI.indoorMovementLogRecent);
+
+app.get('/api/indoor/movement/stats/today', indoorMovementStatsAPI.dailyMovementStats);
 
 app.get('/api/system/temperature', systemDataAPI.systemTemperatureData);
 app.post('/api/system/temperature', systemDataAPI.systemTemperatureData);
