@@ -178,8 +178,9 @@ svcMod.factory( "VariablesConfig", function ( $http ) {
 } );
 
 
-svcMod.factory( "Nova5Config", function ( $http ) {
+svcMod.factory( "Nova5Config", function ( $http, HueLighting ) {
     return {
+        hue: HueLighting.init(),
         configuration: {},
         getConfiguration: function () {
             var Nova5Config = this;
