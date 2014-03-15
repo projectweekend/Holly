@@ -226,25 +226,14 @@ svcMod.factory( "Nova5Config", function ( $http ) {
         },
         save: function () {
             var Nova5Config = this;
-            var apiUrl = "/api/system/configuration";
-            if ( typeof Nova5Config.configuration._id == "undefined" ) {
-                $http.post( apiUrl, Nova5Config.newConfiguration ).
-                    success( function ( data, status ) {
-                        Nova5Config.configuration = data;
-                    } ).
-                    error( function ( data, status ) {
-                        logError( data );
-                    } );
-            } else {
-                apiUrl = apiUrl + "/" + Nova5Config.configuration._id;
-                $http.put( apiUrl, Nova5Config.configuration ).
-                    success( function ( data, status ) {
-                        Nova5Config.configuration = data;
-                    } ).
-                    error( function ( data, status ) {
-                        logError( data );
-                    } );
-            }
+            var apiUrl = "/api/system/configuration/" + Nova5Config.configuration._id;
+            $http.put( apiUrl, Nova5Config.configuration ).
+                success( function ( data, status ) {
+                    Nova5Config.configuration = data;
+                } ).
+                error( function ( data, status ) {
+                    logError( data );
+                } );
         }
     };
 } );
