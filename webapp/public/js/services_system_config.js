@@ -234,6 +234,16 @@ svcMod.factory( "Nova5Config", function ( $http ) {
                 error( function ( data, status ) {
                     logError( data );
                 } );
+        },
+        disableAutoLighting: function () {
+            var Nova5Config = this;
+            Nova5Config.configuration.system_options.manually_disabled = true;
+            Nova5Config.save();
+        },
+        enableAutoLighting: function () {
+            var Nova5Config = this;
+            Nova5Config.configuration.system_options.manually_disabled = false;
+            Nova5Config.save();
         }
     };
 } );
