@@ -7,6 +7,7 @@ angular.module('myApp', [
     'myApp.filters',
     'myApp.services_indoor_temp',
     'myApp.services_indoor_humidity',
+    'myApp.services_indoor_movement',
     'myApp.services_system_temp',
     'myApp.services_system_info',
     'myApp.services_system_messages',
