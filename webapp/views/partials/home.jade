@@ -91,3 +91,12 @@ div(class="row")
         div(class="stat-value")
           span(ng-hide="indoorHumidityStats.values.min == 'No data'", class="text-primary") {{indoorHumidityStats.values.min | number:2}}%
           span(ng-show="indoorHumidityStats.values.min == 'No data'", class="text-primary") No data
+
+div(class="row")
+
+  div(class="page-header")
+    h1 Motion Log
+
+  div(class="col-md-12")    
+    div(class="chart-wrapper")
+      canvas(chart, id="motionChart", type="Bar", options="indoorMovementToday.chart.options", data="indoorMovementToday.chart.data")
