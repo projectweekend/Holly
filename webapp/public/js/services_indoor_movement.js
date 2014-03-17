@@ -18,10 +18,8 @@ svcMod.factory( "IndoorMovementToday", function ( $http ) {
                 labels: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23],
                 datasets: [
                     {
-                        fillColor : "rgba(151,187,205,0)",
-                        strokeColor : "#e67e22",
-                        pointColor : "rgba(151,187,205,0)",
-                        pointStrokeColor : "#e67e22",
+                        fillColor : "rgba(220,220,220,0.5)",
+                        strokeColor : "rgba(220,220,220,1)",
                         data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
                     }
                 ]
