@@ -12,7 +12,7 @@ exports.indoorMovementLog = function ( req, res ) {
     if ( req.method == 'GET' ) {
 
         var queryFilter = {
-            "from": req.query.systemName || "Holly"
+            "from": req.query.system_name || "Holly"
         };
 
         var query = IndoorMovementLog.findOne( queryFilter ).sort( '-date' );
