@@ -208,30 +208,89 @@ The following routes are used add/retreive data from the web server exposed on t
  ]
 ```
 
-## Get indoor movement events
+## Get latest indoor movement event
 
-**GET: ** `/api/indoor/movement`
+**GET:** `/api/indoor/movement`
 
+**URL Parameters:**
+
+* system_name - Optionally filter the source of the movement events by the name of the system that captured them. If not used the system name will default to "Holly".
+
+**Response:**
+```
+ {
+     "_id": "532992f67c1fd500088b497e",
+     "date": "2014-03-19T12:52:05.866Z",
+     "from": "Nova5"
+ }
+```
 
 ## Add an indoor movement event
 
 **POST: ** `/api/indoor/movement`
 
+**Payload:**
+```
+ {
+     "date": "2014-03-19T12:52:05.866Z",
+     "from": "Nova5"
+ }
+```
 
 ## Add multiple indoor movement events
 
 **POST: ** `/api/indoor/movement/bulk`
 
-
-## Get latest system temperature
-
-**GET:** `/api/system-temperature-data`
-
+**Payload:**
+```
+ {
+     movement_data: [
+        {
+            "date": "2014-03-19T12:52:05.866Z",
+            "from": "Nova5"
+        },
+        {
+            "date": "2014-03-19T12:52:05.866Z",
+            "from": "Nova5"
+        },
+        {
+            "date": "2014-03-19T12:52:05.866Z",
+            "from": "Nova5"
+        }                
+     ]
+ }
+```
 
 ## Get recent indoor movement events
 
 **GET: ** `/api/indoor/movement/recent`
 
+* numberOfReadings - Optionally control the number of readings returned by this route. If not defined, the default number of records returned is 6.
+
+**Response:**
+```
+[
+    {
+        "_id": "532992f67c1fd500088b497e",
+        "date": "2014-03-19T12:52:05.866Z",
+        "from": "Nova5"
+    },
+    {
+        "_id": "532992f67c1fd500088b497e",
+        "date": "2014-03-19T12:52:05.866Z",
+        "from": "Nova5"
+    },
+    {
+        "_id": "532992f67c1fd500088b497e",
+        "date": "2014-03-19T12:52:05.866Z",
+        "from": "Nova5"
+    }
+]
+```
+
+## Get latest system temperature
+
+**GET:** `/api/system-temperature-data`
 
 **Response:** 
 ```
