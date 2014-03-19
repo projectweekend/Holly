@@ -208,9 +208,30 @@ The following routes are used add/retreive data from the web server exposed on t
  ]
 ```
 
+## Get indoor movement events
+
+**GET: ** `/api/indoor/movement`
+
+
+## Add an indoor movement event
+
+**POST: ** `/api/indoor/movement`
+
+
+## Add multiple indoor movement events
+
+**POST: ** `/api/indoor/movement/bulk`
+
+
 ## Get latest system temperature
 
 **GET:** `/api/system-temperature-data`
+
+
+## Get recent indoor movement events
+
+**GET: ** `/api/indoor/movement/recent`
+
 
 **Response:** 
 ```
