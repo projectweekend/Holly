@@ -17,6 +17,7 @@ var express = require('express'),
   thirdPartyConfigAPI = require('./routes/thirdPartyConfigAPI'),
   newsAPI = require('./routes/newsAPI'),
   ctaBusAPI = require('./routes/ctaBusAPI'),
+  weatherAPI = require('./routes/weatherAPI'),
   http = require('http'),
   path = require('path'),
   mongoose = require('mongoose');
@@ -144,6 +145,8 @@ app.get('/api/bustracker/predictions', ctaBusAPI.busTrackerPredictions);
 app.get('/api/bustracker/favorites', ctaBusAPI.busTrackerFavorites);
 app.post('/api/bustracker/favorites', ctaBusAPI.busTrackerFavorites);
 app.delete('/api/bustracker/favorites', ctaBusAPI.busTrackerFavorites);
+
+app.get('/api/weather', weatherAPI.currentWeather);
 
 // redirect all others to the index (HTML5 history)
 app.get('*', routes.index);
