@@ -10,6 +10,6 @@
     "async": "~0.2.9",
     "xml2js": "~0.4.1",
     "chai": "~1.9.1",
-    "weatherman.io": "~0.1.2"
+    "weatherman.io": "~0.1.4"
   }
 }

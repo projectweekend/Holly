@@ -24,6 +24,7 @@ loadThirdPartyConfig();
 
 exports.currentWeather = function ( req, res ) {
 	var theWeatherman = weatherman(forecastIOKey);
+	theWeatherman.options = {'exclude': ["daily", "flags"]};
 	theWeatherman.goOnLocation(41.8854710, -87.6430260);
 	theWeatherman.doForecast( function ( err, weatherReport ) {
 		if ( err ) {
