@@ -22,7 +22,7 @@ var loadThirdPartyConfig = function () {
 loadThirdPartyConfig();
 
 
-exports.currentWeather = function ( req, res ) {
+exports.forecastIO = function ( req, res ) {
 	var theWeatherman = weatherman(forecastIOKey);
 	theWeatherman.options = {'exclude': ["minutely", "daily", "flags"]};
 	theWeatherman.goOnLocation(41.8854710, -87.6430260);
