@@ -1,5 +1,5 @@
 var appModels = require( '../models' ),
-	weatherman = require('weatherman.io');
+	weatherman = require( 'weatherman.io' );
 
  
 var errorHandler = function ( err, res ) {
@@ -12,10 +12,45 @@ var convertDate = function ( unixTime ) {
 	return new Date( unixTime * 1000 );
 };
 
+
+var convertWindBearing = function ( windBearingNumber ) {
+
+	var output;
+
+	if ( windBearingNumber === 0  ) {
+		output = "North";
+	}
+	if ( windBearingNumber < 90 ) {
+		output = "North East";
+	}
+	if ( windBearingNumber === 90 ) {
+		output = "East";
+	}
+	if ( windBearingNumber < 180 ) {
+		output = "South East";
+	}
+	if ( windBearingNumber === 180 ) {
+		output = "South";
+	}
+	if ( windBearingNumber < 270 ) {
+		output = "South West";
+	}
+	if ( windBearingNumber === 270 ) {
+		output = "West";
+	}
+	if ( windBearingNumber > 270 ) {
+		output = "North West";
+	}
+
+	return output;
+
+};
+
+
 var parseWeatherDataBlock = function ( weatherDataBlock ) {
 
 	var output = {
-		dateTime: convertDate(weatherDataBlock.time),
+		dateTime: convertDate( weatherDataBlock.time ),
 		icon: weatherDataBlock.icon,
 		summary: weatherDataBlock.summary,
 		temperature: weatherDataBlock.temperature,
@@ -26,31 +61,7 @@ var parseWeatherDataBlock = function ( weatherDataBlock ) {
 	};
 
 	if ( output.windSpeed > 0 ) {
-		var windBearing = weatherDataBlock.windBearing;
-		if ( windBearing === 0  ) {
-			output.windBearing = "North";
-		}
-		if ( windBearing < 90 ) {
-			output.windBearing = "North East";
-		}
-		if ( windBearing === 90 ) {
-			output.windBearing = "East";
-		}
-		if ( windBearing < 180 ) {
-			output.windBearing = "South East";
-		}
-		if ( windBearing === 180 ) {
-			output.windBearing = "South";
-		}
-		if ( windBearing < 270 ) {
-			output.windBearing = "South West";
-		}
-		if ( windBearing === 270 ) {
-			output.windBearing = "West";
-		}
-		if ( windBearing > 270 ) {
-			output.windBearing = "North West";
-		}
+		output.windBearing = convertWindBearing( weatherDataBlock.windBearing );
 	}
 
 	return output;
@@ -77,7 +88,7 @@ exports.forecastIOCurrent = function ( req, res ) {
 	var latitude = req.query.latitude;
 	var longitude = req.query.longitude;
 
-	var theWeatherman = weatherman(forecastIOKey);
+	var theWeatherman = weatherman( forecastIOKey );
 	theWeatherman.options = {'exclude': ["minutely", "hourly", "daily", "flags"]};
 	theWeatherman.goOnLocation( latitude, longitude );
 	theWeatherman.doForecast( function ( err, weatherReport ) {
@@ -97,7 +108,7 @@ exports.forecastIOHourly = function ( req, res ) {
 	var latitude = req.query.latitude;
 	var longitude = req.query.longitude;
 
-	var theWeatherman = weatherman(forecastIOKey);
+	var theWeatherman = weatherman( forecastIOKey );
 	theWeatherman.options = {'exclude': ["minutely", "currently", "daily", "flags", "alerts"]};
 	theWeatherman.goOnLocation( latitude, longitude );
 	theWeatherman.doForecast( function ( err, weatherReport ) {
@@ -117,14 +128,45 @@ exports.forecastIOHourly = function ( req, res ) {
 
 
 exports.forecastIODaily = function ( req, res ) {
-	var theWeatherman = weatherman(forecastIOKey);
+
+	var latitude = req.query.latitude;
+	var longitude = req.query.longitude;
+
+	var theWeatherman = weatherman( forecastIOKey );
 	theWeatherman.options = {'exclude': ["minutely", "currently", "hourly", "flags", "alerts"]};
-	theWeatherman.goOnLocation(41.8854710, -87.6430260);
+	theWeatherman.goOnLocation( latitude, longitude );
 	theWeatherman.doForecast( function ( err, weatherReport ) {
 		if ( err ) {
 			return errorHandler( err, res );
 		}
-		return res.json( weatherReport );
+
+		var output = {
+			summary: weatherReport.daily.summary,
+			icon: weatherReport.daily.icon,
+			days: []
+		};
+
+		weatherReport.daily.data.forEach( function ( element, index, array ) {
+			var day = {
+				dateTime: convertDate(element.time),
+				icon: element.icon,
+				summary: element.summary,
+				temperatureMin: element.temperatureMin,
+				temperatureMax: element.temperatureMax,
+				feelsLikeMin: element.apparentTemperatureMin,
+				feelsLikeMax: element.apparentTemperatureMax,
+				windSpeed: element.windSpeed,
+				windBearing: "N/A",
+				humidity: element.humidity
+			};
+			if ( day.windSpeed > 0 ) {
+				day.windBearing = convertWindBearing( element.windBearing );
+			}
+			output.days.push( day );
+		} );
+
+		return res.json( output );
+
 	} );
 
 };
