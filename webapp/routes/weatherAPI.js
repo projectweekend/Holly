@@ -116,10 +116,14 @@ exports.forecastIOHourly = function ( req, res ) {
 			return errorHandler( err, res );
 		}
 
-		var output = [];
+		var output = {
+			summary: weatherReport.hourly.summary,
+			icon: weatherReport.hourly.icon,
+			hours: []
+		};
 
 		weatherReport.hourly.data.forEach( function ( element, index, array ) {
-			output.push( parseWeatherDataBlock( element ) );
+			output.hours.push( parseWeatherDataBlock( element ) );
 		} );
 
 		return res.json( output );
