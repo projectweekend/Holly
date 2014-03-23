@@ -22,7 +22,7 @@ var loadThirdPartyConfig = function () {
 loadThirdPartyConfig();
 
 
-exports.forecastIO = function ( req, res ) {
+exports.forecastIOCurrentAndHourly = function ( req, res ) {
 	var theWeatherman = weatherman(forecastIOKey);
 	theWeatherman.options = {'exclude': ["minutely", "daily", "flags"]};
 	theWeatherman.goOnLocation(41.8854710, -87.6430260);
@@ -32,4 +32,18 @@ exports.forecastIO = function ( req, res ) {
 		}
 		return res.json( weatherReport );
 	} );
+};
+
+
+exports.forecastIODailyOnly = function ( req, res ) {
+	var theWeatherman = weatherman(forecastIOKey);
+	theWeatherman.options = {'exclude': ["minutely", "currently", "hourly", "flags", "alerts"]};
+	theWeatherman.goOnLocation(41.8854710, -87.6430260);
+	theWeatherman.doForecast( function ( err, weatherReport ) {
+		if ( err ) {
+			return errorHandler( err, res );
+		}
+		return res.json( weatherReport );
+	} );
+
 };
