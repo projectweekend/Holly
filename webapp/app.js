@@ -148,7 +148,7 @@ app.delete('/api/bustracker/favorites', ctaBusAPI.busTrackerFavorites);
 
 app.get('/api/weather/current', weatherAPI.forecastIOCurrent);
 app.get('/api/weather/hourly', weatherAPI.forecastIOHourly);
-app.get('/api/weather/daily', weatherAPI.forecastIODailyOnly);
+app.get('/api/weather/daily', weatherAPI.forecastIODaily);
 
 // redirect all others to the index (HTML5 history)
 app.get('*', routes.index);
