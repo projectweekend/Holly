@@ -55,10 +55,35 @@ cMod.controller( 'HomeCtrl', function (
 
 } );
 
+
+cMod.controller( 'WeatherCtrl', function ( $scope ) {
+
+} );
+
+
+cMod.controller( 'TransitCtrl', function ( $scope, BusTracker, BusTrackerConfig ) {
+
+    $scope.busTracker = BusTracker;
+    $scope.busTracker.init();
+
+    $scope.busTrackerConfig = BusTrackerConfig;
+    $scope.busTrackerConfig.init();
+
+} );
+
+
 cMod.controller( 'LightsCtrl', function ( $scope, HueLighting ) {
 
     $scope.hueLighting = HueLighting;
     $scope.hueLighting.init();
+
+} );
+
+
+cMod.controller( 'NewsCtrl', function ( $scope, NewsArticles ) {
+    
+    $scope.newsArticles = NewsArticles;
+    $scope.newsArticles.getArticles();
 
 } );
 
@@ -108,25 +133,6 @@ cMod.controller( 'SystemCtrl', function (
 
     $scope.starbugTempStats = StarbugTempStats;
     $scope.starbugTempStats.init();
-
-} );
-
-
-cMod.controller( 'TransitCtrl', function ( $scope, BusTracker, BusTrackerConfig ) {
-
-    $scope.busTracker = BusTracker;
-    $scope.busTracker.init();
-
-    $scope.busTrackerConfig = BusTrackerConfig;
-    $scope.busTrackerConfig.init();
-
-} );
-
-
-cMod.controller( 'NewsCtrl', function ( $scope, NewsArticles ) {
-    
-    $scope.newsArticles = NewsArticles;
-    $scope.newsArticles.getArticles();
 
 } );
 
