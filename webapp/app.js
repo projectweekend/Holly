@@ -146,7 +146,8 @@ app.get('/api/bustracker/favorites', ctaBusAPI.busTrackerFavorites);
 app.post('/api/bustracker/favorites', ctaBusAPI.busTrackerFavorites);
 app.delete('/api/bustracker/favorites', ctaBusAPI.busTrackerFavorites);
 
-app.get('/api/weather/current', weatherAPI.forecastIOCurrentAndHourly);
+app.get('/api/weather/current', weatherAPI.forecastIOCurrent);
+app.get('/api/weather/hourly', weatherAPI.forecastIOHourly);
 app.get('/api/weather/daily', weatherAPI.forecastIODailyOnly);
 
 // redirect all others to the index (HTML5 history)

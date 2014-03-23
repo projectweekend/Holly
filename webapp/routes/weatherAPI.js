@@ -22,9 +22,9 @@ var loadThirdPartyConfig = function () {
 loadThirdPartyConfig();
 
 
-exports.forecastIOCurrentAndHourly = function ( req, res ) {
+exports.forecastIOCurrent = function ( req, res ) {
 	var theWeatherman = weatherman(forecastIOKey);
-	theWeatherman.options = {'exclude': ["minutely", "daily", "flags"]};
+	theWeatherman.options = {'exclude': ["minutely", "hourly", "daily", "flags"]};
 	theWeatherman.goOnLocation(41.8854710, -87.6430260);
 	theWeatherman.doForecast( function ( err, weatherReport ) {
 		if ( err ) {
@@ -35,7 +35,20 @@ exports.forecastIOCurrentAndHourly = function ( req, res ) {
 };
 
 
-exports.forecastIODailyOnly = function ( req, res ) {
+exports.forecastIOHourly = function ( req, res ) {
+	var theWeatherman = weatherman(forecastIOKey);
+	theWeatherman.options = {'exclude': ["minutely", "currently", "daily", "flags", "alerts"]};
+	theWeatherman.goOnLocation(41.8854710, -87.6430260);
+	theWeatherman.doForecast( function ( err, weatherReport ) {
+		if ( err ) {
+			return errorHandler( err, res );
+		}
+		return res.json( weatherReport );
+	} );
+};
+
+
+exports.forecastIODaily = function ( req, res ) {
 	var theWeatherman = weatherman(forecastIOKey);
 	theWeatherman.options = {'exclude': ["minutely", "currently", "hourly", "flags", "alerts"]};
 	theWeatherman.goOnLocation(41.8854710, -87.6430260);
