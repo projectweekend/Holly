@@ -21,13 +21,14 @@ angular.module('myApp', [
 
     // 3rd party dependencies
     'btford.socket-io',
-    'angles'
+    'angles',
+    'angular-skycons'
 ]).
 config( function ( $routeProvider, $locationProvider, $httpProvider ) {
 
     $httpProvider.defaults.useXDomain = true;
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
-    
+
     $routeProvider.
     when( '/home', {
         templateUrl: 'partials/home',

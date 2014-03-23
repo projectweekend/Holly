@@ -25,9 +25,9 @@ block body
                         li(ng-class="navActiveElement('/news')")
                             a(href="/news") News
                         li(ng-class="navActiveElement('/system')")
-                            a(href="/system") System                            
+                            a(href="/system") System
                         li(ng-class="navActiveElement('/config')")
-                            a(href="/config") Config                
+                            a(href="/config") Config
 
         div(ng-view, class="container")
 
@@ -37,6 +37,8 @@ block body
     script(src='bower_components/angular-socket-io/socket.js')
     script(src='/js/lib/Chart.min.js')
     script(src='/js/lib/angles.js')
+    script(src='/js/lib/skycons.js')
+    script(src='/js/lib/angular-skycons.js')
     script(src='js/app.js')
     script(src='js/services_indoor_temp.js')
     script(src='js/services_indoor_humidity.js')
