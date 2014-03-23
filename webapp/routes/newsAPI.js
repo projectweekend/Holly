@@ -224,14 +224,13 @@ exports.ignoreArticle = function ( req, res ) {
 
 exports.articleKeywords = function ( req, res ) {
 
-    NewsArticleKeyword.find( {}, function ( err, data ) {
+    var q = NewsArticleKeyword.find().sort( { score: -1 } );
 
+    q.exec( function ( err, data ) {
         if ( err ) {
             return errorHandler( err, res );
         }
-
         res.json( data );
-
     } );
 
 };
