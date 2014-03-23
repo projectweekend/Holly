@@ -36,9 +36,11 @@ exports.forecastIOCurrent = function ( req, res ) {
 	theWeatherman.options = {'exclude': ["minutely", "hourly", "daily", "flags"]};
 	theWeatherman.goOnLocation(latitude, longitude);
 	theWeatherman.doForecast( function ( err, weatherReport ) {
+		
 		if ( err ) {
 			return errorHandler( err, res );
 		}
+
 		var output = {
 			dateTime: convertDate(weatherReport.currently.time),
 			icon: weatherReport.currently.icon,
@@ -49,6 +51,7 @@ exports.forecastIOCurrent = function ( req, res ) {
 			windBearing: "N/A",
 			humidity: weatherReport.currently.humidity
 		};
+
 		if ( output.windSpeed > 0 ) {
 			var windBearing = weatherReport.currently.windBearing;
 			if ( windBearing === 0  ) {
@@ -76,8 +79,9 @@ exports.forecastIOCurrent = function ( req, res ) {
 				output.windBearing = "North West";
 			}
 		}
-
+		
 		return res.json( output );
+
 	} );
 };
 
