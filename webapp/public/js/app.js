@@ -33,21 +33,25 @@ config( function ( $routeProvider, $locationProvider, $httpProvider ) {
         templateUrl: 'partials/home',
         controller: 'HomeCtrl'
     } ).
-    when( '/lights', {
-        templateUrl: 'partials/lights',
-        controller: 'LightsCtrl'
-    } ).
-    when( '/system', {
-        templateUrl: 'partials/system',
-        controller: 'SystemCtrl'
+    when( '/weather', {
+        templateUrl: 'partials/weather',
+        controller: 'WeatherCtrl'
     } ).
     when( '/transit', {
         templateUrl: 'partials/transit',
         controller: 'TransitCtrl'
     } ).
+    when( '/lights', {
+        templateUrl: 'partials/lights',
+        controller: 'LightsCtrl'
+    } ).
     when( '/news', {
         templateUrl: 'partials/news',
         controller: 'NewsCtrl'
+    } ).
+    when( '/system', {
+        templateUrl: 'partials/system',
+        controller: 'SystemCtrl'
     } ).
     when( '/config', {
         templateUrl: 'partials/config',
