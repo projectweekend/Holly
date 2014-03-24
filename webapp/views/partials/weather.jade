@@ -2,3 +2,6 @@ div(class="row")
 
     div(class="col-md-4")
         skycon(icon="CurrentWeather.forecast.icon", size=300)
+    div(class="col-md-8")
+      h1 {{ CurrentWeather.forecast.summary }}
+        span(class="label label-primary pull-right") {{ CurrentWeather.forecast.dateTime | date:'medium' }}
