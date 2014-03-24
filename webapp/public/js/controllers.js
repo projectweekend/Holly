@@ -56,7 +56,10 @@ cMod.controller( 'HomeCtrl', function (
 } );
 
 
-cMod.controller( 'WeatherCtrl', function ( $scope ) {
+cMod.controller( 'WeatherCtrl', function ( $scope, CurrentWeather ) {
+
+	$scope.CurrentWeather = CurrentWeather;
+	$scope.CurrentWeather.getForecast();
 
 } );
 
@@ -81,7 +84,7 @@ cMod.controller( 'LightsCtrl', function ( $scope, HueLighting ) {
 
 
 cMod.controller( 'NewsCtrl', function ( $scope, NewsArticles ) {
-    
+
     $scope.newsArticles = NewsArticles;
     $scope.newsArticles.getArticles();
 
@@ -142,7 +145,7 @@ cMod.controller( 'SystemConfigCtrl', function (
     NewsSourceConfig,
     VariablesConfig,
     Nova5Config ) {
-    
+
     $scope.newsSourceConfig = NewsSourceConfig;
     $scope.newsSourceConfig.getSources();
 

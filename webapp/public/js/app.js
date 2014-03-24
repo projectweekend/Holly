@@ -16,6 +16,7 @@ angular.module('myApp', [
     'myApp.services_news_articles',
     'myApp.services_hue_lighting',
     'myApp.services_bus_tracker',
+    'myApp.services_weather',
     'myApp.directives',
     'ngRoute',
 
