@@ -74,6 +74,12 @@
     font-size: 4.5em;
 }
 
+.current-weather .whole-box {
+    float: left;
+    width: 100%;
+    font-size: 2em;
+}
+
 .current-weather .half-box {
     float: left;
     width: 50%;

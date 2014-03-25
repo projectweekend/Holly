@@ -4,9 +4,26 @@ div(class="row current-weather")
         skycon(icon="CurrentWeather.forecast.icon", size=300)
     div(class="col-md-8")
       p(class="summary") {{ CurrentWeather.forecast.summary }}
-      div(class="half-box")
-        p Temperature: 
-          span(class="text-primary") {{ CurrentWeather.forecast.temperature }}&deg; F
-      div(class="half-box")
-        p Feels Like: 
-          span(class="text-primary") {{ CurrentWeather.forecast.feelsLike }}&deg; F
+      div(class="temperature-section")
+        div(class="half-box")
+          p Temperature: 
+            span(class="text-primary")
+              strong {{ CurrentWeather.forecast.temperature }}&deg; F
+        div(class="half-box")
+          p Feels Like: 
+            span(class="text-primary") 
+              strong {{ CurrentWeather.forecast.feelsLike }}&deg; F
+      div(class="humidity")
+        div(class="whole-box")
+          p Humidity: 
+            span(class="text-primary")
+              strong {{ CurrentWeather.forecast.humidity * 100 }}%
+      div(class="wind-section")
+        div(class="half-box")
+          p Wind Speed: 
+            span(class="text-primary")
+              strong {{ CurrentWeather.forecast.windSpeed }} MPH
+        div(class="half-box")  
+          p Direction: 
+            span(class="text-primary")
+              strong {{ CurrentWeather.forecast.windBearing }}
