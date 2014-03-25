@@ -69,3 +69,14 @@
 .system-message .system-message-label {
     font-weight: bold;
 }
+
+.current-weather .summary {
+    font-size: 4.5em;
+}
+
+.current-weather .half-box {
+    float: left;
+    width: 50%;
+    font-size: 2em;
+}
+
