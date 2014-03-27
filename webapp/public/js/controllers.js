@@ -58,8 +58,11 @@ cMod.controller( 'HomeCtrl', function (
 
 cMod.controller( 'WeatherCtrl', function ( $scope, WeatherIO ) {
 
-	$scope.CurrentWeather = WeatherIO;
+	$scope.CurrentWeather = new WeatherIO();
 	$scope.CurrentWeather.getForecast( 'current' );
+
+    $scope.HourlyWeather = new WeatherIO();
+    $scope.HourlyWeather.getForecast( 'hourly' );
 
 } );
 
