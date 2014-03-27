@@ -10,7 +10,7 @@ var logError = function ( data ) {
 var svcMod = angular.module('myApp.services_weather', []);
 
 
-svcMod.factory( "CurrentWeather", function ( $http ) {
+svcMod.factory( "WeatherIO", function ( $http ) {
 
     return {
         forecast: {},
@@ -18,9 +18,9 @@ svcMod.factory( "CurrentWeather", function ( $http ) {
             loading: false,
             error: false,
         },
-        getForecast: function () {
+        getForecast: function ( forecastType ) {
             var self = this;
-            var apiUrl = "/api/weather/current?latitude=41.8854710&longitude=-87.6430260";
+            var apiUrl = "/api/weather/" + forecastType + "?latitude=41.8854710&longitude=-87.6430260";
             self.loading = true;
             $http.get( apiUrl ).
                 success( function ( data, status ) {
