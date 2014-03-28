@@ -32,6 +32,8 @@ hr
 
 div(class="row todays-weather")
 
-  div(class="")
+  div(class="col-md-2", ng-repeat="h in HourlyWeather.forecast.hours | limitTo: 24")
+    div(class="hourly-weather")
+      skycon(icon="h.icon", size="30", color="#333")
 
 div(class="row todays-weather")    

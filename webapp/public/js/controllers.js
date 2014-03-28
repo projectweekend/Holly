@@ -64,6 +64,8 @@ cMod.controller( 'WeatherCtrl', function ( $scope, WeatherIO ) {
     $scope.HourlyWeather = new WeatherIO();
     $scope.HourlyWeather.getForecast( 'hourly' );
 
+    console.log( $scope.HourlyWeather );
+
 } );
 
 
