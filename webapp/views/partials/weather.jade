@@ -29,7 +29,7 @@ div(class="row current-weather")
               strong {{ CurrentWeather.forecast.windBearing }}
 
 div(class="row todays-weather")
-  h2 In the next 24 hours...
+  h3 In the next 24 hours...
   div(class="col-md-2", ng-repeat="h in HourlyWeather.forecast.hours | limitTo: 24")
     div(class="hourly-weather")
       h4 @{{ h.dateTime | date: 'shortTime' }}
