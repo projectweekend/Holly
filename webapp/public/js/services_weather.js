@@ -23,7 +23,7 @@ svcMod.factory( "WeatherIO", function ( $http ) {
             getForecast: function ( forecastType ) {
                 var self = this;
                 var apiUrl = "/api/weather/" + forecastType + "?latitude=41.8854710&longitude=-87.6430260";
-                self.loading = true;
+                self.status.loading = true;
                 $http.get( apiUrl ).
                     success( function ( data, status ) {
                         self.forecast = data;
