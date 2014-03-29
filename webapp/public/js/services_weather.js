@@ -18,7 +18,9 @@ svcMod.factory( "WeatherIO", function ( $http ) {
             forecast: {},
             status: {
                 loading: false,
+                loadingMessage: "Loading data from Forecast.io",
                 error: false,
+                errorMessage: "Unable to load data from Forecast.io"
             },
             getForecast: function ( forecastType ) {
                 var self = this;

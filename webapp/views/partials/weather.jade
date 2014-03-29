@@ -1,8 +1,5 @@
-script(type="text/ng-template", id="fully-loaded/status.html")
-  h1 testing
-
 div(class="row")
-  fl-status(status="CurrentWeather.status")
+  fl-loading(data="CurrentWeather.status", template="fully-loaded/weather-loading.html")
 
 
 //- The weather right now
