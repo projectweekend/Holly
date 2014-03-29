@@ -39,7 +39,7 @@ block body
     script(src='/js/lib/angles.js')
     script(src='/js/lib/skycons.js')
     script(src='/js/lib/angular-skycons.js')
-    script(src="/js/lib/fully-loaded/fully-loaded.js")
+    script(src="/js/lib/angular-fully-loaded.js")
     script(src='js/app.js')
     script(src='js/services_indoor_temp.js')
     script(src='js/services_indoor_humidity.js')
@@ -56,3 +56,10 @@ block body
     script(src='js/controllers.js')
     script(src='js/filters.js')
     script(src='js/directives.js')
+
+    //- directive templates
+    script(type="text/ng-template", id="fully-loaded/weather-loading.html")
+        h1 testing
+
+    script(type="text/ng-template", id="fully-loaded/weather-error.html")
+        h1 testing        

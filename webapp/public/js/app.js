@@ -24,7 +24,7 @@ angular.module('myApp', [
     'btford.socket-io',
     'angles',
     'angular-skycons',
-    'fully-loaded'
+    'angular-fully-loaded'
 ]).
 config( function ( $routeProvider, $locationProvider, $httpProvider ) {
 
