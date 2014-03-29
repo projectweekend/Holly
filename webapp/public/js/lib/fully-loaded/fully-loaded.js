@@ -1,14 +1,22 @@
 var fullyLoaded = angular.module( 'fully-loaded', [] );
 
 
-fullyLoaded.directive( 'status', function () {
+fullyLoaded.directive( 'flStatus', function () {
 	return {
         restrict: 'E',
         scope: {
-            data: "="
+            status: "="
         },
-        templateUrl: "",
+        templateUrl: "fully-loaded/status.html",
         link: function ( scope, element, attrs ) {
+
+			scope.$watch( 'status.loading', function () {
+
+				if ( !scope.status.loading ) {
+					element.hide();
+				}
+
+			}, true );
 
         }
 	};

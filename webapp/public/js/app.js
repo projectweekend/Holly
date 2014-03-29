@@ -23,7 +23,8 @@ angular.module('myApp', [
     // 3rd party dependencies
     'btford.socket-io',
     'angles',
-    'angular-skycons'
+    'angular-skycons',
+    'fully-loaded'
 ]).
 config( function ( $routeProvider, $locationProvider, $httpProvider ) {
 
