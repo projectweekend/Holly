@@ -4,6 +4,8 @@ script(type="text/ng-template", id="fully-loaded/status.html")
 div(class="row")
   fl-status(status="CurrentWeather.status")
 
+
+//- The weather right now
 div(class="row current-weather")
   div(class="col-md-4")
       skycon(icon="CurrentWeather.forecast.icon", size=300, color="#333")
@@ -33,6 +35,8 @@ div(class="row current-weather")
           span(class="text-primary")
             strong {{ CurrentWeather.forecast.windBearing }}
 
+
+//- Today's hourly forecast
 div(class="row todays-weather")
   div(class="col-md-12")
     h3 In the next 24 hours...
@@ -44,7 +48,17 @@ div(class="row todays-weather")
       skycon(class="hourly-skycon", icon="h.icon", size="50", color="#333")
       p(class="lead") {{ h.summary }}
 
+
+//- Daily forecast for next week
+div(class="row weekly-weather")
+  div(class="col-md-12")
+    h3 In the next week...
+
 div(class="row weekly-weather")
   div(class="col-md-3", ng-repeat="d in DailyWeather.forecast.days")
+    div(class="daily-weather")
+      h4 {{ d.dateTime | date: 'shortDate' }}
+      skycon(class="daily-skycon", icon="d.icon", size="100", color="#333")
+
 
 

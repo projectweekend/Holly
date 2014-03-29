@@ -86,7 +86,8 @@
     font-size: 2em;
 }
 
-.todays-weather .hourly-weather {
+.todays-weather .hourly-weather,    
+.weekly-weather .daily-weather {
     margin-bottom: 5px;
     text-align: center;
 }
