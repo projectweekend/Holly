@@ -29,11 +29,12 @@ div(class="row current-weather")
               strong {{ CurrentWeather.forecast.windBearing }}
 
 div(class="row todays-weather")
-  h3 In the next 24 hours...
+  div(class="col-md-12")
+    h3 In the next 24 hours...
+
+div(class="row todays-weather")
   div(class="col-md-2", ng-repeat="h in HourlyWeather.forecast.hours | limitTo: 24")
     div(class="hourly-weather")
       h4 @{{ h.dateTime | date: 'shortTime' }}
       skycon(class="hourly-skycon", icon="h.icon", size="50", color="#333")
       p(class="lead") {{ h.summary }}
-
-div(class="row todays-weather") 
