@@ -36,11 +36,9 @@ div(class="row current-weather")
             strong {{ CurrentWeather.forecast.windBearing }}
 
 
-//- Today's hourly forecast
-div(class="row todays-weather")
-  div(class="col-md-12")
-    h3 In the next 24 hours...
+hr
 
+//- Today's hourly forecast
 div(class="row todays-weather")
   div(class="col-md-2", ng-repeat="h in HourlyWeather.forecast.hours | limitTo: 24")
     div(class="hourly-weather")
@@ -49,11 +47,9 @@ div(class="row todays-weather")
       p(class="lead") {{ h.summary }}
 
 
-//- Daily forecast for next week
-div(class="row weekly-weather")
-  div(class="col-md-12")
-    h3 In the next week...
+hr
 
+//- Daily forecast for next week
 div(class="row weekly-weather")
   div(class="col-md-3", ng-repeat="d in DailyWeather.forecast.days")
     div(class="daily-weather")
