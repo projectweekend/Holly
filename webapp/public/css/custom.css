@@ -91,3 +91,12 @@
     margin-bottom: 5px;
     text-align: center;
 }
+
+.weekly-weather .daily-weather {
+    height: 300px;
+}
+
+.weekly-weather .daily-weather .temperature-data > .half-box {
+    float: left;
+    width: 50%;    
+}

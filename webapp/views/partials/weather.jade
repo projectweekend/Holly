@@ -57,8 +57,15 @@ div(class="row weekly-weather")
 div(class="row weekly-weather")
   div(class="col-md-3", ng-repeat="d in DailyWeather.forecast.days")
     div(class="daily-weather")
-      h4 {{ d.dateTime | date: 'shortDate' }}
+      h3 {{ d.dateTime | date: 'shortDate' }}
+      div(class="temperature-data")
+        div(class="half-box")
+          p(class="lead") High: 
+            span(class="text-primary")
+              strong {{ d.temperatureMax }}
+        div(class="half-box")
+          p(class="lead") Low: 
+            span(class="text-primary")
+              strong {{ d.temperatureMin }}      
       skycon(class="daily-skycon", icon="d.icon", size="100", color="#333")
-
-
-
+      p(class="lead") {{ d.summary }}  
