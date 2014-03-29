@@ -5,7 +5,6 @@ div(class="row")
   fl-status(status="CurrentWeather.status")
 
 div(class="row current-weather")
-
   div(class="col-md-4")
       skycon(icon="CurrentWeather.forecast.icon", size=300, color="#333")
   div(class="col-md-8")
@@ -44,3 +43,8 @@ div(class="row todays-weather")
       h4 @{{ h.dateTime | date: 'shortTime' }}
       skycon(class="hourly-skycon", icon="h.icon", size="50", color="#333")
       p(class="lead") {{ h.summary }}
+
+div(class="row weekly-weather")
+  div(class="col-md-3", ng-repeat="d in DailyWeather.forecast.days")
+
+
