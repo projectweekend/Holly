@@ -1,32 +1,38 @@
+script(type="text/ng-template", id="fully-loaded/status.html")
+  h1 testing
+
+div(class="row")
+  fl-status(status="CurrentWeather.status")
+
 div(class="row current-weather")
 
-    div(class="col-md-4")
-        skycon(icon="CurrentWeather.forecast.icon", size=300, color="#333")
-    div(class="col-md-8")
-      p(class="summary") {{ CurrentWeather.forecast.summary }}
-      div(class="temperature-section")
-        div(class="half-box")
-          p Temperature: 
-            span(class="text-primary")
-              strong {{ CurrentWeather.forecast.temperature }}&deg; F
-        div(class="half-box")
-          p Feels Like: 
-            span(class="text-primary") 
-              strong {{ CurrentWeather.forecast.feelsLike }}&deg; F
-      div(class="humidity")
-        div(class="whole-box")
-          p Humidity: 
-            span(class="text-primary")
-              strong {{ CurrentWeather.forecast.humidity * 100 }}%
-      div(class="wind-section")
-        div(class="half-box")
-          p Wind Speed: 
-            span(class="text-primary")
-              strong {{ CurrentWeather.forecast.windSpeed }} MPH
-        div(class="half-box")  
-          p Direction: 
-            span(class="text-primary")
-              strong {{ CurrentWeather.forecast.windBearing }}
+  div(class="col-md-4")
+      skycon(icon="CurrentWeather.forecast.icon", size=300, color="#333")
+  div(class="col-md-8")
+    p(class="summary") {{ CurrentWeather.forecast.summary }}
+    div(class="temperature-section")
+      div(class="half-box")
+        p Temperature: 
+          span(class="text-primary")
+            strong {{ CurrentWeather.forecast.temperature }}&deg; F
+      div(class="half-box")
+        p Feels Like: 
+          span(class="text-primary") 
+            strong {{ CurrentWeather.forecast.feelsLike }}&deg; F
+    div(class="humidity")
+      div(class="whole-box")
+        p Humidity: 
+          span(class="text-primary")
+            strong {{ CurrentWeather.forecast.humidity * 100 }}%
+    div(class="wind-section")
+      div(class="half-box")
+        p Wind Speed: 
+          span(class="text-primary")
+            strong {{ CurrentWeather.forecast.windSpeed }} MPH
+      div(class="half-box")  
+        p Direction: 
+          span(class="text-primary")
+            strong {{ CurrentWeather.forecast.windBearing }}
 
 div(class="row todays-weather")
   div(class="col-md-12")
