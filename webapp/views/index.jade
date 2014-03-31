@@ -59,7 +59,9 @@ block body
 
     //- directive templates
     script(type="text/ng-template", id="fully-loaded/weather-loading.html")
-        h1 testing
+        div(class="alert alert-info")
+            strong Loading data from Forecast.io
 
     script(type="text/ng-template", id="fully-loaded/weather-error.html")
-        h1 testing        
+        div(class="alert alert-danger")
+            strong Unable to load data from Forecast.io
