@@ -48,13 +48,14 @@ div(class="row")
 
   div(class="tab-content")
     //- Today's hourly forecast
-    div(class="tab-pane active todays-weather", id="hourly")
+    fl-loading(data="HourlyWeather.status", template="fully-loaded/weather-loading.html")    
+    div(ng-if="!HourlyWeather.status.loading", class="tab-pane active todays-weather", id="hourly")
       div(class="col-md-2", ng-repeat="h in HourlyWeather.forecast.hours | limitTo: 24")
         div(class="hourly-weather")
           h4 @{{ h.dateTime | date: 'shortTime' }}
           skycon(class="hourly-skycon", icon="h.icon", size="50", color="#333")
           p(class="lead") {{ h.summary }}
-    //- Daily forecast for next week       
+    //- Daily forecast for next week
     div(class="tab-pane weekly-weather", id="daily")
       div(class="col-md-3", ng-repeat="d in DailyWeather.forecast.days")
         div(class="daily-weather")
