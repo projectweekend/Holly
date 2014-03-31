@@ -3,7 +3,7 @@ div(class="row")
 
 
 //- The weather right now
-div(class="row current-weather")
+div(ng-if="!CurrentWeather.status.loading", class="row current-weather")
   div(class="col-md-4")
       skycon(icon="CurrentWeather.forecast.icon", size=300, color="#333")
   div(class="col-md-8")
