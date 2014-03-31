@@ -36,7 +36,9 @@ svcMod.factory( "NewsArticles", function ( $http ) {
         getArticles: function () {
             var NewsArticles = this;
             var apiUrl = "/api/news-articles";
-
+            // set to empty to prevent doubling up on page changes
+            NewsArticles.articles.col_1 = [];
+            NewsArticles.articles.col_2 = [];
             $http.get( apiUrl ).
                 success( function ( data, status ) {
                     data.forEach( function ( article, index, array ) {
