@@ -6,10 +6,11 @@ script
 
 div(class="row")
   fl-loading(data="CurrentWeather.status", template="fully-loaded/weather-loading.html")
+  fl-error(data="CurrentWeather.status", template="fully-loaded/weather-error.html")
 
 
 //- The weather right now
-div(ng-if="!CurrentWeather.status.loading", class="row current-weather")
+div(ng-if="!CurrentWeather.status.loading && !CurrentWeather.status.error", class="row current-weather")
   div(class="col-md-4")
       skycon(icon="CurrentWeather.forecast.icon", size=300, color="#333")
   div(class="col-md-8")
@@ -49,7 +50,8 @@ div(class="row")
   div(class="tab-content")
     //- Today's hourly forecast
     fl-loading(data="HourlyWeather.status", template="fully-loaded/weather-loading.html")    
-    div(ng-if="!HourlyWeather.status.loading", class="tab-pane active todays-weather", id="hourly")
+    fl-error(data="HourlyWeather.status", template="fully-loaded/weather-error.html")
+    div(ng-if="!HourlyWeather.status.loading && !HourlyWeather.status.error", class="tab-pane active todays-weather", id="hourly")
       div(class="col-md-2", ng-repeat="h in HourlyWeather.forecast.hours | limitTo: 24")
         div(class="hourly-weather")
           h4 @{{ h.dateTime | date: 'shortTime' }}
