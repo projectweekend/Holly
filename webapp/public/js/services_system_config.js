@@ -208,12 +208,10 @@ svcMod.factory( "Nova5Config", function ( $http, HueLighting ) {
                     lights_enabled: [],
                     manually_disabled: false,
                     disabled_time_start: {
-                        hour: 1,
-                        minute: 0
+                        hour: 1
                     },
                     disabled_time_end: {
-                        hour: 8,
-                        minute: 0
+                        hour: 8
                     }
                 }
             };
