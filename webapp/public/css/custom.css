@@ -70,6 +70,10 @@
     font-weight: bold;
 }
 
+#weather-tabs {
+    margin-bottom: 5px;
+}
+
 .current-weather .summary {
     font-size: 4.5em;
 }
