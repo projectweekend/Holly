@@ -71,6 +71,7 @@ app.get('/partials/:name', routes.partials);
 
 // JSON API
 app.post('/api/indoor/sensors/data', indoorSensorsAPI.create);
+app.get('/api/indoor/sensors/data', indoorSensorsAPI.list);
 
 app.get('/api/indoor/temperature', indoorEnvAPI.indoorTemperatureData);
 app.post('/api/indoor/temperature', indoorEnvAPI.indoorTemperatureData);

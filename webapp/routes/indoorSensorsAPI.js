@@ -24,3 +24,19 @@ exports.create = function ( req, res ) {
     } );
 
 };
+
+
+exports.list = function ( req, res ) {
+
+    var numberOfReadings = req.query.numberOfReadings || 6;
+
+    var q = IndoorSensorData.list( query ).sort( '-date' ).limit( numberOfReadings );
+
+    IndoorSensorData.list( query, function ( err, sensorData ) {
+        if ( err ) {
+            return errorHandler( err, res );
+        }
+        res.json( sensorData );
+    } );
+
+};
