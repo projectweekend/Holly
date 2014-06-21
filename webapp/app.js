@@ -10,6 +10,7 @@ var express = require('express'),
   indoorHumidStatsAPI = require('./routes/indoorHumidityStatsAPI'),
   indoorMovementLogAPI = require('./routes/indoorMovementLogAPI'),
   indoorMovementStatsAPI = require('./routes/indoorMovementStatsAPI'),
+  indoorSensorsAPI = require( './routes/indoorSensorsAPI' ),
   systemStatusAPI = require('./routes/systemStatusAPI'),
   systemDataAPI = require('./routes/systemDataAPI'),
   systemTempStatsAPI = require('./routes/systemTemperatureStatsAPI'),
@@ -69,6 +70,8 @@ app.get('/', routes.index);
 app.get('/partials/:name', routes.partials);
 
 // JSON API
+app.post('/api/indoor/sensors/data', indoorSensorsAPI.create);
+
 app.get('/api/indoor/temperature', indoorEnvAPI.indoorTemperatureData);
 app.post('/api/indoor/temperature', indoorEnvAPI.indoorTemperatureData);
 app.post('/api/indoor/temperature/bulk', indoorEnvAPI.indoorTemperatureDataBulk);

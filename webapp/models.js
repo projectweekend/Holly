@@ -4,6 +4,16 @@ var Schema = mongoose.Schema;
 var ObjectId = Schema.ObjectId;
 
 
+IndoorSensorDataSchema = Schema( {
+    id: ObjectId,
+    date: Date,
+    temp_c: Number,
+    temp_f: Number,
+    pressure: Number
+} );
+IndoorSensorData = mongoose.model( 'IndoorSensorData', IndoorSensorDataSchema );
+
+
 IndoorTemperatureDataSchema = Schema( {
 	id: ObjectId,
 	date: Date,
