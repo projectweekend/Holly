@@ -30,7 +30,7 @@ exports.list = function ( req, res ) {
 
     var numberOfReadings = req.query.numberOfReadings || 6;
 
-    var q = IndoorSensorData.list( query ).sort( '-date' ).limit( numberOfReadings );
+    var q = IndoorSensorData.list().sort( '-date' ).limit( numberOfReadings );
 
     IndoorSensorData.list( query, function ( err, sensorData ) {
         if ( err ) {
