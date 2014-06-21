@@ -32,7 +32,7 @@ exports.list = function ( req, res ) {
 
     var q = IndoorSensorData.list().sort( '-date' ).limit( numberOfReadings );
 
-    IndoorSensorData.list( query, function ( err, sensorData ) {
+    q.exec( function ( err, sensorData ) {
         if ( err ) {
             return errorHandler( err, res );
         }
