@@ -13,6 +13,7 @@ exports.create = function ( req, res ) {
         date: new Date(),
         temp_c: req.body.temp_c,
         temp_f: req.body.temp_f,
+        humidity: req.body.humidity,
         pressure: req.body.pressure
     };
 

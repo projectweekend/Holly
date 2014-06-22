@@ -9,6 +9,7 @@ IndoorSensorDataSchema = Schema( {
     date: Date,
     temp_c: Number,
     temp_f: Number,
+    humidity: Number,
     pressure: Number
 } );
 IndoorSensorData = mongoose.model( 'IndoorSensorData', IndoorSensorDataSchema );
