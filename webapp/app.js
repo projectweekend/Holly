@@ -9,7 +9,6 @@ var express = require('express'),
   indoorTempStatsAPI = require('./routes/indoorTemperatureStatsAPI'),
   indoorHumidStatsAPI = require('./routes/indoorHumidityStatsAPI'),
   indoorSensorsAPI = require( './routes/indoorSensorsAPI' ),
-  systemStatusAPI = require('./routes/systemStatusAPI'),
   systemDataAPI = require('./routes/systemDataAPI'),
   systemTempStatsAPI = require('./routes/systemTemperatureStatsAPI'),
   configurationAPI = require('./routes/configurationAPI'),
@@ -93,11 +92,6 @@ app.get('/api/system/temperature/stats/month', systemTempStatsAPI.systemTemperat
 
 app.get('/api/system/memory', systemDataAPI.systemMemoryData);
 app.get('/api/system/storage', systemDataAPI.systemStorageData);
-
-app.get('/api/system/messages', systemStatusAPI.messagesList);
-app.post('/api/system/messages', systemStatusAPI.messagesList);
-app.get('/api/system/messages/:id', systemStatusAPI.messagesDetail);
-app.delete('/api/system/messages/:id', systemStatusAPI.messagesDetail);
 
 app.get('/api/system/configuration', configurationAPI.systemConfigurationList);
 app.post('/api/system/configuration', configurationAPI.systemConfigurationList);
