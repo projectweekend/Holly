@@ -4,98 +4,6 @@ from pymongo import MongoClient
 
 NOW = datetime.datetime.utcnow()
 
-INDOOR_TEMPERATURE_DATA = [
-    {
-        'celsius': 29.600000381469727,
-        'date': NOW,
-        'fahrenheit': 85.28000068664551
-    },
-    {
-        'celsius': 29.200000762939453,
-        'date': NOW + datetime.timedelta(days=-1),
-        'fahrenheit': 84.56000137329102
-    },
-    {
-        'celsius': 28.5,
-        'date': NOW + datetime.timedelta(days=-5),
-        'fahrenheit': 83.30000000000001
-    },
-    {
-        'celsius': 28.799999237060547,
-        'date': NOW + datetime.timedelta(days=-10),
-        'fahrenheit': 83.83999862670899
-    },
-    {
-        'celsius': 26.399999618530273,
-        'date': NOW + datetime.timedelta(days=-20),
-        'fahrenheit': 79.5199993133545
-    },
-    {
-        'celsius': 25.600000381469727,
-        'date': NOW + datetime.timedelta(days=-21),
-        'fahrenheit': 78.08000068664552
-    },
-    {
-        'celsius': 25.799999237060547,
-        'date': NOW + datetime.timedelta(days=-22),
-        'fahrenheit': 78.43999862670898,
-    },
-    {
-        'celsius': 26.299999237060547,    
-        'date': NOW + datetime.timedelta(days=-23),
-        'fahrenheit': 79.33999862670899
-    }    
-]
-
-INDOOR_HUMIDITY_DATA = [
-    {
-        'date': NOW,
-        'percent': 20
-    },
-    {
-        'date': NOW + datetime.timedelta(days=-1),
-        'percent': 20
-    },
-    {
-        'date': NOW + datetime.timedelta(days=-10),
-        'percent': 18.899999618530273
-    },
-    {
-        'date': NOW + datetime.timedelta(days=-21),
-        'percent': 18.899999618530273
-    },
-    {
-        'date': NOW + datetime.timedelta(days=-23),
-        'percent': 12.800000190734863
-    }
-]
-
-INDOOR_MOVEMENT_DATA = [
-    {
-        'date': NOW,
-        'from': 'Nova5'
-    },
-    {
-        'date': NOW + datetime.timedelta(days=-1),
-        'from': 'Nova5'
-    },
-    {
-        'date': NOW + datetime.timedelta(days=-2),
-        'from': 'Nova5'
-    },
-    {
-        'date': NOW + datetime.timedelta(days=-3),
-        'from': 'Nova5'
-    },
-    {
-        'date': NOW + datetime.timedelta(days=-1),
-        'from': 'Nova5.1'
-    },
-    {
-        'date': NOW + datetime.timedelta(days=-4),
-        'from': 'Nova5.1'
-    }
-]
 
 SYSTEM_TEMPERATURE_DATA = [
     {
@@ -365,9 +273,6 @@ if __name__ == "__main__":
 
     database = get_database()
 
-    rebuild_data(database['indoortemperaturedatas'], INDOOR_TEMPERATURE_DATA)
-    rebuild_data(database['indoorhumiditydatas'], INDOOR_HUMIDITY_DATA)
-    rebuild_data(database['indoormovementlogs'], INDOOR_MOVEMENT_DATA)
     rebuild_data(database['systemtemperaturedatas'], SYSTEM_TEMPERATURE_DATA)
     rebuild_data(database['systemmemorydatas'], SYSTEM_MEMORY_DATA)
     rebuild_data(database['systemstoragedatas'], SYSTEM_STORAGE_DATA)

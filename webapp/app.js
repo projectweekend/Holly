@@ -40,8 +40,11 @@ app.use(app.router);
 
 
 // connect to the db
-var mongoUri = process.env.MONGO_URL ||
-    'mongodb://localhost/holly-webapp-db';
+var FIG_MONGO;
+if ( process.env.DB_1_PORT ) {
+    FIG_MONGO = process.env.DB_1_PORT.replace( "tcp", "mongodb" ) + "/dev_db";
+}
+var mongoUri = process.env.MONGO_URL || FIG_MONGO;
 
 mongoose.connect(mongoUri);
 var db = mongoose.connection;

@@ -11,5 +11,3 @@ web:
         - 3000:3000
     links:
         - db
-    environment:
-        MONGO_URL: mongodb://172.17.0.2/holly-webapp-db
