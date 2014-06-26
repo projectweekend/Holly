@@ -15,31 +15,6 @@ IndoorSensorDataSchema = Schema( {
 IndoorSensorData = mongoose.model( 'IndoorSensorData', IndoorSensorDataSchema );
 
 
-IndoorTemperatureDataSchema = Schema( {
-	id: ObjectId,
-	date: Date,
-	celsius: Number,
-	fahrenheit: Number
-} );
-IndoorTemperatureData = mongoose.model( 'IndoorTemperatureData', IndoorTemperatureDataSchema );
-
-
-IndoorHumidityDataSchema = Schema( {
-	id: ObjectId,
-	date: Date,
-	percent: Number
-} );
-IndoorHumidityData = mongoose.model( 'IndoorHumidityData', IndoorHumidityDataSchema );
-
-
-IndoorMovementLogSchema = Schema( {
-	id: ObjectId,
-	date: Date,
-	from: String
-} );
-IndoorMovementLog = mongoose.model( 'IndoorMovementLog', IndoorMovementLogSchema );
-
-
 SystemTemperatureDataSchema = Schema( {
 	id: ObjectId,
 	date: Date,
@@ -71,15 +46,6 @@ SystemStorageDataSchema = Schema( {
     percent: Number
 } );
 SystemStorageData = mongoose.model( 'SystemStorageData', SystemStorageDataSchema );
-
-
-SystemStatusMessageSchema = Schema( {
-	id: ObjectId,
-	date: Date,
-	from: String,
-	body: String
-} );
-SystemStatusMessage = mongoose.model( 'SystemStatusMessage', SystemStatusMessageSchema );
 
 
 ConfigurationSchema = Schema( {
