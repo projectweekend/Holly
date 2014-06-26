@@ -6,9 +6,9 @@
 var express = require('express'),
   routes = require('./routes'),
 
+  indoorSensorsAPI = require( './routes/indoorSensorsAPI' ),
   indoorTempStatsAPI = require('./routes/indoorTemperatureStatsAPI'),
   indoorHumidStatsAPI = require('./routes/indoorHumidityStatsAPI'),
-  indoorSensorsAPI = require( './routes/indoorSensorsAPI' ),
   systemDataAPI = require('./routes/systemDataAPI'),
   systemTempStatsAPI = require('./routes/systemTemperatureStatsAPI'),
   configurationAPI = require('./routes/configurationAPI'),
