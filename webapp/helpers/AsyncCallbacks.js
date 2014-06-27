@@ -19,9 +19,9 @@ exports.buildHumidityAverageCallback = function ( config, output ) {
                     return callback( err );
                 }
                 if ( data.length > 0 ) {
-                    output.average.percent = data[0].value;
+                    output.average.humidity = data[0].value;
                 } else {
-                    output.average.percent = "No data";
+                    output.average.humidity = "No data";
                 }
                 callback();
             } );
@@ -40,16 +40,16 @@ exports.buildHumidityMinMaxCallback = function ( config, output ) {
             out: { replace: config.collection },
             query: config.query,
             map: function () {
-                var x = { percent: this.humidity, _id: this._id };
+                var x = { humidity: this.humidity, _id: this._id };
                 emit( 1, { min: x, max: x } );
             },
             reduce: function (key, humidityValues) {
                 var result = humidityValues[0];
                 for ( var i = 1; i < humidityValues.length; i++ ) {
-                    if ( humidityValues[i].min.percent < result.min.percent ) {
+                    if ( humidityValues[i].min.humidity < result.min.humidity ) {
                         result.min = humidityValues[i].min;
                     }
-                    if ( humidityValues[i].max.percent > result.max.percent ) {
+                    if ( humidityValues[i].max.humidity > result.max.humidity ) {
                         result.max = humidityValues[i].max;
                     }
                 }
@@ -69,11 +69,11 @@ exports.buildHumidityMinMaxCallback = function ( config, output ) {
                     return callback( err );
                 }
                 if ( data.length > 0 ) {
-                    output.min.percent = data[0].value.min.percent;
-                    output.max.percent = data[0].value.max.percent;
+                    output.min.humidity = data[0].value.min.humidity;
+                    output.max.humidity = data[0].value.max.humidity;
                 } else {
-                    output.min.percent = "No data";
-                    output.max.percent = "No data";
+                    output.min.humidity = "No data";
+                    output.max.humidity = "No data";
                 }
                 callback();
             } );
@@ -92,7 +92,7 @@ exports.buildFahrenheitAverageCallback = function ( config, output ) {
         var avgConfig = {
             out: { replace: config.collection },
             query: config.query,
-            map: function () { emit( 1, this.fahrenheit ); },
+            map: function () { emit( 1, this.temp_f ); },
             reduce: function ( keyVal, fahrenheitValues ) { return Array.avg( fahrenheitValues ); }
         };
 
@@ -106,9 +106,9 @@ exports.buildFahrenheitAverageCallback = function ( config, output ) {
                     return callback( err );
                 }
                 if ( data.length > 0 ) {
-                    output.average.fahrenheit = data[0].value;
+                    output.average.temp_f = data[0].value;
                 } else {
-                    output.average.fahrenheit = "No data";
+                    output.average.temp_f = "No data";
                 }
                 callback();
             } );
@@ -127,7 +127,7 @@ exports.buildCelsiusAverageCallback = function ( config, output ) {
         var avgConfig = {
             out: { replace: config.collection },
             query: config.query,
-            map: function () { emit( 1, this.celsius ); },
+            map: function () { emit( 1, this.temp_c ); },
             reduce: function ( keyVal, celsiusValues ) { return Array.avg( celsiusValues ); }
         };
 
@@ -141,9 +141,9 @@ exports.buildCelsiusAverageCallback = function ( config, output ) {
                     return callback( err );
                 }
                 if ( data.length > 0 ) {
-                    output.average.celsius = data[0].value;
+                    output.average.temp_c = data[0].value;
                 } else {
-                    output.average.celsius = "No data";
+                    output.average.temp_c = "No data";
                 }
                 callback();
             } );
@@ -162,16 +162,16 @@ exports.buildFahrenheitMinMaxCallback = function ( config, output ) {
             out: { replace: config.collection },
             query: config.query,
             map: function () {
-                var x = { fahrenheit: this.fahrenheit, _id: this._id };
+                var x = { temp_f: this.temp_f, _id: this._id };
                 emit( 1, { min: x, max: x } );
             },
             reduce: function (key, fahrenheitValues) {
                 var result = fahrenheitValues[0];
                 for ( var i = 1; i < fahrenheitValues.length; i++ ) {
-                    if ( fahrenheitValues[i].min.fahrenheit < result.min.fahrenheit ) {
+                    if ( fahrenheitValues[i].min.temp_f < result.min.temp_f ) {
                         result.min = fahrenheitValues[i].min;
                     }
-                    if ( fahrenheitValues[i].max.fahrenheit > result.max.fahrenheit ) {
+                    if ( fahrenheitValues[i].max.temp_f > result.max.temp_f ) {
                         result.max = fahrenheitValues[i].max;
                     }
                 }
@@ -191,11 +191,11 @@ exports.buildFahrenheitMinMaxCallback = function ( config, output ) {
                     return callback( err );
                 }
                 if ( data.length > 0 ) {
-                    output.min.fahrenheit = data[0].value.min.fahrenheit;
-                    output.max.fahrenheit = data[0].value.max.fahrenheit;
+                    output.min.temp_f = data[0].value.min.temp_f;
+                    output.max.temp_f = data[0].value.max.temp_f;
                 } else {
-                    output.min.fahrenheit = "No data";
-                    output.max.fahrenheit = "No data";
+                    output.min.temp_f = "No data";
+                    output.max.temp_f = "No data";
                 }
                 callback();
             } );
@@ -215,16 +215,16 @@ exports.buildCelsiusMinMaxCallback = function ( config, output ) {
             out: { replace: config.collection },
             query: config.query,
             map: function () {
-                var x = { celsius: this.celsius, _id: this._id };
+                var x = { temp_c: this.temp_c, _id: this._id };
                 emit( 1, { min: x, max: x } );
             },
             reduce: function (key, celsiusValues) {
                 var result = celsiusValues[0];
                 for ( var i = 1; i < celsiusValues.length; i++ ) {
-                    if ( celsiusValues[i].min.celsius < result.min.celsius ) {
+                    if ( celsiusValues[i].min.temp_c < result.min.temp_c ) {
                         result.min = celsiusValues[i].min;
                     }
-                    if ( celsiusValues[i].max.celsius > result.max.celsius ) {
+                    if ( celsiusValues[i].max.temp_c > result.max.temp_c ) {
                         result.max = celsiusValues[i].max;
                     }
                 }
@@ -244,11 +244,11 @@ exports.buildCelsiusMinMaxCallback = function ( config, output ) {
                     return callback( err );
                 }
                 if ( data.length > 0 ) {
-                    output.min.celsius = data[0].value.min.celsius;
-                    output.max.celsius = data[0].value.max.celsius;
+                    output.min.temp_c = data[0].value.min.temp_c;
+                    output.max.temp_c = data[0].value.max.temp_c;
                 } else {
-                    output.min.celsius = "No data";
-                    output.max.celsius = "No data";
+                    output.min.temp_c = "No data";
+                    output.max.temp_c = "No data";
                 }
                 callback();
             } );
