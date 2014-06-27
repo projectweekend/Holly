@@ -106,9 +106,9 @@ exports.buildFahrenheitAverageCallback = function ( config, output ) {
                     return callback( err );
                 }
                 if ( data.length > 0 ) {
-                    output.average.temp_f = data[0].value;
+                    output.average.fahrenheit = data[0].value;
                 } else {
-                    output.average.temp_f = "No data";
+                    output.average.fahrenheit = "No data";
                 }
                 callback();
             } );
@@ -141,9 +141,9 @@ exports.buildCelsiusAverageCallback = function ( config, output ) {
                     return callback( err );
                 }
                 if ( data.length > 0 ) {
-                    output.average.temp_c = data[0].value;
+                    output.average.celsius = data[0].value;
                 } else {
-                    output.average.temp_c = "No data";
+                    output.average.celsius = "No data";
                 }
                 callback();
             } );
@@ -191,11 +191,11 @@ exports.buildFahrenheitMinMaxCallback = function ( config, output ) {
                     return callback( err );
                 }
                 if ( data.length > 0 ) {
-                    output.min.temp_f = data[0].value.min.temp_f;
-                    output.max.temp_f = data[0].value.max.temp_f;
+                    output.min.fahrenheit = data[0].value.min.temp_f;
+                    output.max.fahrenheit = data[0].value.max.temp_f;
                 } else {
-                    output.min.temp_f = "No data";
-                    output.max.temp_f = "No data";
+                    output.min.fahrenheit = "No data";
+                    output.max.fahrenheit = "No data";
                 }
                 callback();
             } );
@@ -244,11 +244,11 @@ exports.buildCelsiusMinMaxCallback = function ( config, output ) {
                     return callback( err );
                 }
                 if ( data.length > 0 ) {
-                    output.min.temp_c = data[0].value.min.temp_c;
-                    output.max.temp_c = data[0].value.max.temp_c;
+                    output.min.celsius = data[0].value.min.temp_c;
+                    output.max.celsius = data[0].value.max.temp_c;
                 } else {
-                    output.min.temp_c = "No data";
-                    output.max.temp_c = "No data";
+                    output.min.celsius = "No data";
+                    output.max.celsius = "No data";
                 }
                 callback();
             } );
