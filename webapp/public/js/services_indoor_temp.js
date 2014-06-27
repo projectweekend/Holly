@@ -44,19 +44,19 @@ svcMod.factory( "IndoorTempReporting", function ( $http, socket ) {
         },
         buildChart: function ( display_units ) {
             var chart = this.chart;
-            var apiUrl = "/api/indoor/temperature/recent?numberOfReadings=24";
+            var apiUrl = "/api/indoor/sensors/data?numberOfReadings=24";
 
             $http.get( apiUrl ).
                 success( function ( data, status ) {
                     data.forEach( function ( element, index, array ) {
-                        
+
                         var parsedTime = makeHoursMinutesTimeString( element.date );
                         chart.data.labels.push( parsedTime );
 
                         if ( display_units == 'F' ) {
-                            chart.data.datasets[0].data.push( element.fahrenheit );
+                            chart.data.datasets[0].data.push( element.temp_f );
                         } else {
-                            chart.data.datasets[0].data.push( element.celsius );
+                            chart.data.datasets[0].data.push( element.temp_c );
                         }
 
                     } );
@@ -72,9 +72,9 @@ svcMod.factory( "IndoorTempReporting", function ( $http, socket ) {
         },
         listenForUpdates: function ( display_units ) {
             var chart = this.chart;
-            
+
             socket.on( 'updates:indoor:temp', function ( data ) {
-            
+
                 var newLabel = makeHoursMinutesTimeString( data.date );
                 var latestLabel = chart.data.labels[0];
 
@@ -85,9 +85,9 @@ svcMod.factory( "IndoorTempReporting", function ( $http, socket ) {
                     // add new one
                     chart.data.labels.unshift( newLabel );
                     if ( display_units == 'F' ) {
-                        chart.data.datasets[0].data.unshift( data.fahrenheit );
+                        chart.data.datasets[0].data.unshift( data.temp_f );
                     } else {
-                        chart.data.datasets[0].data.unshift( data.celsius );
+                        chart.data.datasets[0].data.unshift( data.temp_c );
                     }
 
                 }
@@ -116,13 +116,13 @@ svcMod.factory( "IndoorTemperatureCurrent", function ( $http, socket ) {
         },
         getValues: function () {
             var values = this.values;
-            var apiUrl = "/api/indoor/temperature";
+            var apiUrl = "/api/indoor/sensors/data?numberOfReadings=1";
 
             $http.get( apiUrl ).
                 success( function ( data, status) {
                     values.date = data.date;
-                    values.fahrenheit = data.fahrenheit;
-                    values.celsius = data.celsius;
+                    values.fahrenheit = data.temp_f;
+                    values.celsius = data.temp_c;
                 } ).
                 error( function ( data, status ) {
                     logError( data );
@@ -152,7 +152,7 @@ svcMod.factory( "IndoorTemperatureCurrent", function ( $http, socket ) {
 
 
 svcMod.factory( "IndoorTemperatureStats", function ( $http, socket ) {
-    
+
     return {
         values: {
             label: "",
