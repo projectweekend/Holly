@@ -1,8 +1,20 @@
-import sys
+import os
 import datetime
 from pymongo import MongoClient
 
 NOW = datetime.datetime.utcnow()
+
+INDOOR_SENSOR_DATA = []
+for x in xrange(1,10):
+    days_in_past = x * -1
+    fake_reading = {
+        'date': NOW + datetime.timedelta(days=days_in_past),
+        'temp_c': 22.0,
+        'temp_f': 71.6,
+        'humidity': 45.3,
+        'pressure': 967.3
+    }
+    INDOOR_SENSOR_DATA.append(fake_reading)
 
 
 SYSTEM_TEMPERATURE_DATA = [
@@ -265,7 +277,9 @@ def rebuild_data(collection, dummy_data):
 
 
 def get_database():
-    client = MongoClient(sys.argv[1])
+    fig_mongo = os.getenv('DB_1_PORT');
+    fig_mongo = fig_mongo.replace("tcp", "mongodb") + "/dev_db"
+    client = MongoClient(fig_mongo)
     return client.get_default_database()
 
 
@@ -273,6 +287,7 @@ if __name__ == "__main__":
 
     database = get_database()
 
+    rebuild_data(database['indoorsensordatas'], INDOOR_SENSOR_DATA)
     rebuild_data(database['systemtemperaturedatas'], SYSTEM_TEMPERATURE_DATA)
     rebuild_data(database['systemmemorydatas'], SYSTEM_MEMORY_DATA)
     rebuild_data(database['systemstoragedatas'], SYSTEM_STORAGE_DATA)

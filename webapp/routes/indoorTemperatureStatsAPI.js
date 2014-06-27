@@ -28,22 +28,22 @@ exports.indoorTemperatureStatsOverall = function ( req, res ) {
     };
 
     var getFahrenheitAverage = asyncCallbackHelpers.buildFahrenheitAverageCallback(
-        { model: IndoorTemperatureData, collection: "AverageIndoorOverallTempFahrenheit", query: {} },
+        { model: IndoorSensorData, collection: "AverageIndoorOverallTempFahrenheit", query: {} },
         output
     );
 
     var getCelsiusAverage = asyncCallbackHelpers.buildCelsiusAverageCallback(
-        { model: IndoorTemperatureData, collection: "AverageIndoorOverallTempCelsius", query: {} },
+        { model: IndoorSensorData, collection: "AverageIndoorOverallTempCelsius", query: {} },
         output
     );
 
     var getFahrenheitMinMax = asyncCallbackHelpers.buildFahrenheitMinMaxCallback(
-        { model: IndoorTemperatureData, collection: "MinMaxSystemTempFahrenheit", query: {} },
+        { model: IndoorSensorData, collection: "MinMaxSystemTempFahrenheit", query: {} },
         output
     );
 
     var getCelsiusMinMax = asyncCallbackHelpers.buildCelsiusMinMaxCallback(
-        { model: IndoorTemperatureData, collection: "MinMaxSystemTempCelsius", query: {} },
+        { model: IndoorSensorData, collection: "MinMaxSystemTempCelsius", query: {} },
         output
     );
 
@@ -97,7 +97,7 @@ exports.indoorTemperatureStatsDay = function ( req, res ) {
 
     var getFahrenheitAverage = asyncCallbackHelpers.buildFahrenheitAverageCallback(
         {
-            model: IndoorTemperatureData,
+            model: IndoorSensorData,
             collection: "AverageIndoorDayTempFahrenheit",
             query: q
         },
@@ -106,7 +106,7 @@ exports.indoorTemperatureStatsDay = function ( req, res ) {
 
     var getCelsiusAverage = asyncCallbackHelpers.buildCelsiusAverageCallback(
         {
-            model: IndoorTemperatureData,
+            model: IndoorSensorData,
             collection: "AverageIndoorDayTempCelsius",
             query: q
         },
@@ -115,7 +115,7 @@ exports.indoorTemperatureStatsDay = function ( req, res ) {
 
     var getFahrenheitMinMax = asyncCallbackHelpers.buildFahrenheitMinMaxCallback(
         {
-            model: IndoorTemperatureData,
+            model: IndoorSensorData,
             collection: "MinMaxIndoorDayTempFahrenheit",
             query: q
         },
@@ -124,7 +124,7 @@ exports.indoorTemperatureStatsDay = function ( req, res ) {
 
     var getCelsiusMinMax = asyncCallbackHelpers.buildCelsiusMinMaxCallback(
         {
-            model: IndoorTemperatureData,
+            model: IndoorSensorData,
             collection: "MinMaxIndoorDayTempCelsius",
             query: q
         },
@@ -181,7 +181,7 @@ exports.indoorTemperatureStatsWeek = function ( req, res ) {
 
     var getFahrenheitAverage = asyncCallbackHelpers.buildFahrenheitAverageCallback(
         {
-            model: IndoorTemperatureData,
+            model: IndoorSensorData,
             collection: "AverageIndoorWeekTempFahrenheit",
             query: q
         },
@@ -190,7 +190,7 @@ exports.indoorTemperatureStatsWeek = function ( req, res ) {
 
     var getCelsiusAverage = asyncCallbackHelpers.buildCelsiusAverageCallback(
         {
-            model: IndoorTemperatureData,
+            model: IndoorSensorData,
             collection: "AverageIndoorWeekTempCelsius",
             query: q
         },
@@ -199,7 +199,7 @@ exports.indoorTemperatureStatsWeek = function ( req, res ) {
 
     var getFahrenheitMinMax = asyncCallbackHelpers.buildFahrenheitMinMaxCallback(
         {
-            model: IndoorTemperatureData,
+            model: IndoorSensorData,
             collection: "MinMaxIndoorWeekTempFahrenheit",
             query: q
         },
@@ -208,7 +208,7 @@ exports.indoorTemperatureStatsWeek = function ( req, res ) {
 
     var getCelsiusMinMax = asyncCallbackHelpers.buildCelsiusMinMaxCallback(
         {
-            model: IndoorTemperatureData,
+            model: IndoorSensorData,
             collection: "MinMaxIndoorWeekTempCelsius",
             query: q
         },
@@ -265,7 +265,7 @@ exports.indoorTemperatureStatsMonth = function ( req, res ) {
 
     var getFahrenheitAverage = asyncCallbackHelpers.buildFahrenheitAverageCallback(
         {
-            model: IndoorTemperatureData,
+            model: IndoorSensorData,
             collection: "AverageIndoorMonthTempFahrenheit",
             query: q
         },
@@ -274,7 +274,7 @@ exports.indoorTemperatureStatsMonth = function ( req, res ) {
 
     var getCelsiusAverage = asyncCallbackHelpers.buildCelsiusAverageCallback(
         {
-            model: IndoorTemperatureData,
+            model: IndoorSensorData,
             collection: "AverageIndoorMonthTempCelsius",
             query: q
         },
@@ -283,7 +283,7 @@ exports.indoorTemperatureStatsMonth = function ( req, res ) {
 
     var getFahrenheitMinMax = asyncCallbackHelpers.buildFahrenheitMinMaxCallback(
         {
-            model: IndoorTemperatureData,
+            model: IndoorSensorData,
             collection: "MinMaxIndoorMonthTempFahrenheit",
             query: q
         },
@@ -292,7 +292,7 @@ exports.indoorTemperatureStatsMonth = function ( req, res ) {
 
     var getCelsiusMinMax = asyncCallbackHelpers.buildCelsiusMinMaxCallback(
         {
-            model: IndoorTemperatureData,
+            model: IndoorSensorData,
             collection: "MinMaxIndoorMonthTempCelsius",
             query: q
         },
