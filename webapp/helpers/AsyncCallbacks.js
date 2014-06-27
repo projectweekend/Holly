@@ -19,9 +19,9 @@ exports.buildHumidityAverageCallback = function ( config, output ) {
                     return callback( err );
                 }
                 if ( data.length > 0 ) {
-                    output.average.humidity = data[0].value;
+                    output.average.percent = data[0].value;
                 } else {
-                    output.average.humidity = "No data";
+                    output.average.percent = "No data";
                 }
                 callback();
             } );
@@ -69,11 +69,11 @@ exports.buildHumidityMinMaxCallback = function ( config, output ) {
                     return callback( err );
                 }
                 if ( data.length > 0 ) {
-                    output.min.humidity = data[0].value.min.humidity;
-                    output.max.humidity = data[0].value.max.humidity;
+                    output.min.percent = data[0].value.min.humidity;
+                    output.max.percent = data[0].value.max.humidity;
                 } else {
-                    output.min.humidity = "No data";
-                    output.max.humidity = "No data";
+                    output.min.percent = "No data";
+                    output.max.percent = "No data";
                 }
                 callback();
             } );
