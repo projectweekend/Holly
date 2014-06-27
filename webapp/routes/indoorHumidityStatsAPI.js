@@ -10,7 +10,7 @@ var errorHandler = function ( err, res ) {
 
 
 exports.indoorHumidityStatsOverall = function ( req, res ) {
-    
+
     var output = {
         label: "Overall",
         average: {
@@ -26,7 +26,7 @@ exports.indoorHumidityStatsOverall = function ( req, res ) {
 
     var getHumidityAverage = asyncCallbackHelpers.buildHumidityAverageCallback (
 		{
-			model: IndoorHumidityData,
+			model: IndoorSensorData,
 			collection: "AverageIndoorOverallHumidity",
 			query: {}
 		},
@@ -35,7 +35,7 @@ exports.indoorHumidityStatsOverall = function ( req, res ) {
 
     var getHumidityMinMax = asyncCallbackHelpers.buildHumidityMinMaxCallback (
 		{
-			model: IndoorHumidityData,
+			model: IndoorSensorData,
 			collection: "MinMaxIndoorOverallHumidity",
 			query: {}
 		},
@@ -87,7 +87,7 @@ exports.indoorHumidityStatsDay = function ( req, res ) {
 
     var getHumidityAverage = asyncCallbackHelpers.buildHumidityAverageCallback (
         {
-            model: IndoorHumidityData,
+            model: IndoorSensorData,
             collection: "AverageIndoorDayHumidity",
             query: q
         },
@@ -96,7 +96,7 @@ exports.indoorHumidityStatsDay = function ( req, res ) {
 
     var getHumidityMinMax = asyncCallbackHelpers.buildHumidityMinMaxCallback (
         {
-            model: IndoorHumidityData,
+            model: IndoorSensorData,
             collection: "MinMaxIndoorDayHumidity",
             query: q
         },
@@ -148,7 +148,7 @@ exports.indoorHumidityStatsWeek = function ( req, res ) {
 
     var getHumidityAverage = asyncCallbackHelpers.buildHumidityAverageCallback (
         {
-            model: IndoorHumidityData,
+            model: IndoorSensorData,
             collection: "AverageIndoorWeekHumidity",
             query: q
         },
@@ -157,7 +157,7 @@ exports.indoorHumidityStatsWeek = function ( req, res ) {
 
     var getHumidityMinMax = asyncCallbackHelpers.buildHumidityMinMaxCallback (
         {
-            model: IndoorHumidityData,
+            model: IndoorSensorData,
             collection: "MinMaxIndoorWeekHumidity",
             query: q
         },
@@ -209,7 +209,7 @@ exports.indoorHumidityStatsMonth = function ( req, res ) {
 
     var getHumidityAverage = asyncCallbackHelpers.buildHumidityAverageCallback (
         {
-            model: IndoorHumidityData,
+            model: IndoorSensorData,
             collection: "AverageIndoorMonthHumidity",
             query: q
         },
@@ -218,7 +218,7 @@ exports.indoorHumidityStatsMonth = function ( req, res ) {
 
     var getHumidityMinMax = asyncCallbackHelpers.buildHumidityMinMaxCallback (
         {
-            model: IndoorHumidityData,
+            model: IndoorSensorData,
             collection: "MinMaxIndoorMonthHumidity",
             query: q
         },

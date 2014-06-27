@@ -1,11 +1,11 @@
 exports.buildHumidityAverageCallback = function ( config, output ) {
 
     return function ( callback ) {
-        
+
         var avgConfig = {
             out: { replace: config.collection },
             query: config.query,
-            map: function () { emit( 1, this.percent ); },
+            map: function () { emit( 1, this.humidity ); },
             reduce: function ( keyVal, humidityValues ) { return Array.avg( humidityValues ); }
         };
 
@@ -33,14 +33,14 @@ exports.buildHumidityAverageCallback = function ( config, output ) {
 
 
 exports.buildHumidityMinMaxCallback = function ( config, output ) {
-    
+
     return function ( callback ) {
-        
+
         var maxConfig = {
             out: { replace: config.collection },
             query: config.query,
             map: function () {
-                var x = { percent: this.percent, _id: this._id };
+                var x = { percent: this.humidity, _id: this._id };
                 emit( 1, { min: x, max: x } );
             },
             reduce: function (key, humidityValues) {
@@ -120,7 +120,7 @@ exports.buildFahrenheitAverageCallback = function ( config, output ) {
 
 
 exports.buildCelsiusAverageCallback = function ( config, output ) {
-    
+
     // performs celsius average map reduce
     return function ( callback ) {
 
@@ -157,7 +157,7 @@ exports.buildFahrenheitMinMaxCallback = function ( config, output ) {
 
     // performs fahrenheit min/max map reduce
     return function ( callback ) {
-        
+
         var maxConfig = {
             out: { replace: config.collection },
             query: config.query,
@@ -210,7 +210,7 @@ exports.buildCelsiusMinMaxCallback = function ( config, output ) {
 
     // performs celsius min/max map reduce
     return function ( callback ) {
-        
+
         var maxConfig = {
             out: { replace: config.collection },
             query: config.query,
