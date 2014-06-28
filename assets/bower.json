@@ -1,0 +1,20 @@
+{
+  "name": "Holly",
+  "version": "0.0.1",
+  "homepage": "https://github.com/projectweekend/Holly",
+  "authors": [
+    "Brian Hines <brian@projectweekend.net>"
+  ],
+  "description": "A home server/personal dashboard project",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
