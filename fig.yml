@@ -1,0 +1,15 @@
+db:
+    image: dockerfile/mongodb
+    ports:
+        - 27017
+web:
+    build: .
+    command: sails lift
+    volumes:
+        - .:/webapp_root
+    ports:
+        - 3000:3000
+    links:
+        - db
+    environment:
+        PORT: 3000
