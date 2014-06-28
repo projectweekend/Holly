@@ -1,3 +1,0 @@
-from system import CPUTemperatureTweeter
-from environment import IndoorTemperatureTweeter
-from environment import IndoorHumidityTweeter
