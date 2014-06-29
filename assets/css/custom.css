@@ -1,0 +1,19 @@
+body {
+  font-family: sans-serif;
+}
+
+core-toolbar {
+  background-color: #265BAA;
+  color: white;
+}
+
+paper-icon-button {
+    fill: white;
+}
+
+p {
+  margin: 20px;
+  padding: 80px 20px;
+  border-radius: 20px;
+  background-color: #eee;
+}
