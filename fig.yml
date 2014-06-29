@@ -13,3 +13,4 @@ web:
         - db
     environment:
         PORT: 3000
+        MONGO_DATABASE: dev_db
