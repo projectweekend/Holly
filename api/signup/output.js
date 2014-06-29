@@ -1,0 +1,12 @@
+var makeToken = require( '../utils/authentication' ).makeToken;
+
+
+exports.buildResponseWithToken = function ( user, callback ) {
+
+    var output = {
+        token: makeToken( user )
+    };
+
+    return callback( null, output );
+
+};

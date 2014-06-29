@@ -4,7 +4,7 @@ db:
         - 27017
 web:
     build: .
-    command: npm start
+    command: node ./bin/www
     volumes:
         - .:/webapp_root
     ports:
@@ -13,4 +13,6 @@ web:
         - db
     environment:
         PORT: 3000
-        MONGO_DATABASE: dev_db
+        JWT_SECRET: SetJwtTokenSecretHere
+        JWT_EXPIRES: 20160
+        ADMIN_KEY: use_this_to_create_admin_user
