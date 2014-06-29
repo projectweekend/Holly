@@ -12,10 +12,20 @@ block styles
       .getting-started li{overflow:visible;clear:both}.delete{width:690px}
 
 block body
-  core-header-panel
-    core-toolbar(id="mainheader")
-      span(flex) Holly
-      paper-icon-button(id="more-button", style="fill: white;" icon="more-vert")
+  core-drawer-panel(id="drawerPanel", responsiveWidth="2000px")
 
-  div(ng-view)
+    core-header-panel(drawer)
+      core-toolbar(id="navheader")
+        span Menu
+      core-menu
+        core-item(label="Charts")
+        core-item(label="Transit")
+        core-item(label="Weather")
 
+    core-header-panel(main)
+      core-toolbar(id="mainheader")
+        paper-icon-button(id="navicon", icon="menu", style="fill: white;")
+        span(flex) Holly
+      div(ng-view)
+
+    script(src="js/drawer.js")
