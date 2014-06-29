@@ -22,7 +22,8 @@ app.use( expressJwt( {
     skip: [
         '/api/signup',
         '/api/authenticate',
-        '/api/admin/authenticate'
+        '/api/admin/authenticate',
+        '/api/sensor-reading'
     ]
 } ) );
 

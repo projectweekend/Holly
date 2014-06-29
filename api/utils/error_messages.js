@@ -1,7 +1,8 @@
 exports.conflictError = function ( message ) {
     return {
         type: 'conflict',
-        msg: message
+        msg: message,
+        code: 409
     };
 };
 
@@ -10,7 +11,8 @@ exports.systemError = function ( err ) {
     return {
         err: err,
         type: 'system',
-        msg: "A system error occurred"
+        msg: "A system error occurred",
+        code: 500
     };
 };
 
