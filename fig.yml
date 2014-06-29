@@ -4,7 +4,7 @@ db:
         - 27017
 web:
     build: .
-    command: sails lift
+    command: npm start
     volumes:
         - .:/webapp_root
     ports:
