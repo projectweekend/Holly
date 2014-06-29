@@ -8,10 +8,13 @@ html
     link(rel="stylesheet", href="css/custom.css")
 
     script(src="bower_components/platform/platform.js")
+    link(rel="import", href="bower_components/core-toolbar/core-toolbar.html")
+    link(rel="import", href="bower_components/core-icons/core-icons.html")
+    link(rel="import", href="bower_components/paper-icon-button/paper-icon-button.html")
 
     block styles
 
-  body
+  body(fullbleed unresolved)
     block body
         script(src="bower_components/angular/angular.js")
         script(src="bower_components/angular-route/angular-route.js")

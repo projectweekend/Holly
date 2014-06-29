@@ -1,8 +1,6 @@
 extends ./layout
 
-
 block styles
-  // Default home page
   // <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,700italic,400,300,700' rel='stylesheet'/>
   link(href='http://sailsjs.org/styles/fonts.css', rel='stylesheet')
   style.
@@ -14,9 +12,9 @@ block styles
       .getting-started li{overflow:visible;clear:both}.delete{width:690px}
 
 block body
-  core-toolbar(id="main-toolbar")
-    span(flex) Holly
-    paper-icon-button(id="more-button", icon="more-vert", style="fill: white;")
-
-  chart-js(kind="Line", data='{ "labels" : [ "a","b","c" ], "datasets" : [ { "fillColor" : "rgba(220,220,220,0.5)", "strokeColor" : "rgba(220,220,220,1)", "pointColor" : "rgba(220,220,220,1)", "pointStrokeColor" : "#fff", "data" : [65,59,90] } ] }')
-
+  core-header-panel
+    core-toolbar(id="mainheader")
+      span(flex) Holly
+      paper-icon-button(id="more-button", style="fill: white;" icon="more-vert")
+    p Content goes here
+  div(ng-view)
