@@ -26,3 +26,5 @@ refresh_secret_data.py
 *.sublime-project
 
 *.sublime-workspace
+
+.tmp

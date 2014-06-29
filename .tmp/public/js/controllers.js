@@ -2,10 +2,8 @@
 
 /* Controllers */
 
-angular.module('myApp.controllers', [])
-  .controller('MyCtrl1', ['$scope', function($scope) {
+var cMod = angular.module( 'myApp.controllers', [] );
 
-  }])
-  .controller('MyCtrl2', ['$scope', function($scope) {
+cMod.controller( 'Charts', [ '$scope', function( $scope ) {
 
-  }]);
+} ] );
