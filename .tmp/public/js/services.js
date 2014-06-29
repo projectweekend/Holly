@@ -1,9 +1,53 @@
-'use strict';
-
-/* Services */
+var sMod = angular.module( 'myApp.services', [] );
 
 
-// Demonstrate how to register services
-// In this case it is a simple value service.
-angular.module('myApp.services', []).
-  value('version', '0.1');
+sMod.factory( 'API', function ( $http, $location, $window ) {
+
+    var apiRequest = function ( method, path, requestData, callback ) {
+
+        var headers = {
+            "Content-Type": "application/json"
+        };
+
+        var options = {
+            method: method,
+            url: path,
+            headers: headers,
+            data: requestData
+        };
+
+        $http( options )
+            .success( function ( data, status, headers, config ) {
+                callback( null, data );
+            } )
+            .error( function ( data, status, headers, config ) {
+                if ( status === 401 || status === 403 ) {
+                    $window.sessionStorage.token = "";
+                    $location.path( "/login" );
+                    return;
+                }
+                callback( data, null );
+            } );
+
+    };
+
+
+    return {
+        get: function ( path, callback ) {
+            return apiRequest( 'GET', path, {}, callback );
+        },
+        post: function ( path, requestData, callback ) {
+            return apiRequest( 'POST', path, requestData, callback );
+        },
+        put: function ( path, requestData, callback ) {
+            return apiRequest( 'PUT', path, requestData, callback );
+        },
+        patch: function ( path, requestData, callback ) {
+            return apiRequest( 'PATCH', path, requestData, callback );
+        },
+        delete: function ( path, callback ) {
+            return apiRequest( 'DELETE', path, {}, callback );
+        }
+    };
+
+} );
