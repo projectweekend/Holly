@@ -17,6 +17,16 @@ aMod.config( [ '$routeProvider', function( $routeProvider ) {
         controller: 'Charts'
     } );
 
+    $routeProvider.when( '/transit', {
+        templateUrl: 'partials/transit.html',
+        controller: 'Transit'
+    } );
+
+    $routeProvider.when( '/weather', {
+        templateUrl: 'partials/weather.html',
+        controller: 'Weather'
+    } );
+
     $routeProvider.otherwise( {
         redirectTo: '/charts'
     } );
