@@ -19,7 +19,12 @@ app.use( expressValidator() );
 app.use( express.static( path.join( __dirname, 'public' ) ) );
 app.use( expressJwt( {
     secret: process.env.JWT_SECRET,
-    skip: []
+    skip: [
+        '/api/chart/temp',
+        '/api/chart/humidity',
+        '/api/chart/pressure',
+        '/api/chart/luminosity'
+    ]
 } ) );
 
 
