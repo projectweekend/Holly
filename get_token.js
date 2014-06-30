@@ -7,10 +7,13 @@ var jwtSecret = args[0];
 var jwtData = args[1];
 
 
-var makeToken = function ( data ) {
+var makeToken = function () {
+    var data = {
+        id: jwtData
+    };
     return jwt.sign( data, jwtSecret );
 };
 
-var token = makeToken( jwtData );
+var token = makeToken();
 
 console.log( token );
