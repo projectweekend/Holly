@@ -56,3 +56,27 @@ exports.create = function ( req, res ) {
     } );
 
 };
+
+
+exports.getChart = function ( req, res ) {
+
+    var validation = function ( callback ) {
+        // check query params for 'type' is one of:
+        // 'temperature', 'humidity', 'pressure', 'luminosity'
+    };
+
+    var data = function ( cleanData, callback ) {
+        // query the chart data
+    };
+
+    async.waterfall( [], function ( err, chartData ) {
+
+        if ( err ) {
+            return handleRouteError( err, res );
+        }
+
+        return res.json( chartData, 200 );
+
+    } );
+
+};
