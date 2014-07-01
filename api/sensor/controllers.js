@@ -62,7 +62,7 @@ exports.getChart = function ( req, res ) {
 
     var validation = function ( callback ) {
         var chartTypes = ['temperature', 'humidity', 'pressure', 'luminosity'];
-        req.checkQuery( 'type', "'type' of chart must be one of: 'temperature', 'humidity', 'pressure', 'luminosity'" ).isIn( chartTypes );
+        req.checkParams( 'chartType', "'type' of chart must be one of: 'temperature', 'humidity', 'pressure', 'luminosity'" ).isIn( chartTypes );
 
         var errors = req.validationErrors();
         if ( errors ) {
@@ -70,7 +70,7 @@ exports.getChart = function ( req, res ) {
         }
 
         var cleanData = {
-            type: req.param( 'type' )
+            type: req.param( 'chartType' )
         };
 
         return callback( null, cleanData );
