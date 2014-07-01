@@ -78,10 +78,24 @@ exports.getChart = function ( req, res ) {
     };
 
     var data = function ( cleanData, callback ) {
-        // query the chart data
+
+        if ( cleanData.type === 'temperature' ) {
+
+            SensorReading.temperatureReadings( 24, function ( err, temperatureReadings ) {
+
+                if ( err ) {
+                    return callback( systemError( err ) );
+                }
+
+                return callback( null, temperatureReadings );
+
+            } );
+
+        }
+
     };
 
-    async.waterfall( [], function ( err, chartData ) {
+    async.waterfall( [ validation, data ], function ( err, chartData ) {
 
         if ( err ) {
             return handleRouteError( err, res );
