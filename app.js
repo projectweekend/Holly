@@ -20,7 +20,10 @@ app.use( express.static( path.join( __dirname, 'public' ) ) );
 app.use( expressJwt( {
     secret: process.env.JWT_SECRET,
     skip: [
-        '/api/chart/temperature'
+        '/api/chart/temperature',
+        '/api/chart/humidity',
+        '/api/chart/pressure',
+        '/api/chart/luminosity'
     ]
 } ) );
 
