@@ -61,6 +61,7 @@ exports.create = function ( req, res ) {
 exports.getChart = function ( req, res ) {
 
     var validation = function ( callback ) {
+
         var chartTypes = ['temperature', 'humidity', 'pressure', 'luminosity'];
         req.checkParams( 'chartType', "'type' of chart must be one of: 'temperature', 'humidity', 'pressure', 'luminosity'" ).isIn( chartTypes );
 

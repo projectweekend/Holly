@@ -25,7 +25,7 @@ SensorReadingSchema.statics.add = function ( data, cb ) {
 };
 
 
-SensorReadingSchema.temperatureReadings = function ( numberOfReadings, cb ) {
+SensorReadingSchema.statics.temperatureReadings = function ( numberOfReadings, cb ) {
     var q = this.find( {} )
                 .select( 'date temp_c temp_f' )
                 .limit( numberOfReadings )
