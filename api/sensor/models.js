@@ -25,9 +25,9 @@ SensorReadingSchema.statics.add = function ( data, cb ) {
 };
 
 
-SensorReadingSchema.statics.temperatureReadings = function ( numberOfReadings, cb ) {
+SensorReadingSchema.statics.chartReadings = function ( numberOfReadings, fieldsToSelect, cb ) {
     var q = this.find( {} )
-                .select( 'date temp_c temp_f' )
+                .select( fieldsToSelect )
                 .limit( numberOfReadings )
                 .sort( '-date' );
     q.exec( function ( err, readings ) {

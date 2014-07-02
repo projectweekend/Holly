@@ -81,17 +81,39 @@ exports.getChart = function ( req, res ) {
     var data = function ( cleanData, callback ) {
 
         if ( cleanData.type === 'temperature' ) {
-
-            SensorReading.temperatureReadings( 24, function ( err, temperatureReadings ) {
-
+            SensorReading.chartReadings( 24, 'date temp_c temp_f', function ( err, temperatureReadings ) {
                 if ( err ) {
                     return callback( systemError( err ) );
                 }
-
                 return callback( null, temperatureReadings );
-
             } );
+        }
 
+        if ( cleanData.type === 'humidity' ) {
+            SensorReading.chartReadings( 24, 'date humidity', function ( err, temperatureReadings ) {
+                if ( err ) {
+                    return callback( systemError( err ) );
+                }
+                return callback( null, temperatureReadings );
+            } );
+        }
+
+        if ( cleanData.type === 'pressure' ) {
+            SensorReading.chartReadings( 24, 'date pressure', function ( err, temperatureReadings ) {
+                if ( err ) {
+                    return callback( systemError( err ) );
+                }
+                return callback( null, temperatureReadings );
+            } );
+        }
+
+        if ( cleanData.type === 'luminosity' ) {
+            SensorReading.chartReadings( 24, 'date luminosity', function ( err, temperatureReadings ) {
+                if ( err ) {
+                    return callback( systemError( err ) );
+                }
+                return callback( null, temperatureReadings );
+            } );
         }
 
     };
