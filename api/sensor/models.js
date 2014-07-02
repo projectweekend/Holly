@@ -1,4 +1,5 @@
 var mongoose = require( 'mongoose' );
+var systemError = require( '../utils' ).systemError;
 
 var Schema = mongoose.Schema;
 var ObjectId = Schema.ObjectId;
@@ -18,7 +19,7 @@ SensorReadingSchema.statics.add = function ( data, cb ) {
     data.date = new Date();
     this.create( data, function ( err, reading ) {
         if ( err ) {
-            return cb( err );
+            return cb( systemError( err ) );
         }
         return cb( null, reading );
     } );
@@ -32,7 +33,7 @@ SensorReadingSchema.statics.chartReadings = function ( numberOfReadings, fieldsT
                 .sort( '-date' );
     q.exec( function ( err, readings ) {
         if ( err ) {
-            return cb( err );
+            return cb( systemError( err ) );
         }
         return cb( null, readings );
     } );

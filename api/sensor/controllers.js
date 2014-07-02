@@ -1,6 +1,5 @@
 var async = require( 'async' );
 var SensorReading = require( './models' ).SensorReading;
-var systemError = require( '../utils' ).systemError;
 var handleRouteError = require( '../utils' ).handleRouteError;
 
 
@@ -36,7 +35,7 @@ exports.create = function ( req, res ) {
         SensorReading.add( cleanData, function ( err, newSensorReading ) {
 
             if ( err ) {
-                return callback( systemError( err ) );
+                return callback( err );
             }
 
             return callback( null, newSensorReading );
@@ -83,7 +82,7 @@ exports.getChart = function ( req, res ) {
         if ( cleanData.type === 'temperature' ) {
             SensorReading.chartReadings( 24, 'date temp_c temp_f', function ( err, temperatureReadings ) {
                 if ( err ) {
-                    return callback( systemError( err ) );
+                    return callback( err );
                 }
                 return callback( null, temperatureReadings );
             } );
@@ -92,7 +91,7 @@ exports.getChart = function ( req, res ) {
         if ( cleanData.type === 'humidity' ) {
             SensorReading.chartReadings( 24, 'date humidity', function ( err, temperatureReadings ) {
                 if ( err ) {
-                    return callback( systemError( err ) );
+                    return callback( err );
                 }
                 return callback( null, temperatureReadings );
             } );
@@ -101,7 +100,7 @@ exports.getChart = function ( req, res ) {
         if ( cleanData.type === 'pressure' ) {
             SensorReading.chartReadings( 24, 'date pressure', function ( err, temperatureReadings ) {
                 if ( err ) {
-                    return callback( systemError( err ) );
+                    return callback( err );
                 }
                 return callback( null, temperatureReadings );
             } );
@@ -110,7 +109,7 @@ exports.getChart = function ( req, res ) {
         if ( cleanData.type === 'luminosity' ) {
             SensorReading.chartReadings( 24, 'date luminosity', function ( err, temperatureReadings ) {
                 if ( err ) {
-                    return callback( systemError( err ) );
+                    return callback( err );
                 }
                 return callback( null, temperatureReadings );
             } );
