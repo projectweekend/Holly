@@ -23,9 +23,7 @@ app.use( expressJwt( {
         '/api/chart/temperature',
         '/api/chart/humidity',
         '/api/chart/pressure',
-        '/api/chart/luminosity',
-        // Just for testing right now:
-        '/api/sensor'
+        '/api/chart/luminosity'
     ]
 } ) );
 
