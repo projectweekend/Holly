@@ -25,7 +25,7 @@ app.use( expressJwt( {
         '/api/chart/pressure',
         '/api/chart/luminosity',
         // Just for testing right now:
-        '/api/sensor-reading'
+        '/api/sensor'
     ]
 } ) );
 
