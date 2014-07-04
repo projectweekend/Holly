@@ -1,7 +1,7 @@
 var cMod = angular.module( 'myApp.controllers', [] );
 
 
-cMod.controller( 'MyCtrl1', function( $scope ) {
+cMod.controller( 'Home', function( $scope ) {
 
 } );
 

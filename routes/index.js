@@ -5,9 +5,12 @@ var SensorAPI = require( '../api/sensor/controllers' );
 
 // Serve the index page for the Angular app
 router.get( '/', function ( req, res ) {
-
     res.render( 'index' );
+} );
 
+// Serve template partials for the Angular app
+router.get( '/partials/:name', function ( req, res ) {
+    res.render( 'partials/' + req.params.name );
 } );
 
 

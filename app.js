@@ -25,6 +25,7 @@ app.use( expressJwt( {
     secret: process.env.JWT_SECRET,
     skip: [
         '/',
+        '/partials/home',
         '/api/chart/temperature',
         '/api/chart/humidity',
         '/api/chart/pressure',
