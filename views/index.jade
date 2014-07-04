@@ -1,4 +1,4 @@
-html(lang="en")
+html(lang="en", ng-app="myApp")
     head
         title= Holly
         script(src="bower_components/platform/platform.js")
@@ -11,4 +11,5 @@ html(lang="en")
 
     body
         h1  hello
+        div(ng-view)
 
