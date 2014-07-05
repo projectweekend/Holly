@@ -7,10 +7,6 @@ core-toolbar, #navheader {
   color: white;
 }
 
-core-drawer-panel:not([narrow]) #navicon {
-  display: none;
-}
-
 #navicon {
     fill: white;
 }
@@ -19,7 +15,8 @@ core-drawer-panel:not([narrow]) #navicon {
     padding: 20px;
 }
 
-section.chart {
+section.chart,
+section.about {
     width: 100%;
     text-align: center;
 }
