@@ -15,8 +15,23 @@ appMod.config( function( $routeProvider ) {
         controller: 'Home'
     } );
 
+    $routeProvider.when( '/temperature', {
+        templateUrl: 'partials/temperature',
+        controller: 'Temperature'
+    } );
+
+    $routeProvider.when( '/humidity', {
+        templateUrl: 'partials/humidity',
+        controller: 'Humidity'
+    } );
+
+    $routeProvider.when( '/pressure', {
+        templateUrl: 'partials/pressure',
+        controller: 'Pressure'
+    } );
+
     $routeProvider.otherwise( {
-        redirectTo: '/home'
+        redirectTo: '/temperature'
     } );
 
 } );

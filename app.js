@@ -26,6 +26,9 @@ app.use( expressJwt( {
     skip: [
         '/',
         '/partials/home',
+        '/partials/temperature',
+        '/partials/humidity',
+        '/partials/pressure',
         '/api/chart/temperature',
         '/api/chart/humidity',
         '/api/chart/pressure',

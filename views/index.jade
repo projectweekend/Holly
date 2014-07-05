@@ -15,7 +15,8 @@ html(lang="en", ng-app="myApp")
 
 
     body(fullbleed, unresolved)
-        core-drawer-panel(id="drawerPanel", responsiveWidth="1000px")
+
+        core-drawer-panel(id="drawerPanel", responsiveWidth="10000px")
 
             core-header-panel(drawer)
                 core-toolbar(id="navheader")
@@ -23,6 +24,12 @@ html(lang="en", ng-app="myApp")
                 core-menu
                     core-item(label="Home")
                         a(href="#/home", target="_self")
+                    core-item(label="Temperature")
+                        a(href="#/temperature", target="_self")
+                    core-item(label="Humidity")
+                        a(href="#/humidity", target="_self")
+                    core-item(label="pressure")
+                        a(href="#/pressure", target="_self")
 
             core-header-panel(main)
                 core-toolbar(id="mainheader")

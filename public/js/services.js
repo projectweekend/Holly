@@ -48,7 +48,7 @@ sMod.factory( 'API', function ( $http, $location, $window ) {
 } );
 
 
-sMod.factory( 'TemperatureChart', function ( API ) {
+sMod.factory( 'SensorChart', function ( API, $window ) {
 
     var makeLabels = function ( rawChartData ) {
 
@@ -61,10 +61,10 @@ sMod.factory( 'TemperatureChart', function ( API ) {
 
     };
 
-    var makeDataSets = function ( rawChartData ) {
+    var makeDataSets = function ( rawChartData, propertyName ) {
 
-        var extractFahrenheitTemp = function ( chartItem ) {
-            return chartItem.temp_f;
+        var extractPropertyData = function ( chartItem ) {
+            return chartItem[ propertyName ];
         };
 
         return [ {
@@ -72,28 +72,41 @@ sMod.factory( 'TemperatureChart', function ( API ) {
             strokeColor : "#e67e22",
             pointColor : "rgba(151,187,205,0)",
             pointStrokeColor : "#e67e22",
-            data: rawChartData.map( extractFahrenheitTemp )
+            data: rawChartData.map( extractPropertyData )
         } ];
 
     };
 
+    var chartWidth = function () {
+
+        return ( $window.innerWidth - 150 );
+
+    };
+
+    var chartDataProps = {
+        temperature: 'temp_f',
+        humidity: 'humidity',
+        pressure: 'pressure'
+    };
+
     return {
+        width: chartWidth(),
         data:{
             labels: [],
             datasets: []
         },
-        init: function () {
+        init: function ( chartType ) {
 
             var self = this;
 
-            API.get( '/api/chart/temperature', function ( err, data ) {
+            API.get( '/api/chart/' + chartType, function ( err, data ) {
 
                 if ( err ) {
-                    return alert( "Error with Temperature Chart" );
+                    return alert( "Error with " + chartType + " chart" );
                 }
 
                 self.data.labels = makeLabels( data );
-                self.data.datasets = makeDataSets( data );
+                self.data.datasets = makeDataSets( data, chartDataProps[ chartType ] );
 
             } );
         }
