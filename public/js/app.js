@@ -10,11 +10,6 @@ var appMod = angular.module( 'myApp', [
 
 appMod.config( function( $routeProvider ) {
 
-    $routeProvider.when( '/home', {
-        templateUrl: 'partials/home',
-        controller: 'Home'
-    } );
-
     $routeProvider.when( '/temperature', {
         templateUrl: 'partials/temperature',
         controller: 'Temperature'
