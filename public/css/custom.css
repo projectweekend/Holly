@@ -18,3 +18,8 @@ core-drawer-panel:not([narrow]) #navicon {
 .view-wrapper {
     padding: 20px;
 }
+
+section.chart {
+    width: 100%;
+    text-align: center;
+}

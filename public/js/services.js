@@ -77,21 +77,26 @@ sMod.factory( 'TemperatureChart', function ( API ) {
 
     };
 
-    API.get( '/api/chart/temperature', function ( err, data ) {
+    return {
+        data:{
+            labels: [],
+            datasets: []
+        },
+        init: function () {
 
-        if ( err ) {
-            return alert( "Error with Temperature Chart" );
+            var self = this;
+
+            API.get( '/api/chart/temperature', function ( err, data ) {
+
+                if ( err ) {
+                    return alert( "Error with Temperature Chart" );
+                }
+
+                self.data.labels = makeLabels( data );
+                self.data.datasets = makeDataSets( data );
+
+            } );
         }
-
-        var output = {
-            labels: makeLabels( data ),
-            datasets: makeDataSets( data )
-        };
-
-        console.log( output );
-
-        return output;
-
-    } );
+    };
 
 } );
