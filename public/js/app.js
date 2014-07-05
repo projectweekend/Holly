@@ -26,8 +26,7 @@ appMod.config( function( $routeProvider ) {
     } );
 
     $routeProvider.when( '/about', {
-        templateUrl: 'partials/about',
-        controller: 'About'
+        templateUrl: 'partials/about'
     } );
 
     $routeProvider.otherwise( {

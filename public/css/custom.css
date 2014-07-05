@@ -1,3 +1,7 @@
+a {
+    color: #2662AD;
+}
+
 core-header-panel {
   background: white;
 }
@@ -15,8 +19,11 @@ core-toolbar, #navheader {
     padding: 20px;
 }
 
-section.chart,
-section.about {
+section.chart {
     width: 100%;
     text-align: center;
+}
+
+section.about {
+    font-size: 1.25em;
 }
