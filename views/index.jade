@@ -15,19 +15,20 @@ html(lang="en", ng-app="myApp")
 
 
     body(fullbleed, unresolved)
-        core-drawer-panel(id="drawerPanel", responsiveWidth="5000px")
+        core-drawer-panel(id="drawerPanel", responsiveWidth="1000px")
 
             core-header-panel(drawer)
                 core-toolbar(id="navheader")
                     span Menu
                 core-menu
                     core-item(label="Home")
+                        a(href="#/home", target="_self")
 
             core-header-panel(main)
                 core-toolbar(id="mainheader")
                     paper-icon-button(id="navicon", icon="menu")
                     span(flex) Holly
-                div(ng-view)
+                div(ng-view, class="view-wrapper")
 
         script(src="bower_components/angular/angular.js")
         script(src="bower_components/angular-route/angular-route.js")

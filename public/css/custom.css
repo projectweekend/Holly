@@ -2,10 +2,19 @@ core-header-panel {
   background: white;
 }
 
-core-toolbar {
-  background-color: #03A9F4;
+core-toolbar, #navheader {
+  background-color: #2662AD;
+  color: white;
 }
 
-#navheader {
-  background-color: #56BA89;
+core-drawer-panel:not([narrow]) #navicon {
+  display: none;
+}
+
+#navicon {
+    fill: white;
+}
+
+.view-wrapper {
+    padding: 20px;
 }
