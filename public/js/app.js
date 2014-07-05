@@ -25,6 +25,11 @@ appMod.config( function( $routeProvider ) {
         controller: 'Pressure'
     } );
 
+    $routeProvider.when( '/about', {
+        templateUrl: 'partials/about',
+        controller: 'About'
+    } );
+
     $routeProvider.otherwise( {
         redirectTo: '/temperature'
     } );

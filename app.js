@@ -29,6 +29,7 @@ app.use( expressJwt( {
         '/partials/temperature',
         '/partials/humidity',
         '/partials/pressure',
+        '/partials/about',
         '/api/chart/temperature',
         '/api/chart/humidity',
         '/api/chart/pressure',
