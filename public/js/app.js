@@ -2,7 +2,9 @@ var appMod = angular.module( 'myApp', [
     'ngRoute',
     'myApp.services',
     'myApp.directives',
-    'myApp.controllers'
+    'myApp.controllers',
+    // Third-party modules
+    'angles'
 ] );
 
 
