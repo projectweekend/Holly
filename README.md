@@ -9,7 +9,7 @@ With Docker/Fig/Vagrant installed, use the following steps to launch for the fir
 
 * `npm install` from within the project root to locally install all of the web app's Node dependencies.
 * `fig up` to start the web app. This will download and provision two containers: one running Mongo and one running Holly. This will take a while, but once it completes subsequent launches will be much faster.
-* When `fig up` completes, the app should be accessible at [http://127.0.0.1:3000](http://127.0.0.1:3000). (NOTE: if using the `Vagrantfile` included here the app can be found at: [http://192.168.13.81:3000](http://192.168.13.81:3000))
+* When `fig up` completes, the app should be accessible at [http://127.0.0.1:3000](http://127.0.0.1:3000). (NOTE: if running commands within the Vagrant VM that is provisioned by the `Vagrantfile` included here, the app can be found at: [http://192.168.13.81:3000](http://192.168.13.81:3000))
 
 
 ## Configuration
