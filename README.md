@@ -25,9 +25,8 @@ The web app uses a handful of API routes transporting JSON data. There is also a
 
 #### Add new sensor readings
 
-**POST**
 ```
-/api/sensor
+POST: /api/sensor
 ```
 
 **Request Body**
@@ -69,9 +68,8 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IkJ1bGxTaGl0R
 
 #### Get sensor readings for temperature chart
 
-**GET**
 ```
-/api/chart/temperature
+GET: /api/chart/temperature
 ```
 
 **Response Body**
@@ -88,9 +86,8 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IkJ1bGxTaGl0R
 
 #### Get sensor readings for humidity chart
 
-**GET**
 ```
-/api/chart/humidity
+GET: /api/chart/humidity
 ```
 
 **Response Body**
@@ -106,9 +103,8 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IkJ1bGxTaGl0R
 
 #### Get sensor readings for pressure chart
 
-**GET**
 ```
-/api/chart/pressure
+GET:  /api/chart/pressure
 ```
 
 **Response Body**
