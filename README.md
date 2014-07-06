@@ -64,7 +64,7 @@ I run Holly publically so this route requires an authentication token. If you pl
 The value returned from this tool must be set in the `Authorization` header to satisfy authentication. Here is an example formatting of the header/value pair:
 
 ```
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IkJ1bGxTaGl0RGF0YSIsImlhdCI6MTQwND
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IkJ1bGxTaGl0RGF0YSIs
 ```
 
 #### Get sensor readings for temperature chart
