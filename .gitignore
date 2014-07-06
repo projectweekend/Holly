@@ -24,7 +24,8 @@ refresh_secret_data.py
 .vagrant
 
 *.sublime-project
-
 *.sublime-workspace
 
 .tmp
+
+upstart
