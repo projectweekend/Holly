@@ -54,7 +54,12 @@ sMod.factory( 'SensorChart', function ( API, $window ) {
 
         var extractDateParts = function ( chartItem ) {
             var d = new Date( chartItem.date );
-            return d.getHours() + ":" + d.getMinutes();
+            var hours = d.getHours();
+            var minutes = d.getMinutes();
+            if ( minutes < 10 ) {
+                return hours + ":0" + minutes;
+            }
+            return hours + ":" + minutes;
         };
 
         return rawChartData.map( extractDateParts );
