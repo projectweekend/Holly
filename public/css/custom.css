@@ -27,3 +27,20 @@ section.chart {
 section.about {
     font-size: 1.25em;
 }
+
+section.half.left {
+    margin-top: 20px;
+    float: left;
+    width: 50%;
+}
+
+section.half.left ul {
+    margin: 0px;
+}
+
+section.half.right {
+    margin-top: 20px;
+    float: right;
+    width: 50%;
+    text-align: center;
+}
