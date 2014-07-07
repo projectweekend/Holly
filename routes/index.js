@@ -16,7 +16,9 @@ router.get( '/partials/:name', function ( req, res ) {
 
 /* Map URLs to handlers in this file */
 router.post( '/api/sensor', SensorAPI.create );
+router.get( '/api/sensor/:readingType', SensorAPI.read );
 router.get( '/api/chart/:chartType', SensorAPI.getChart );
+
 
 
 module.exports = router;

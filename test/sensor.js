@@ -220,3 +220,89 @@ describe( 'add a sensor reading...', function () {
     } );
 
 } );
+
+
+describe( 'get latest...', function () {
+
+    describe( 'temperature reading...', function () {
+        it( 'responds with 200 and data', function ( done ) {
+            api.get( '/api/sensor/temperature' )
+                .set( 'Content-Type', 'application/json' )
+                .expect( 200 )
+                .end( function ( err, res ) {
+
+                    if ( err ) {
+                        return done( err );
+                    }
+
+                    expect( res.body ).to.have.a.property( "_id" );
+                    expect( res.body ).to.have.a.property( "date" );
+                    expect( res.body ).to.have.a.property( "temp_f" );
+                    expect( res.body ).to.have.a.property( "temp_c" );
+                    done();
+
+                } );
+        } );
+    } );
+
+    describe( 'humidity reading...', function () {
+        it( 'responds with 200 and data', function ( done ) {
+            api.get( '/api/sensor/humidity' )
+                .set( 'Content-Type', 'application/json' )
+                .expect( 200 )
+                .end( function ( err, res ) {
+
+                    if ( err ) {
+                        return done( err );
+                    }
+
+                    expect( res.body ).to.have.a.property( "_id" );
+                    expect( res.body ).to.have.a.property( "date" );
+                    expect( res.body ).to.have.a.property( "humidity" );
+                    done();
+
+                } );
+        } );
+    } );
+
+    describe( 'pressure reading...', function () {
+        it( 'responds with 200 and data', function ( done ) {
+            api.get( '/api/sensor/pressure' )
+                .set( 'Content-Type', 'application/json' )
+                .expect( 200 )
+                .end( function ( err, res ) {
+
+                    if ( err ) {
+                        return done( err );
+                    }
+
+                    expect( res.body ).to.have.a.property( "_id" );
+                    expect( res.body ).to.have.a.property( "date" );
+                    expect( res.body ).to.have.a.property( "pressure" );
+                    done();
+
+                } );
+        } );
+    } );
+
+    describe( 'luminosity reading...', function () {
+        it( 'responds with 200 and data', function ( done ) {
+            api.get( '/api/sensor/luminosity' )
+                .set( 'Content-Type', 'application/json' )
+                .expect( 200 )
+                .end( function ( err, res ) {
+
+                    if ( err ) {
+                        return done( err );
+                    }
+
+                    expect( res.body ).to.have.a.property( "_id" );
+                    expect( res.body ).to.have.a.property( "date" );
+                    expect( res.body ).to.have.a.property( "luminosity" );
+                    done();
+
+                } );
+        } );
+    } );
+
+} );

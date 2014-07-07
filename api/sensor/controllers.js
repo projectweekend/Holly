@@ -57,6 +57,79 @@ exports.create = function ( req, res ) {
 };
 
 
+exports.read = function ( req, res ) {
+
+    var validation = function ( callback ) {
+
+        var readingTypes = ['temperature', 'humidity', 'pressure', 'luminosity'];
+        req.checkParams( 'readingType', "'type' of reading must be one of: 'temperature', 'humidity', 'pressure', 'luminosity'" ).isIn( readingTypes );
+
+        var errors = req.validationErrors();
+        if ( errors ) {
+            return callback( errors );
+        }
+
+        var cleanData = {
+            type: req.param( 'readingType' )
+        };
+
+        return callback( null, cleanData );
+
+    };
+
+    var data = function ( cleanData, callback ) {
+
+        if ( cleanData.type === 'temperature' ) {
+            SensorReading.latestReading( 'date temp_c temp_f', function ( err, temperatureReadings ) {
+                if ( err ) {
+                    return callback( err );
+                }
+                return callback( null, temperatureReadings );
+            } );
+        }
+
+        if ( cleanData.type === 'humidity' ) {
+            SensorReading.latestReading( 'date humidity', function ( err, humidityReadings ) {
+                if ( err ) {
+                    return callback( err );
+                }
+                return callback( null, humidityReadings );
+            } );
+        }
+
+        if ( cleanData.type === 'pressure' ) {
+            SensorReading.latestReading( 'date pressure', function ( err, pressureReadings ) {
+                if ( err ) {
+                    return callback( err );
+                }
+                return callback( null, pressureReadings );
+            } );
+        }
+
+        if ( cleanData.type === 'luminosity' ) {
+            SensorReading.latestReading( 'date luminosity', function ( err, luminosityReadings ) {
+                if ( err ) {
+                    return callback( err );
+                }
+                return callback( null, luminosityReadings );
+            } );
+        }
+
+    };
+
+    async.waterfall( [ validation, data ], function ( err, readingData ) {
+
+        if ( err ) {
+            return handleRouteError( err, res );
+        }
+
+        return res.json( readingData, 200 );
+
+    } );
+
+};
+
+
 exports.getChart = function ( req, res ) {
 
     var validation = function ( callback ) {

@@ -26,6 +26,19 @@ SensorReadingSchema.statics.add = function ( data, cb ) {
 };
 
 
+SensorReadingSchema.statics.latestReading = function ( fieldsToSelect, cb ) {
+    var q = this.findOne( {} )
+                .select( fieldsToSelect )
+                .sort( '-date' );
+    q.exec( function ( err, readings ) {
+        if ( err ) {
+            return cb( systemError( err ) );
+        }
+        return cb( null, readings );
+    } );
+};
+
+
 SensorReadingSchema.statics.chartReadings = function ( numberOfReadings, fieldsToSelect, cb ) {
     var q = this.find( {} )
                 .select( fieldsToSelect )
