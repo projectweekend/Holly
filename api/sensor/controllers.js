@@ -61,8 +61,8 @@ exports.read = function ( req, res ) {
 
     var validation = function ( callback ) {
 
-        var readingTypes = ['temperature', 'humidity', 'pressure', 'luminosity'];
-        req.checkParams( 'readingType', "'type' of reading must be one of: 'temperature', 'humidity', 'pressure', 'luminosity'" ).isIn( readingTypes );
+        var readingTypes = ['temperature', 'humidity', 'pressure', 'luminosity', 'all'];
+        req.checkParams( 'readingType', "'type' of reading must be one of: 'temperature', 'humidity', 'pressure', 'luminosity', 'all'" ).isIn( readingTypes );
 
         var errors = req.validationErrors();
         if ( errors ) {
@@ -112,6 +112,15 @@ exports.read = function ( req, res ) {
                     return callback( err );
                 }
                 return callback( null, luminosityReadings );
+            } );
+        }
+
+        if ( cleanData.type === 'all' ) {
+            SensorReading.latestReading( 'date temp_f temp_c humidity pressure luminosity', function ( err, allReadings ) {
+                if ( err ) {
+                    return callback( err );
+                }
+                return callback( null, allReadings );
             } );
         }
 

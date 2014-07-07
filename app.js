@@ -34,6 +34,7 @@ app.use( expressJwt( {
         '/api/sensor/humidity',
         '/api/sensor/pressure',
         '/api/sensor/luminosity',
+        '/api/sensor/all',
         '/api/chart/temperature',
         '/api/chart/humidity',
         '/api/chart/pressure',
