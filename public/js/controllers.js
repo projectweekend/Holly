@@ -1,7 +1,10 @@
 var cMod = angular.module( 'myApp.controllers', [] );
 
 
-cMod.controller( 'Home', function( $scope ) {
+cMod.controller( 'Home', function( $scope, SensorReading ) {
+
+    $scope.SensorReading = SensorReading;
+    $scope.SensorReading.latest();
 
 } );
 
