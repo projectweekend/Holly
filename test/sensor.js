@@ -305,4 +305,28 @@ describe( 'get latest...', function () {
         } );
     } );
 
+    describe( 'all readings...', function () {
+        it( 'responds with 200 and data', function ( done ) {
+            api.get( '/api/sensor/all' )
+                .set( 'Content-Type', 'application/json' )
+                .expect( 200 )
+                .end( function ( err, res ) {
+
+                    if ( err ) {
+                        return done( err );
+                    }
+
+                    expect( res.body ).to.have.a.property( "_id" );
+                    expect( res.body ).to.have.a.property( "date" );
+                    expect( res.body ).to.have.a.property( "temp_f" );
+                    expect( res.body ).to.have.a.property( "temp_c" );
+                    expect( res.body ).to.have.a.property( "humidity" );
+                    expect( res.body ).to.have.a.property( "pressure" );
+                    expect( res.body ).to.have.a.property( "luminosity" );
+                    done();
+
+                } );
+        } );
+    } );
+
 } );
