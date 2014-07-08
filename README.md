@@ -66,6 +66,24 @@ The value returned from this tool must be set in the `Authorization` header to s
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IkJ1bGxTaGl0RGF0YSIs
 ```
 
+
+#### Get latest temperature reading
+
+```
+GET: /api/sensor/temperature
+```
+
+**Response Body**
+```json
+{
+    "_id": "53b8c7f74a9a52a629de9121",
+    "temp_c": 22,
+    "temp_f": 71.6,
+    "date": "2014-07-06T03:52:23.368Z"
+}
+```
+
+
 #### Get sensor readings for temperature chart
 
 ```
@@ -84,6 +102,23 @@ GET: /api/chart/temperature
 ]
 ```
 
+
+#### Get latest humdity reading
+
+```
+GET: /api/sensor/humidity
+```
+
+**Response Body**
+```json
+{
+    "_id": "53b954fcf11151202bd12437",
+    "humidity": 55.4,
+    "date": "2014-07-06T13:54:04.358Z"
+}
+```
+
+
 #### Get sensor readings for humidity chart
 
 ```
@@ -100,6 +135,23 @@ GET: /api/chart/humidity
     }
 ]
 ```
+
+
+#### Get latest pressure reading
+
+```
+GET:  /api/sensor/pressure
+```
+
+**Response Body**
+```json
+{
+    "_id": "53b954fcf11151202bd12437",
+    "pressure": 895.3,
+    "date": "2014-07-06T13:54:04.358Z"
+}
+```
+
 
 #### Get sensor readings for pressure chart
 
