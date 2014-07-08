@@ -15,11 +15,7 @@ core-toolbar, #navheader {
     fill: white;
 }
 
-.view-wrapper {
-    padding: 20px;
-}
-
-section.chart {
+.chart {
     width: 100%;
     text-align: center;
 }
@@ -43,4 +39,4 @@ section.half.right {
     float: right;
     width: 50%;
     text-align: center;
-}
+}*/

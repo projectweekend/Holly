@@ -3,6 +3,7 @@ html(lang="en", ng-app="myApp")
         title= Holly
         script(src="bower_components/platform/platform.js")
         link(rel="stylesheet", href="bower_components/html5-boilerplate/css/normalize.css")
+        link(rel="stylesheet", href="bower_components/bootstrap/dist/css/bootstrap.min.css")
         link(rel="stylesheet", href="css/custom.css")
         link(rel="import", href="bower_components/core-toolbar/core-toolbar.html")
         link(rel="import", href="bower_components/core-menu/core-menu.html")
@@ -35,7 +36,7 @@ html(lang="en", ng-app="myApp")
                 core-toolbar(id="mainheader")
                     paper-icon-button(id="navicon", icon="menu")
                     span(flex) Holly
-                div(ng-view, class="view-wrapper")
+                div(ng-view, class="container-fluid")
 
         script(src="bower_components/angular/angular.js")
         script(src="bower_components/angular-route/angular-route.js")
