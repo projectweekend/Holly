@@ -20,6 +20,10 @@ core-toolbar, #navheader {
     text-align: center;
 }
 
+.latest {
+    text-align: center;
+}
+
 section.about {
     font-size: 1.25em;
 }

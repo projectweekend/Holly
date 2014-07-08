@@ -1,6 +1,15 @@
-section
-    h2 Home
-    p Nothing to see here...yet...
-    p Temperature: {{ SensorReading.data.temp_f }}
-    p Humidity: {{ SensorReading.data.humidity }}
-    p Pressure: {{ SensorReading.data.pressure }}
+div(class="row")
+    div(class="col-lg-12 chart")
+        div(class="page-header")
+            h1 Home
+
+div(class="row")
+    div(class="col-md-4 latest")
+        h4 Temperature
+        p {{ SensorReading.data.temp_f }}
+    div(class="col-md-4 latest")
+        h4 Humidity
+        p {{ SensorReading.data.humidity }}
+    div(class="col-md-4 latest")
+        h4 Pressure
+        p {{ SensorReading.data.pressure }}
