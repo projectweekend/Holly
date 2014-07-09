@@ -5,11 +5,11 @@ div(class="row")
 
 div(class="row")
     div(class="col-md-4 latest")
-        h4 Temperature
-        p {{ SensorReading.data.temp_f }}
+        h4(class="reading-title") Temperature
+        p(class="reading") {{ SensorReading.data.temp_f }}&deg; F
     div(class="col-md-4 latest")
-        h4 Humidity
-        p {{ SensorReading.data.humidity }}
+        h4(class="reading-title") Humidity
+        p(class="reading") {{ SensorReading.data.humidity }}%
     div(class="col-md-4 latest")
-        h4 Pressure
-        p {{ SensorReading.data.pressure }}
+        h4(class="reading-title") Pressure
+        p(class="reading") {{ SensorReading.data.pressure }} hPa

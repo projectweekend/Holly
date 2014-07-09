@@ -24,6 +24,14 @@ core-toolbar, #navheader {
     text-align: center;
 }
 
+.reading-title {
+    color: #FFA500;
+}
+
+.reading {
+    font-size: 2em;
+}
+
 section.about {
     font-size: 1.25em;
 }
