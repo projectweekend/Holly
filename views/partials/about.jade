@@ -1,43 +1,32 @@
+div(class="row")
+    div(class="col-lg-12")
+        div(class="page-header chart")
+            h1 About
+        
+        p(class="lead")
+            | Originally, this began as a home server/personal dashboard project for my Raspberry Pi: 
+            a(href="https://github.com/projectweekend/Pi-Holly", target="_blank") Pi-Holly
+            | . It ran tucked away in a corner serving up data from indoor temperature/humidity sensors and arrival times at my favorite CTA bus stops on my local network.
+            | I love the Pi, but as the project grew, it needed a little more power under the hood.
+            | So I took out a few Raspberry Pi specific components, and re-launched it simply as 
+            strong Holly
+            | . 
+        
+        p(class="lead")    
+            | Eventually, I started working on a major overhaul to the 
+            a(href="https://github.com/projectweekend/Pi-Red-Dwarf", target="_blank") sensor modules 
+            | that were being used to collect and report data.
+            | While doing that, I decided to give this project a fresh start too, taking it in a new direction. 
+            strong Holly 
+            | is 100% JavaScript from the server to the browser and all the code is publicly available on Github: 
+            a(href="https://github.com/projectweekend/Holly", target="_blank") https://github.com/projectweekend/Holly
+            | .
 
-section(class="about")
-
-    h2 What is this?
-
-    p
-        | Originally, this began as a home server/personal dashboard project for my Raspberry Pi: 
-        a(href="https://github.com/projectweekend/Pi-Holly", target="_blank") Pi-Holly
-        | . I love the Pi, but as the project grew, it needed a little more power under the hood.
-        | So I took out a few Raspberry Pi specific components, and re-launched it simply as 
-        strong Holly 
-        | . Eventually, I started working on a major overhaul to the 
-        a(href="https://github.com/projectweekend/Pi-Red-Dwarf", target="_blank") modules
-        |  that collect and report data back to 
-        strong Holly
-        | . While doing that, I decided to give the project a fresh start and take it in a new direction.
-        | Everything is publicly available on Github: 
-        a(href="https://github.com/projectweekend/Holly", target="_blank") https://github.com/projectweekend/Holly
-        | . 
-        strong Holly 
-        | is 100% 
-        a(href="https://developer.mozilla.org/en-US/docs/Web/JavaScript", target="_blank") JavaScript
-        |  from the server to the browser courtesy of the following awesome projects:
-
-    section(class="half left")
-
-        ul
-            li
-                a(href="http://nodejs.org/about/", target="_blank") Node.js
-            li
-                a(href="http://expressjs.com/", target="_blank") Express
-            li
-                a(href="http://jade-lang.com/", target="_blank") Jade
-            li
-                a(href="https://angularjs.org/", target="_blank") AngularJS
-            li
-                a(href="http://www.polymer-project.org/", target="_blank") Polymer
-            li
-                a(href="http://www.mongodb.org/", target="_blank") MongoDB
-
-    section(class="half right")
-
-        iframe(id="contact-card", src="http://lab.lepture.com/github-cards/card.html?user=projectweekend", frameborder="0", scrolling="0", width="400", height="200", allowtransparency)
+        p(class="lead")
+            | Indoor temperature, humidity, and barometric pressure data being displayed is collected and transmitted by two other projects: 
+            a(href="https://github.com/projectweekend/Pi-Red-Dwarf", target="_blank") Pi-Red-Dwarf 
+            | & 
+            a(href="https://github.com/projectweekend/Ar-Starbug", target="_blank") Ar-Starbug
+        
+        div
+            iframe(id="contact-card", src="http://lab.lepture.com/github-cards/card.html?user=projectweekend", frameborder="0", scrolling="0", width="400", height="200", allowtransparency)
