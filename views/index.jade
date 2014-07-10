@@ -38,6 +38,16 @@ html(lang="en", ng-app="myApp")
                 core-toolbar(id="mainheader")
                     paper-icon-button(id="navicon", icon="menu")
                     span(flex) Holly
+                div(id="compatibility-warning", ng-controller="Compatibility")
+                    div(ng-if="notChrome", class="container-fluid")
+                        div(class="row")
+                            div(class="col-md-12")        
+                                div(class="alert alert-danger")
+                                    strong Hey!
+                                    | This site uses some newer technologies that currently work best in Google's Chrome browser. 
+                                    | If you don't already have Chrome, you can download it 
+                                    a(href="https://www.google.com/intl/en-US/chrome/browser/", target="_blank") here
+                                    | .
                 div(ng-view, class="container-fluid")
 
         script(src="bower_components/angular/angular.js")

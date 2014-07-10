@@ -1,6 +1,11 @@
 var cMod = angular.module( 'myApp.controllers', [] );
 
 
+cMod.controller( 'Compatibility', function ( $scope, $window ) {
+    $scope.notChrome = typeof window.chrome === "undefined";
+} );
+
+
 cMod.controller( 'Home', function( $scope, SensorReading ) {
 
     $scope.SensorReading = SensorReading;

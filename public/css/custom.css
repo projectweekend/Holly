@@ -51,4 +51,8 @@ section.half.right {
     float: right;
     width: 50%;
     text-align: center;
-}*/
+}
+
+#compatibility-warning {
+    margin-top: 20px;
+}
