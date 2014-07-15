@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var SensorAPI = require( '../api/sensor/controllers' );
+var RaspberryPiAPI = require( '../api/raspberry_pi/controllers' );
 
 
 // Serve the index page for the Angular app
@@ -15,10 +16,12 @@ router.get( '/partials/:name', function ( req, res ) {
 
 
 /* Map URLs to handlers in this file */
+router.post( '/api/raspberry-pi', RaspberryPiAPI.create );
+
 router.post( '/api/sensor', SensorAPI.create );
 router.get( '/api/sensor/:readingType', SensorAPI.read );
-router.get( '/api/chart/:chartType', SensorAPI.getChart );
 
+router.get( '/api/chart/:chartType', SensorAPI.getChart );
 
 
 module.exports = router;
