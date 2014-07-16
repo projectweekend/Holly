@@ -35,10 +35,12 @@ app.use( expressJwt( {
         '/api/sensor/pressure',
         '/api/sensor/luminosity',
         '/api/sensor/all',
+        '/api/raspberry-pi/latest',
         '/api/chart/temperature',
         '/api/chart/humidity',
         '/api/chart/pressure',
-        '/api/chart/luminosity'
+        '/api/chart/luminosity',
+        '/api/chart/raspberry-pi'
     ]
 } ) );
 
