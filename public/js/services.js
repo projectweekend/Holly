@@ -54,7 +54,7 @@ sMod.factory( 'SensorReading', function ( API ) {
         data: {},
         latest: function () {
             var self = this;
-            API.get( '/api/sensor/all', function ( err, data ) {
+            API.get( '/api/latest/all', function ( err, data ) {
 
                 if ( err ) {
                     return alert( "Error with latest reading" );
