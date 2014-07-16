@@ -103,3 +103,58 @@ describe( 'add a system temperature reading...', function () {
     } );
 
 } );
+
+
+describe( 'get latest system temperature', function () {
+
+    it( 'responds with 200 and data', function ( done ) {
+
+        api.get( '/api/raspberry-pi/latest' )
+            .set( 'Content-Type', 'application/json' )
+            .expect( 200 )
+            .end( function ( err, res ) {
+
+                if ( err ) {
+                    return done( err );
+                }
+
+                expect( res.body ).to.have.a.property( "_id" );
+                expect( res.body ).to.have.a.property( "date" );
+                expect( res.body ).to.have.a.property( "temp_f" );
+                expect( res.body ).to.have.a.property( "temp_c" );
+                done();
+
+            } );
+
+    } );
+
+} );
+
+
+describe( 'get system temperature chart data', function () {
+
+    it( 'responds with 200 and data', function ( done ) {
+
+        api.get( '/api/chart/raspberry-pi' )
+            .set( 'Content-Type', 'application/json' )
+            .expect( 200 )
+            .end( function ( err, res ) {
+
+                if ( err ) {
+                    return done( err );
+                }
+
+                expect( res.body ).to.be.an( "array" ).with.length.above( 0 );
+                expect( res.body[ 0 ] ).to.have.a.property( "_id" );
+                expect( res.body[ 0 ] ).to.have.a.property( "date" );
+                expect( res.body[ 0 ] ).to.have.a.property( "temp_f" );
+                expect( res.body[ 0 ] ).to.have.a.property( "temp_c" );
+                done();
+
+            } );
+
+    } );
+
+} );
+
+
