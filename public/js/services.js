@@ -48,6 +48,27 @@ sMod.factory( 'API', function ( $http, $location, $window ) {
 } );
 
 
+sMod.factory( 'RaspberryPi', function ( API ) {
+
+    return {
+        data: {},
+        latest: function () {
+            var self = this;
+            API.get( '/api/latest/raspberry-pi', function ( err, data ) {
+
+                if ( err ) {
+                    return alert( "Error with latest reading" );
+                }
+
+                self.data = data;
+
+            } );
+        }
+    };
+
+} );
+
+
 sMod.factory( 'SensorReading', function ( API ) {
 
     return {
