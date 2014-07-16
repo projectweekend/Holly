@@ -109,7 +109,7 @@ describe( 'get latest system temperature', function () {
 
     it( 'responds with 200 and data', function ( done ) {
 
-        api.get( '/api/raspberry-pi/latest' )
+        api.get( '/api/latest/raspberry-pi' )
             .set( 'Content-Type', 'application/json' )
             .expect( 200 )
             .end( function ( err, res ) {

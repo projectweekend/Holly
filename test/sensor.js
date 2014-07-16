@@ -226,7 +226,7 @@ describe( 'get latest...', function () {
 
     describe( 'temperature reading...', function () {
         it( 'responds with 200 and data', function ( done ) {
-            api.get( '/api/sensor/temperature' )
+            api.get( '/api/latest/temperature' )
                 .set( 'Content-Type', 'application/json' )
                 .expect( 200 )
                 .end( function ( err, res ) {
@@ -247,7 +247,7 @@ describe( 'get latest...', function () {
 
     describe( 'humidity reading...', function () {
         it( 'responds with 200 and data', function ( done ) {
-            api.get( '/api/sensor/humidity' )
+            api.get( '/api/latest/humidity' )
                 .set( 'Content-Type', 'application/json' )
                 .expect( 200 )
                 .end( function ( err, res ) {
@@ -267,7 +267,7 @@ describe( 'get latest...', function () {
 
     describe( 'pressure reading...', function () {
         it( 'responds with 200 and data', function ( done ) {
-            api.get( '/api/sensor/pressure' )
+            api.get( '/api/latest/pressure' )
                 .set( 'Content-Type', 'application/json' )
                 .expect( 200 )
                 .end( function ( err, res ) {
@@ -287,7 +287,7 @@ describe( 'get latest...', function () {
 
     describe( 'luminosity reading...', function () {
         it( 'responds with 200 and data', function ( done ) {
-            api.get( '/api/sensor/luminosity' )
+            api.get( '/api/latest/luminosity' )
                 .set( 'Content-Type', 'application/json' )
                 .expect( 200 )
                 .end( function ( err, res ) {
@@ -307,7 +307,7 @@ describe( 'get latest...', function () {
 
     describe( 'all readings...', function () {
         it( 'responds with 200 and data', function ( done ) {
-            api.get( '/api/sensor/all' )
+            api.get( '/api/latest/all' )
                 .set( 'Content-Type', 'application/json' )
                 .expect( 200 )
                 .end( function ( err, res ) {
