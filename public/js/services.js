@@ -90,39 +90,43 @@ sMod.factory( 'SensorReading', function ( API ) {
 } );
 
 
+// Helper function used in charting routes
+var makeLabels = function ( rawChartData ) {
+
+    var extractDateParts = function ( chartItem ) {
+        var d = new Date( chartItem.date );
+        var hours = d.getHours();
+        var minutes = d.getMinutes();
+        if ( minutes < 10 ) {
+            return hours + ":0" + minutes;
+        }
+        return hours + ":" + minutes;
+    };
+
+    return rawChartData.map( extractDateParts );
+
+};
+
+
+// Helper function used in charting routes
+var makeDataSets = function ( rawChartData, propertyName ) {
+
+    var extractPropertyData = function ( chartItem ) {
+        return chartItem[ propertyName ];
+    };
+
+    return [ {
+        fillColor : "rgba(151,187,205,0)",
+        strokeColor : "#e67e22",
+        pointColor : "rgba(151,187,205,0)",
+        pointStrokeColor : "#e67e22",
+        data: rawChartData.map( extractPropertyData )
+    } ];
+
+};
+
+
 sMod.factory( 'SensorChart', function ( API, $window ) {
-
-    var makeLabels = function ( rawChartData ) {
-
-        var extractDateParts = function ( chartItem ) {
-            var d = new Date( chartItem.date );
-            var hours = d.getHours();
-            var minutes = d.getMinutes();
-            if ( minutes < 10 ) {
-                return hours + ":0" + minutes;
-            }
-            return hours + ":" + minutes;
-        };
-
-        return rawChartData.map( extractDateParts );
-
-    };
-
-    var makeDataSets = function ( rawChartData, propertyName ) {
-
-        var extractPropertyData = function ( chartItem ) {
-            return chartItem[ propertyName ];
-        };
-
-        return [ {
-            fillColor : "rgba(151,187,205,0)",
-            strokeColor : "#e67e22",
-            pointColor : "rgba(151,187,205,0)",
-            pointStrokeColor : "#e67e22",
-            data: rawChartData.map( extractPropertyData )
-        } ];
-
-    };
 
     var chartWidth = function () {
 
