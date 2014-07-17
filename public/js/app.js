@@ -30,6 +30,11 @@ appMod.config( function( $routeProvider ) {
         controller: 'Pressure'
     } );
 
+    $routeProvider.when( '/raspberry-pi', {
+        templateUrl: 'partials/raspberry-pi',
+        controller: 'RaspberryPi'
+    } );
+
     $routeProvider.when( '/about', {
         templateUrl: 'partials/about'
     } );

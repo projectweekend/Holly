@@ -160,3 +160,9 @@ sMod.factory( 'SensorChart', function ( API, $window ) {
     };
 
 } );
+
+
+sMod.factory( 'RaspberryPiChart', function ( API, $window ) {
+    return {
+    };
+} );
