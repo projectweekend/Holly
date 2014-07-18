@@ -4,17 +4,15 @@ div(class="row")
             h1 Home
 
 div(class="row")
-    div(class="col-md-4 latest")
+    div(class="col-md-3 latest")
         h3(class="reading-title") Temperature
         p(class="reading") {{ SensorReading.data.temp_f }}&deg; F
-    div(class="col-md-4 latest")
+    div(class="col-md-3 latest")
         h3(class="reading-title") Humidity
         p(class="reading") {{ SensorReading.data.humidity }}%
-    div(class="col-md-4 latest")
+    div(class="col-md-3 latest")
         h3(class="reading-title") Pressure
         p(class="reading") {{ SensorReading.data.pressure }} hPa
-
-div(class="row")
-    div(class="col-md-4 col-md-offset-4 latest")
+    div(class="col-md-3 latest")
         h3(class="reading-title") Raspberry Pi
-        p(class="reading") {{ RaspberryPi.data.temp_f }}&deg; F
+        p(class="reading") {{ RaspberryPi.data.temp_f }}&deg; F        
