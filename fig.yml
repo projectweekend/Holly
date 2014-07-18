@@ -14,3 +14,6 @@ web:
     environment:
         PORT: 3000
         JWT_SECRET: SetJwtTokenSecretHere
+        FORECAST_IO_KEY: adsfadsfasdfasfd
+        FORECAST_LATITUDE: 41.885246
+        FORECAST_LONGITUDE: -87.642853
