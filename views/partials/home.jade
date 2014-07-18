@@ -5,13 +5,13 @@ div(class="row")
 
 div(class="row")
     div(class="col-md-3 latest")
-        h3(class="reading-title") Temperature
+        h3(class="reading-title") Indoor Temperature
         p(class="reading") {{ SensorReading.data.temp_f }}&deg; F
     div(class="col-md-3 latest")
-        h3(class="reading-title") Humidity
+        h3(class="reading-title") Indoor Humidity
         p(class="reading") {{ SensorReading.data.humidity }}%
     div(class="col-md-3 latest")
-        h3(class="reading-title") Pressure
+        h3(class="reading-title") Indoor Pressure
         p(class="reading") {{ SensorReading.data.pressure }} hPa
     div(class="col-md-3 latest")
         h3(class="reading-title") Raspberry Pi
