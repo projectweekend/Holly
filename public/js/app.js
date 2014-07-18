@@ -4,7 +4,8 @@ var appMod = angular.module( 'myApp', [
     'myApp.directives',
     'myApp.controllers',
     // Third-party modules
-    'angles'
+    'angles',
+    'angular-skycons'
 ] );
 
 
