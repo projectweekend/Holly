@@ -1,7 +1,7 @@
 {
   "name": "angular-skycons",
   "main": "angular-skycons.js",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "homepage": "https://github.com/projectweekend/angular-skycons",
   "authors": [
     "Brian Hines <brian@projectweekend.net>"
@@ -27,14 +27,13 @@
   "dependencies": {
     "skycons": "darkskyapp/skycons"
   },
-  "_release": "0.0.5",
+  "_release": "0.0.6",
   "_resolution": {
     "type": "version",
-    "tag": "0.0.5",
-    "commit": "b0410b84622a65a9351e67424ea57e6598ed83ad"
+    "tag": "0.0.6",
+    "commit": "9d18328e48f9dcfe49e62ccc920752ca1018441e"
   },
   "_source": "git://github.com/projectweekend/angular-skycons.git",
   "_target": "~0.0.5",
-  "_originalSource": "angular-skycons",
-  "_direct": true
+  "_originalSource": "angular-skycons"
 }
