@@ -12,7 +12,7 @@ var weatherman = forecastIO( apiKey );
 
 weatherman.goOnLocation( latitude, longitude );
 weatherman.options = {
-    exclude: [ "minutely", "hourly", "daily", "alerts" ]
+    exclude: [ "minutely", "daily", "alerts" ]
 };
 
 
