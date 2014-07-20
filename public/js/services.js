@@ -206,8 +206,53 @@ sMod.factory( 'RaspberryPiChart', function ( API, $window ) {
 
 sMod.factory( 'Weather', function ( API ) {
 
+    var formatData = function ( data ) {
+
+        var convertWindBearing = function ( windBearing ) {
+
+            if ( windBearing === 0 ) {
+                return "North";
+            }
+
+            if ( windBearing > 0 && windBearing < 90 ) {
+                return "North East";
+            }
+
+            if ( windBearing === 90 ) {
+                return "East";
+            }
+
+            if ( windBearing > 90 && windBearing < 180 ) {
+                return "South East";
+            }
+
+            if ( windBearing === 180 ) {
+                return "South";
+            }
+
+            if ( windBearing > 180 && windBearing < 270 ) {
+                return "South West";
+            }
+
+            if ( windBearing === 270 ) {
+                return "West";
+            }
+
+            if ( windBearing > 270 && windBearing < 360 ) {
+                return "North West";
+            }
+
+        };
+
+        data.windBearing = convertWindBearing( data.windBearing );
+
+        return data;
+
+    };
+
     return {
-        data: {},
+        currently: {},
+        hourly: {},
         init: function () {
 
             var self = this;
@@ -219,7 +264,9 @@ sMod.factory( 'Weather', function ( API ) {
                     return alert( "Error with weather API" );
                 }
 
-                self.data = data;
+                self.currently = formatData( data.currently );
+                self.hourly = data.hourly;
+                self.hourly.data = data.hourly.map( formatData );
 
             } );
         }
