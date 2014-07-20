@@ -20,7 +20,8 @@ core-toolbar, #navheader {
     text-align: center;
 }
 
-.latest {
+.latest,
+.centered {
     text-align: center;
 }
 
