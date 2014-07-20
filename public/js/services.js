@@ -204,7 +204,7 @@ sMod.factory( 'RaspberryPiChart', function ( API, $window ) {
 } );
 
 
-sMod.factory( 'Weather', function ( API ) {
+sMod.factory( 'Weather', function ( API, $window ) {
 
     var formatData = function ( data ) {
 
@@ -250,6 +250,16 @@ sMod.factory( 'Weather', function ( API ) {
 
     };
 
+    var calcIconSize = function () {
+
+        var blockWidth = $window.innerWidth;
+        if ( $window.innerWidth > 991 ) {
+            blockWidth = $window.innerWidth / 3.0;
+        }
+        return blockWidth - 150;
+
+    };
+
     return {
         currently: {},
         hourly: {},
@@ -265,8 +275,10 @@ sMod.factory( 'Weather', function ( API ) {
                 }
 
                 self.currently = formatData( data.currently );
+                console.log( calcIconSize() );
+                self.currently.iconSize = calcIconSize();
                 self.hourly = data.hourly;
-                self.hourly.data = data.hourly.map( formatData );
+                self.hourly.data = data.hourly.data.map( formatData );
 
             } );
         }
