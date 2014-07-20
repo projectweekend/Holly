@@ -57,6 +57,7 @@ sMod.factory( 'RaspberryPi', function ( API ) {
             API.get( '/api/latest/raspberry-pi', function ( err, data ) {
 
                 if ( err ) {
+                    // TODO: improve error display
                     return alert( "Error with latest reading" );
                 }
 
@@ -78,6 +79,7 @@ sMod.factory( 'SensorReading', function ( API ) {
             API.get( '/api/latest/all', function ( err, data ) {
 
                 if ( err ) {
+                    // TODO: improve error display
                     return alert( "Error with latest reading" );
                 }
 
@@ -153,6 +155,7 @@ sMod.factory( 'SensorChart', function ( API, $window ) {
             API.get( '/api/chart/' + chartType, function ( err, data ) {
 
                 if ( err ) {
+                    // TODO: improve error display
                     return alert( "Error with " + chartType + " chart" );
                 }
 
@@ -187,11 +190,36 @@ sMod.factory( 'RaspberryPiChart', function ( API, $window ) {
             API.get( '/api/chart/raspberry-pi', function ( err, data ) {
 
                 if ( err ) {
+                    // TODO: improve error display
                     return alert( "Error with raspberry-pi chart" );
                 }
 
                 self.data.labels = makeLabels( data );
                 self.data.datasets = makeDataSets( data, 'temp_f' );
+
+            } );
+        }
+    };
+
+} );
+
+
+sMod.factory( 'Weather', function ( API ) {
+
+    return {
+        data: {},
+        init: function () {
+
+            var self = this;
+
+            API.get( '/api/weather', function ( err, data ) {
+
+                if ( err ) {
+                    // TODO: improve error display
+                    return alert( "Error with weather API" );
+                }
+
+                self.data = data;
 
             } );
         }
