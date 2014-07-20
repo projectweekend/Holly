@@ -15,4 +15,12 @@ div(class="row")
         p(class="reading") {{ SensorReading.data.pressure }} hPa
     div(class="col-md-3 latest")
         h3(class="reading-title") Raspberry Pi
-        p(class="reading") {{ RaspberryPi.data.temp_f }}&deg; F        
+        p(class="reading") {{ RaspberryPi.data.temp_f }}&deg; F    
+
+hr
+
+div(class="row")
+    div(class="col-md-4 centered")
+        skycon(icon="Weather.currently.icon", size="Weather.currently.iconSize")
+
+    div(class="col-md-8")
