@@ -6,13 +6,16 @@ cMod.controller( 'Compatibility', function ( $scope, $window ) {
 } );
 
 
-cMod.controller( 'Home', function( $scope, SensorReading, RaspberryPi ) {
+cMod.controller( 'Home', function( $scope, SensorReading, RaspberryPi, Weather ) {
 
     $scope.SensorReading = SensorReading;
     $scope.SensorReading.latest();
 
     $scope.RaspberryPi = RaspberryPi;
     $scope.RaspberryPi.latest();
+
+    $scope.Weather = Weather;
+    $scope.Weather.init();
 
 } );
 
