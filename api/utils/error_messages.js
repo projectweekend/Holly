@@ -20,6 +20,7 @@ exports.systemError = function ( err ) {
 exports.authorizationError = function ( message ) {
     return {
         type: 'authorization',
-        msg: message
+        msg: message,
+        code: 401
     };
 };
