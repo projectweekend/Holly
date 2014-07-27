@@ -24,3 +24,32 @@ div(class="row")
         skycon(icon="Weather.currently.icon", size="Weather.currently.iconSize")
 
     div(class="col-md-8")
+        h2 {{ Weather.currently.summary }} 
+            small {{ Weather.currently.time | date:'short' }}
+        p(class="lead") {{ Weather.hourly.summary }}
+        div(class="row")
+            div(class="col-md-6 weather-details")
+                div(class="detail-item") 
+                    span Temperature: 
+                    span(class="data") {{ Weather.currently.temperature }}&deg; F
+                div(class="detail-item") 
+                    span Humidity: 
+                    span(class="data") {{ Weather.currently.humidity }}%
+                div(class="detail-item") 
+                    span Wind: 
+                    span(class="data") {{ Weather.currently.windSpeed }} MPH
+
+            div(class="col-md-6 weather-details")
+                div(class="detail-item") 
+                    span Feels Like: 
+                    span(class="data") {{ Weather.currently.apparentTemperature }}&deg; F
+                div(class="detail-item") 
+                    span Dew Point: 
+                    span(class="data") {{ Weather.currently.dewPoint }}&deg; F
+                div(class="detail-item") 
+                    span Bearing: 
+                    span(class="data") {{ Weather.currently.windBearing }}
+
+hr
+                
+

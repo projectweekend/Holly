@@ -25,7 +25,8 @@ core-toolbar, #navheader {
     text-align: center;
 }
 
-.reading-title {
+.reading-title,
+.weather-details .data {
     color: #FFA500;
 }
 
@@ -39,4 +40,16 @@ section.about {
 
 #compatibility-warning {
     margin-top: 20px;
+}
+
+.weather-details {
+    font-size: 1.5em;
+}
+
+.weather-details .detail-item {
+    margin-bottom: 10px;
+}
+
+.weather-details .data {
+    font-weight: bold;
 }
