@@ -246,6 +246,8 @@ sMod.factory( 'Weather', function ( API, $window ) {
 
         data.windBearing = convertWindBearing( data.windBearing );
         data.time = data.time * 1000;
+        data.humidity = Math.round(data.humidity * 100);
+
 
         return data;
 
@@ -257,7 +259,7 @@ sMod.factory( 'Weather', function ( API, $window ) {
         if ( $window.innerWidth > 991 ) {
             blockWidth = $window.innerWidth / 3.0;
         }
-        return blockWidth - 150;
+        return blockWidth - 200;
 
     };
 
