@@ -245,6 +245,7 @@ sMod.factory( 'Weather', function ( API, $window ) {
         };
 
         data.windBearing = convertWindBearing( data.windBearing );
+        data.time = data.time * 1000;
 
         return data;
 
