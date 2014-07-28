@@ -264,13 +264,17 @@ sMod.factory( 'Weather', function ( API, $window ) {
     };
 
     return {
+        loading: false,
         currently: {},
         hourly: {},
         init: function () {
 
             var self = this;
 
+            self.loading = true;
             API.get( '/api/weather', function ( err, data ) {
+
+                self.loading = false;
 
                 if ( err ) {
                     // TODO: improve error display

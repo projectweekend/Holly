@@ -19,7 +19,13 @@ div(class="row")
 
 hr
 
-div(class="row")
+div(ng-if="Weather.loading", class="row")
+    
+    div(class="col-md-12 centered")
+        img(src="img/ajax-loader.gif", alt="Loading spinner")
+
+div(ng-if="!Weather.loading", class="row")
+    
     div(class="col-md-4 centered")
         skycon(icon="Weather.currently.icon", size="Weather.currently.iconSize")
 
