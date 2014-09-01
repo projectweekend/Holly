@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Holly : The code for http://holly.projectweekend.net/">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Holly</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/projectweekend/Holly">View on GitHub</a>
+
+          <h1 id="project_title">Holly</h1>
+          <h2 id="project_tagline">The code for http://holly.projectweekend.net/</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/projectweekend/Holly/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/projectweekend/Holly/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>You can see Holly in action at: <a href="http://holly.projectweekend.net/">http://holly.projectweekend.net/</a></p>
+
+<h2>
+<a name="development-environment" class="anchor" href="#development-environment"><span class="octicon octicon-link"></span></a>Development Environment</h2>
+
+<p>The development environment uses <a href="http://www.docker.com/">Docker</a> and <a href="http://orchardup.github.io/fig/">Fig</a>. This makes it super easy to get up and running with a configuration that would closely mirror production. A <a href="http://www.vagrantup.com/">Vagrant</a> config file is included for operating systems that cannot yet run Docker natively.</p>
+
+<p>With Docker/Fig/Vagrant installed, use the following steps to launch for the first time:</p>
+
+<ul>
+<li>
+<code>npm install</code> from within the project root to locally install all of the web app's Node dependencies.</li>
+<li>
+<code>fig up</code> to start the web app. This will download and provision two containers: one running Mongo and one running Holly. This will take a while, but once it completes subsequent launches will be much faster.</li>
+<li>When <code>fig up</code> completes, the app should be accessible at <a href="http://127.0.0.1:3000">http://127.0.0.1:3000</a>. (NOTE: if running commands within the Vagrant VM that is provisioned by the <code>Vagrantfile</code> included here, the app can be found at: <a href="http://192.168.13.81:3000">http://192.168.13.81:3000</a>)</li>
+</ul><h2>
+<a name="configuration" class="anchor" href="#configuration"><span class="octicon octicon-link"></span></a>Configuration</h2>
+
+<p>There are just a couple of configurations managed as environment variables. In the development environment, these are injected by Fig and managed in the <code>fig.yml</code> file.</p>
+
+<ul>
+<li>
+<code>PORT</code> - Changes the port number for the web app. The default is 3000.</li>
+<li>
+<code>JWT_SECRET</code> - This is a secret string that you make up. It is used to encrypt and verify the authentication token on routes that require authentication.</li>
+</ul><h2>
+<a name="api-info" class="anchor" href="#api-info"><span class="octicon octicon-link"></span></a>API Info</h2>
+
+<p>The web app uses a handful of API routes transporting JSON data. There is also a single route for receiving sensor readings. I use one of my Raspberry Pi projects (<a href="https://github.com/projectweekend/Pi-Red-Dwarf">Pi-Red-Dwarf</a>) to transmit this data, but all you need is something capable of making an HTTP POST request.</p>
+
+<h4>
+<a name="add-new-sensor-readings" class="anchor" href="#add-new-sensor-readings"><span class="octicon octicon-link"></span></a>Add new sensor readings</h4>
+
+<pre><code>POST: /api/sensor
+</code></pre>
+
+<p><strong>Request Body</strong></p>
+
+<div class="highlight highlight-json"><pre><span class="p">{</span>
+    <span class="nt">"temp_c"</span><span class="p">:</span> <span class="mi">22</span><span class="p">,</span>
+    <span class="nt">"temp_f"</span><span class="p">:</span> <span class="mf">71.6</span><span class="p">,</span>
+    <span class="nt">"humidity"</span><span class="p">:</span> <span class="mf">55.4</span><span class="p">,</span>
+    <span class="nt">"pressure"</span><span class="p">:</span> <span class="mf">895.3</span><span class="p">,</span>
+    <span class="nt">"luminosity"</span><span class="p">:</span> <span class="mf">1003.3</span>
+<span class="p">}</span>
+</pre></div>
+
+<p><strong>Response Body</strong></p>
+
+<div class="highlight highlight-json"><pre><span class="p">{</span>
+    <span class="nt">"_id"</span><span class="p">:</span> <span class="s2">"53b8c7f74a9a52a629de9121"</span><span class="p">,</span>
+    <span class="nt">"date"</span><span class="p">:</span> <span class="s2">"2014-07-06T13:54:04.358Z"</span><span class="p">,</span>
+    <span class="nt">"temp_c"</span><span class="p">:</span> <span class="mi">22</span><span class="p">,</span>
+    <span class="nt">"temp_f"</span><span class="p">:</span> <span class="mf">71.6</span><span class="p">,</span>
+    <span class="nt">"humidity"</span><span class="p">:</span> <span class="mf">55.4</span><span class="p">,</span>
+    <span class="nt">"pressure"</span><span class="p">:</span> <span class="mf">895.3</span><span class="p">,</span>
+    <span class="nt">"luminosity"</span><span class="p">:</span> <span class="mf">1003.3</span>
+<span class="p">}</span>
+</pre></div>
+
+<p><strong>NOTE</strong>
+I run Holly publically so this route requires an authentication token. If you plan on doing the same, you should also use SSL to encrypt traffic to this route. The project includes a simple command line tool to help you generate a token for any device that will access this route. The tool takes two parameters. For the first one, use the same string as the <code>JWT_SECRET</code> environment variable referenced above in the Configuration section. The second is another string you make up that will go into the body of the token.</p>
+
+<pre><code>./get_token JwtTokenSecretHere WhateverYouWant
+</code></pre>
+
+<p>The value returned from this tool must be set in the <code>Authorization</code> header to satisfy authentication. Here is an example formatting of the header/value pair:</p>
+
+<pre><code>Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IkJ1bGxTaGl0RGF0YSIs
+</code></pre>
+
+<h4>
+<a name="get-latest-temperature-reading" class="anchor" href="#get-latest-temperature-reading"><span class="octicon octicon-link"></span></a>Get latest temperature reading</h4>
+
+<pre><code>GET: /api/sensor/temperature
+</code></pre>
+
+<p><strong>Response Body</strong></p>
+
+<div class="highlight highlight-json"><pre><span class="p">{</span>
+    <span class="nt">"_id"</span><span class="p">:</span> <span class="s2">"53b8c7f74a9a52a629de9121"</span><span class="p">,</span>
+    <span class="nt">"temp_c"</span><span class="p">:</span> <span class="mi">22</span><span class="p">,</span>
+    <span class="nt">"temp_f"</span><span class="p">:</span> <span class="mf">71.6</span><span class="p">,</span>
+    <span class="nt">"date"</span><span class="p">:</span> <span class="s2">"2014-07-06T03:52:23.368Z"</span>
+<span class="p">}</span>
+</pre></div>
+
+<h4>
+<a name="get-sensor-readings-for-temperature-chart" class="anchor" href="#get-sensor-readings-for-temperature-chart"><span class="octicon octicon-link"></span></a>Get sensor readings for temperature chart</h4>
+
+<pre><code>GET: /api/chart/temperature
+</code></pre>
+
+<p><strong>Response Body</strong></p>
+
+<div class="highlight highlight-json"><pre><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="nt">"_id"</span><span class="p">:</span> <span class="s2">"53b8c7f74a9a52a629de9121"</span><span class="p">,</span>
+        <span class="nt">"temp_c"</span><span class="p">:</span> <span class="mi">22</span><span class="p">,</span>
+        <span class="nt">"temp_f"</span><span class="p">:</span> <span class="mf">71.6</span><span class="p">,</span>
+        <span class="nt">"date"</span><span class="p">:</span> <span class="s2">"2014-07-06T03:52:23.368Z"</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+
+<h4>
+<a name="get-latest-humdity-reading" class="anchor" href="#get-latest-humdity-reading"><span class="octicon octicon-link"></span></a>Get latest humdity reading</h4>
+
+<pre><code>GET: /api/sensor/humidity
+</code></pre>
+
+<p><strong>Response Body</strong></p>
+
+<div class="highlight highlight-json"><pre><span class="p">{</span>
+    <span class="nt">"_id"</span><span class="p">:</span> <span class="s2">"53b954fcf11151202bd12437"</span><span class="p">,</span>
+    <span class="nt">"humidity"</span><span class="p">:</span> <span class="mf">55.4</span><span class="p">,</span>
+    <span class="nt">"date"</span><span class="p">:</span> <span class="s2">"2014-07-06T13:54:04.358Z"</span>
+<span class="p">}</span>
+</pre></div>
+
+<h4>
+<a name="get-sensor-readings-for-humidity-chart" class="anchor" href="#get-sensor-readings-for-humidity-chart"><span class="octicon octicon-link"></span></a>Get sensor readings for humidity chart</h4>
+
+<pre><code>GET: /api/chart/humidity
+</code></pre>
+
+<p><strong>Response Body</strong></p>
+
+<div class="highlight highlight-json"><pre><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="nt">"_id"</span><span class="p">:</span> <span class="s2">"53b954fcf11151202bd12437"</span><span class="p">,</span>
+        <span class="nt">"humidity"</span><span class="p">:</span> <span class="mf">55.4</span><span class="p">,</span>
+        <span class="nt">"date"</span><span class="p">:</span> <span class="s2">"2014-07-06T13:54:04.358Z"</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+
+<h4>
+<a name="get-latest-pressure-reading" class="anchor" href="#get-latest-pressure-reading"><span class="octicon octicon-link"></span></a>Get latest pressure reading</h4>
+
+<pre><code>GET:  /api/sensor/pressure
+</code></pre>
+
+<p><strong>Response Body</strong></p>
+
+<div class="highlight highlight-json"><pre><span class="p">{</span>
+    <span class="nt">"_id"</span><span class="p">:</span> <span class="s2">"53b954fcf11151202bd12437"</span><span class="p">,</span>
+    <span class="nt">"pressure"</span><span class="p">:</span> <span class="mf">895.3</span><span class="p">,</span>
+    <span class="nt">"date"</span><span class="p">:</span> <span class="s2">"2014-07-06T13:54:04.358Z"</span>
+<span class="p">}</span>
+</pre></div>
+
+<h4>
+<a name="get-sensor-readings-for-pressure-chart" class="anchor" href="#get-sensor-readings-for-pressure-chart"><span class="octicon octicon-link"></span></a>Get sensor readings for pressure chart</h4>
+
+<pre><code>GET:  /api/chart/pressure
+</code></pre>
+
+<p><strong>Response Body</strong></p>
+
+<div class="highlight highlight-json"><pre><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="nt">"_id"</span><span class="p">:</span> <span class="s2">"53b954fcf11151202bd12437"</span><span class="p">,</span>
+        <span class="nt">"pressure"</span><span class="p">:</span> <span class="mf">895.3</span><span class="p">,</span>
+        <span class="nt">"date"</span><span class="p">:</span> <span class="s2">"2014-07-06T13:54:04.358Z"</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Holly maintained by <a href="https://github.com/projectweekend">projectweekend</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
