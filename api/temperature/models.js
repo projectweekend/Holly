@@ -13,17 +13,6 @@ var AverageTemperatureSchema = Schema( {
 } );
 
 
-AverageTemperatureSchema.statics.addWeekly = function ( data, cb ) {
-    data.type = "WEEKLY";
-    this.create( data, function ( err, reading ) {
-        if ( err ) {
-            return cb( systemError( err ) );
-        }
-        return cb( null, reading );
-    } );
-};
-
-
 AverageTemperatureSchema.statics.latestReading = function ( fieldsToSelect, cb ) {
     var q = this.findOne( {} )
                 .select( fieldsToSelect )
