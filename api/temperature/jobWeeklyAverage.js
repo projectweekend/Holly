@@ -16,32 +16,33 @@ if ( FIG_DB ) {
 mongoose.connect(MONGO_DB);
 
 
-var weekStart = moment().subtract(6, "days").toDate();
-var weekEnd = moment().toDate();
+var momentWithNoTime = function () {
+    return moment().hour( 0 ).minutes( 0 ).seconds( 0 );
+};
 
-SensorReading.findOne( {}, function ( err, data ) {
+
+var weekStart = momentWithNoTime().subtract(6, "days").toDate();
+var weekEnd = momentWithNoTime().toDate();
+
+SensorReading.aggregate( [
+    {
+        $group: {
+            _id: null,
+            avgTempC: {
+                $avg: "$temp_c"
+            },
+            avgTempF: {
+                $avg: "$temp_f"
+            }
+        }
+    }
+], function ( err, data ) {
     if ( err ) {
-        return console.log( err );
+        console.log( err );
+        process.exit( 1 );
     }
     console.log( data );
+    process.exit( 0 );
 } );
 
 
-// SensorReading.aggregate( [
-//     {
-//         $group: {
-//             _id: null,
-//             avgTempC: {
-//                 $avg: "$temp_c"
-//             },
-//             avgTempF: {
-//                 $avg: "$temp_f"
-//             }
-//         }
-//     }
-// ], function ( err, data ) {
-//     if ( err ) {
-//         return console.log( err );
-//     }
-//     console.log( data );
-// } );
