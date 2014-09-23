@@ -5,6 +5,7 @@ var Schema = mongoose.Schema;
 var ObjectId = Schema.ObjectId;
 
 
+// Sensor Reading
 var SensorReadingSchema = Schema( {
     date: Date,
     temp_c: Number,
@@ -53,7 +54,46 @@ SensorReadingSchema.statics.chartReadings = function ( numberOfReadings, fieldsT
 };
 
 
-var SensorReading = mongoose.model( 'SensorReading', SensorReadingSchema );
+exports.SensorReading = mongoose.model( 'SensorReading', SensorReadingSchema );
 
 
-exports.SensorReading = SensorReading;
+// Average Sensor Reading
+var AverageSensorReadingSchema = Schema( {
+    date: Date,
+    type: String,
+    temp_c: Number,
+    temp_f: Number,
+    humidity: Number,
+    pressure: Number,
+    luminosity: Number
+} );
+
+
+AverageSensorReadingSchema.statics.latestReading = function ( fieldsToSelect, cb ) {
+    var q = this.findOne( {} )
+                .select( fieldsToSelect )
+                .sort( '-date' );
+    q.exec( function ( err, readings ) {
+        if ( err ) {
+            return cb( systemError( err ) );
+        }
+        return cb( null, readings );
+    } );
+};
+
+
+AverageSensorReadingSchema.statics.chartReadings = function ( numberOfReadings, fieldsToSelect, cb ) {
+    var q = this.find( {} )
+                .select( fieldsToSelect )
+                .limit( numberOfReadings )
+                .sort( '-date' );
+    q.exec( function ( err, readings ) {
+        if ( err ) {
+            return cb( systemError( err ) );
+        }
+        return cb( null, readings );
+    } );
+};
+
+
+exports.AverageSensorReading = mongoose.model( 'AverageSensorReading', AverageSensorReadingSchema );

@@ -21,8 +21,11 @@ var momentWithNoTime = function () {
 };
 
 
-var weekStart = momentWithNoTime().subtract(6, "days").toDate();
-var weekEnd = momentWithNoTime().toDate();
+var weekStart = momentWithNoTime().subtract(7, "days").toDate();
+var weekEnd = momentWithNoTime().subtract(1, "days").toDate();
+
+console.log( weekStart );
+console.log( weekEnd );
 
 SensorReading.aggregate( [
     {
