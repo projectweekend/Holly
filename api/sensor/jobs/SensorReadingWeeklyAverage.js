@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 var moment = require( "moment" );
 var mongoose = require( "mongoose" );
-var AverageTemperature = require( './models' ).AverageTemperature;
-var SensorReading = require( '../sensor/models' ).SensorReading;
+var SensorReading = require( '../models' ).SensorReading;
+var AverageSensorReading = require( '../models' ).AverageSensorReading;
 
 
 // connect to the db
