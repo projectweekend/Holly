@@ -54,6 +54,43 @@ SensorReadingSchema.statics.chartReadings = function ( numberOfReadings, fieldsT
 };
 
 
+SensorReadingSchema.statics.averageOverDateRange = function ( startDate, endDate, cb ) {
+
+    var matchOptions = {
+        date: {
+            $gte: startDate,
+            $lte: endDate
+        }
+    };
+
+    var groupOptions = {
+        _id: null,
+        temp_c: {
+            $avg: "$temp_c"
+        },
+        temp_f: {
+            $avg: "$temp_f"
+        },
+        humidity: {
+            $avg: "$humidity"
+        },
+        pressure: {
+            $avg: "$pressure"
+        },
+        luminosity: {
+            $avg: "$luminosity"
+        }
+    };
+
+    var q = this.aggregate()
+                .match( matchOptions )
+                .group( groupOptions );
+
+    q.exec( cb );
+
+};
+
+
 exports.SensorReading = mongoose.model( 'SensorReading', SensorReadingSchema );
 
 
