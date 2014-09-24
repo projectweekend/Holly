@@ -1,3 +1,4 @@
+var moment = require( "moment" );
 var mongoose = require( "mongoose" );
 
 
@@ -10,4 +11,9 @@ exports.connectToMongo = function ( inputParams ) {
       MONGO_DB = process.env.MONGO_URL;
     }
     mongoose.connect( MONGO_DB );
+};
+
+
+exports.momentDateOnly = function () {
+    return moment().hour( 0 ).minutes( 0 ).seconds( 0 );
 };

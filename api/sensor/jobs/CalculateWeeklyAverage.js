@@ -1,6 +1,4 @@
 #!/usr/bin/env node
-var moment = require( "moment" );
-var mongoose = require( "mongoose" );
 var jobUtils = require( "../../utils/jobs" );
 var SensorReading = require( '../models' ).SensorReading;
 var AverageSensorReading = require( '../models' ).AverageSensorReading;
@@ -10,14 +8,9 @@ var AverageSensorReading = require( '../models' ).AverageSensorReading;
 jobUtils.connectToMongo();
 
 
-var momentWithNoTime = function () {
-    return moment().hour( 0 ).minutes( 0 ).seconds( 0 );
-};
-
-
-var weekStart = momentWithNoTime().subtract( 7, "days" ).toDate();
-var weekEnd = momentWithNoTime().toDate();
-var calcDate = momentWithNoTime().subtract( 1, "days" ).toDate();
+var weekStart = jobUtils.momentDateOnly().subtract( 7, "days" ).toDate();
+var weekEnd = jobUtils.momentDateOnly().toDate();
+var calcDate = jobUtils.momentDateOnly().subtract( 1, "days" ).toDate();
 
 
 var logError = function ( err ) {
