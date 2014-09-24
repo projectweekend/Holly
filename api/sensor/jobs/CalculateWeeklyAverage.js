@@ -13,12 +13,6 @@ var weekEnd = jobUtils.momentDateOnly().toDate();
 var calcDate = jobUtils.momentDateOnly().subtract( 1, "days" ).toDate();
 
 
-var logNoData = function () {
-    console.log( "No sensor readings between " + weekStart.toDateString() + " & " + weekEnd.toDateString() );
-    process.exit( 1 );
-};
-
-
 SensorReading.aggregate( [
     {
         $match: {
@@ -55,7 +49,7 @@ SensorReading.aggregate( [
     }
 
     if ( data.length === 0 ) {
-        logNoData();
+        jobUtils.logNoSensorDataBetween( weekStart, weekEnd );
     }
 
     data[ 0 ].date = calcDate;

@@ -13,12 +13,6 @@ var priorMonthEnd = jobUtils.momentDateOnly().date( 1 ).subtract( 1, "days" ).to
 var currentMonthStart = jobUtils.momentDateOnly().date( 1 ).toDate();
 
 
-var logNoData = function () {
-    console.log( "No sensor readings between " + priorMonthStart.toDateString() + " & " + priorMonthEnd.toDateString() );
-    process.exit( 1 );
-};
-
-
 SensorReading.aggregate( [
     {
         $match: {
@@ -55,7 +49,7 @@ SensorReading.aggregate( [
     }
 
     if ( data.length === 0 ) {
-        logNoData();
+        jobUtils.logNoSensorDataBetween( priorMonthStart, priorMonthEnd );
     }
 
     data[ 0 ].date = priorMonthStart;

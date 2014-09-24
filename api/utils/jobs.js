@@ -19,6 +19,12 @@ exports.momentDateOnly = function () {
 };
 
 
+exports.logNoSensorDataBetween = function ( start, end ) {
+    console.log( "No sensor readings between " + start.toDateString() + " & " + end.toDateString() );
+    process.exit( 1 );
+};
+
+
 exports.logError = function ( err ) {
     console.log( err );
     process.exit( 1 );
