@@ -8,9 +8,8 @@ var AverageSensorReading = require( '../models' ).AverageSensorReading;
 jobUtils.connectToMongo();
 
 
-var weekStart = jobUtils.momentDateOnly().subtract( 7, "days" ).toDate();
-var weekEnd = jobUtils.momentDateOnly().toDate();
-var calcDate = jobUtils.momentDateOnly().subtract( 1, "days" ).toDate();
+var weekStart = jobUtils.momentDateOnly().subtract( 8, "days" ).toDate();
+var weekEnd = jobUtils.momentDateOnly().subtract( 1, "days" ).toDate();
 
 
 SensorReading.averageOverDateRange( weekStart, weekEnd, function ( err, data ) {
@@ -23,7 +22,7 @@ SensorReading.averageOverDateRange( weekStart, weekEnd, function ( err, data ) {
         jobUtils.logNoSensorDataBetween( weekStart, weekEnd );
     }
 
-    data[ 0 ].date = calcDate;
+    data[ 0 ].date = weekEnd;
     data[ 0 ].type = "WEEKLY";
 
     AverageSensorReading.add( data[ 0 ], function ( err, avgReading ) {
