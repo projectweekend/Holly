@@ -19,26 +19,6 @@ var logNoData = function () {
 };
 
 
-var saveAverageData = function ( calcData ) {
-
-    delete calcData._id;
-    calcData.date = calcDate;
-    calcData.type = "WEEKLY";
-
-    AverageSensorReading.create( calcData, function ( err, avgReading ) {
-
-        if ( err ) {
-            console.log( err );
-            process.exit( 1 );
-        }
-
-        process.exit( 0 );
-
-    } );
-
-};
-
-
 SensorReading.aggregate( [
     {
         $match: {
@@ -78,6 +58,18 @@ SensorReading.aggregate( [
         logNoData();
     }
 
-    saveAverageData( data[ 0 ] );
+    data[ 0 ].date = calcDate;
+    data[ 0 ].type = "WEEKLY";
+
+    AverageSensorReading.add( data[ 0 ], function ( err, avgReading ) {
+
+        if ( err ) {
+            console.log( err );
+            process.exit( 1 );
+        }
+
+        process.exit( 0 );
+
+    } );
 
 } );

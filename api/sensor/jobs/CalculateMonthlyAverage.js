@@ -19,26 +19,6 @@ var logNoData = function () {
 };
 
 
-var saveAverageData = function ( calcData ) {
-
-    delete calcData._id;
-    calcData.date = priorMonthStart;
-    calcData.type = "MONTHLY";
-
-    AverageSensorReading.create( calcData, function ( err, avgReading ) {
-
-        if ( err ) {
-            console.log( err );
-            process.exit( 1 );
-        }
-
-        process.exit( 0 );
-
-    } );
-
-};
-
-
 SensorReading.aggregate( [
     {
         $match: {
@@ -78,7 +58,18 @@ SensorReading.aggregate( [
         logNoData();
     }
 
-    console.log( data );
-    // saveAverageData( data[ 0 ] );
+    data[ 0 ].date = priorMonthStart;
+    data[ 0 ].type = "MONTHLY";
+
+    AverageSensorReading.add( data[ 0 ], function ( err, avgReading ) {
+
+        if ( err ) {
+            console.log( err );
+            process.exit( 1 );
+        }
+
+        process.exit( 0 );
+
+    } );
 
 } );

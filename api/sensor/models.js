@@ -69,6 +69,17 @@ var AverageSensorReadingSchema = Schema( {
 } );
 
 
+AverageSensorReadingSchema.statics.add = function ( data, cb ) {
+    delete data._id;
+    this.create( data, function ( err, reading ) {
+        if ( err ) {
+            return cb( systemError( err ) );
+        }
+        return cb( null, reading );
+    } );
+};
+
+
 AverageSensorReadingSchema.statics.latestReading = function ( fieldsToSelect, cb ) {
     var q = this.findOne( {} )
                 .select( fieldsToSelect )
