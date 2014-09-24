@@ -17,3 +17,9 @@ exports.connectToMongo = function ( inputParams ) {
 exports.momentDateOnly = function () {
     return moment().hour( 0 ).minutes( 0 ).seconds( 0 );
 };
+
+
+exports.logError = function ( err ) {
+    console.log( err );
+    process.exit( 1 );
+};
