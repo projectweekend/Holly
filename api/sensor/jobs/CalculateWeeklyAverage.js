@@ -1,19 +1,13 @@
 #!/usr/bin/env node
 var moment = require( "moment" );
 var mongoose = require( "mongoose" );
+var jobUtils = require( "../../utils/jobs" );
 var SensorReading = require( '../models' ).SensorReading;
 var AverageSensorReading = require( '../models' ).AverageSensorReading;
 
 
 // connect to the db
-var MONGO_DB;
-var FIG_DB = process.env.DB_1_PORT;
-if ( FIG_DB ) {
-  MONGO_DB = FIG_DB.replace( "tcp", "mongodb" ) + "/dev_db";
-} else {
-  MONGO_DB = process.env.MONGO_URL;
-}
-mongoose.connect(MONGO_DB);
+jobUtils.connectToMongo();
 
 
 var momentWithNoTime = function () {
