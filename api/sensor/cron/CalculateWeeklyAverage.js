@@ -25,17 +25,15 @@ SensorReading.averageOverDateRange( weekStart, weekEnd, function ( err, data ) {
     data[ 0 ].date = weekEnd;
     data[ 0 ].type = "WEEKLY";
 
-    console.log( data[ 0 ] );
+    AverageSensorReading.add( data[ 0 ], function ( err, avgReading ) {
 
-    // AverageSensorReading.add( data[ 0 ], function ( err, avgReading ) {
+        if ( err ) {
+            console.log( err );
+            process.exit( 1 );
+        }
 
-    //     if ( err ) {
-    //         console.log( err );
-    //         process.exit( 1 );
-    //     }
+        process.exit( 0 );
 
-    //     process.exit( 0 );
-
-    // } );
+    } );
 
 } );

@@ -25,17 +25,15 @@ SensorReading.averageOverDateRange( priorMonthStart, priorMonthEnd, function ( e
     data[ 0 ].date = priorMonthStart;
     data[ 0 ].type = "MONTHLY";
 
-    console.log( data[ 0 ] );
+    AverageSensorReading.add( data[ 0 ], function ( err, avgReading ) {
 
-    // AverageSensorReading.add( data[ 0 ], function ( err, avgReading ) {
+        if ( err ) {
+            console.log( err );
+            process.exit( 1 );
+        }
 
-    //     if ( err ) {
-    //         console.log( err );
-    //         process.exit( 1 );
-    //     }
+        process.exit( 0 );
 
-    //     process.exit( 0 );
-
-    // } );
+    } );
 
 } );
