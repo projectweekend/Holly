@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 var jobUtils = require( "../../utils/jobs" );
 var SensorReading = require( '../models' ).SensorReading;
-var AverageSensorReading = require( '../models' ).AverageSensorReading;
+var SensorStats = require( '../models' ).SensorStats;
 
 
 // connect to the db
@@ -12,7 +12,7 @@ var priorMonthStart = jobUtils.momentDateOnly().subtract( 1, "months" ).date( 1 
 var priorMonthEnd = jobUtils.momentDateOnly().date( 1 ).subtract( 1, "days" ).toDate();
 
 
-SensorReading.averageOverDateRange( priorMonthStart, priorMonthEnd, function ( err, data ) {
+SensorReading.statsOverDateRange( priorMonthStart, priorMonthEnd, function ( err, data ) {
 
     if ( err ) {
         jobUtils.logError();
@@ -25,7 +25,7 @@ SensorReading.averageOverDateRange( priorMonthStart, priorMonthEnd, function ( e
     data[ 0 ].date = priorMonthStart;
     data[ 0 ].type = "MONTHLY";
 
-    AverageSensorReading.add( data[ 0 ], function ( err, avgReading ) {
+    SensorStats.add( data[ 0 ], function ( err, avgReading ) {
 
         if ( err ) {
             console.log( err );
