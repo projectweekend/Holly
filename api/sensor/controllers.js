@@ -215,8 +215,8 @@ exports.getStatsChart = function ( req, res ) {
 
         var cleanData = {
             type: req.param( "chartType" ),
-            stat: req.query( "stat" ),
-            readings: req.query( "readings" )
+            stat: req.query.stat,
+            readings: req.query.readings
         };
 
         return callback( null, cleanData );
