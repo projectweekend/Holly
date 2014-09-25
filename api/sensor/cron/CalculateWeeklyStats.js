@@ -12,7 +12,7 @@ var weekStart = jobUtils.momentDateOnly().subtract( 8, "days" ).toDate();
 var weekEnd = jobUtils.momentDateOnly().subtract( 1, "days" ).toDate();
 
 
-SensorReading.averageOverDateRange( weekStart, weekEnd, function ( err, data ) {
+SensorReading.statsOverDateRange( weekStart, weekEnd, function ( err, data ) {
 
     if ( err ) {
         jobUtils.logError();
@@ -24,8 +24,6 @@ SensorReading.averageOverDateRange( weekStart, weekEnd, function ( err, data ) {
 
     data[ 0 ].date = weekEnd;
     data[ 0 ].type = "WEEKLY";
-
-
 
     SensorStats.add( data[ 0 ], function ( err, avgReading ) {
 
