@@ -40,10 +40,10 @@ SensorReadingSchema.statics.latestReading = function ( fieldsToSelect, cb ) {
 };
 
 
-SensorReadingSchema.statics.chartReadings = function ( numberOfReadings, fieldsToSelect, cb ) {
+SensorReadingSchema.statics.chartReadings = function ( options, cb ) {
     var q = this.find( {} )
-                .select( fieldsToSelect )
-                .limit( numberOfReadings )
+                .select( options.fieldsToSelect )
+                .limit( options.numberOfReadings )
                 .sort( '-date' );
     q.exec( function ( err, readings ) {
         if ( err ) {
