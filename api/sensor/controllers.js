@@ -1,5 +1,6 @@
 var async = require( 'async' );
 var SensorReading = require( './models' ).SensorReading;
+var SensorStats = require( './models' ).SensorStats;
 var handleRouteError = require( '../utils' ).handleRouteError;
 
 
@@ -196,6 +197,70 @@ exports.getChart = function ( req, res ) {
                 return callback( null, temperatureReadings );
             } );
         }
+
+    };
+
+    async.waterfall( [ validation, data ], function ( err, chartData ) {
+
+        if ( err ) {
+            return handleRouteError( err, res );
+        }
+
+        return res.json( chartData, 200 );
+
+    } );
+
+};
+
+
+exports.getStatsChart = function ( req, res ) {
+
+    var validation = function ( callback ) {
+
+        var chartTypes = [ "temperature", "humidity", "pressure", "luminosity" ];
+        var statTypes = [ "WEEKLY", "MONTHLY", "YEARLY" ];
+
+        req.checkParams( "chartType", "'type' of chart must be one of: 'temperature', 'humidity', 'pressure', 'luminosity'" ).isIn( chartTypes );
+
+        req.checkQuery( "readings", "'readings' must be an integer" ).isInt();
+        req.checkQuery( "stat", "'stat' must be one of: 'WEEKLY', 'MONTHLY', 'YEARLY'" ).isIn( statTypes );
+
+        var errors = req.validationErrors();
+        if ( errors ) {
+            return callback( errors );
+        }
+
+        var cleanData = {
+            type: req.param( "chartType" ),
+            stat: req.query( "stat" ),
+            readings: req.query( "readings" )
+        };
+
+        return callback( null, cleanData );
+
+    };
+
+    var data = function ( cleanData, callback ) {
+
+        var fieldsForChart = {
+            temperature: "date avg_temp_c avg_temp_f min_temp_c max_temp_c min_temp_f max_temp_f",
+            humidity: "date avg_humidity min_humidity max_humidity",
+            pressure: "date avg_pressure min_pressure max_pressure",
+            luminosity: "date avg_luminosity min_luminosity max_luminosity"
+        };
+
+        var options = {
+            statType: cleanData.stat,
+            numberOfReadings: cleanData.readings,
+            fieldsToSelect: fieldsForChart[ cleanData.type ]
+        };
+
+        SensorStats.chartReadings( options, function ( err, readings ) {
+            if ( err ) {
+                return callback( err );
+            }
+            return callback( null, readings );
+        } );
 
     };
 
