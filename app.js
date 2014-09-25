@@ -42,6 +42,10 @@ app.use( expressJwt( {
         '/api/chart/pressure',
         '/api/chart/luminosity',
         '/api/chart/raspberry-pi',
+        '/api/chart/temperature/stats',
+        '/api/chart/humidity/stats',
+        '/api/chart/pressure/stats',
+        '/api/chart/luminosity/stats',
         '/api/weather'
     ]
 } ) );
