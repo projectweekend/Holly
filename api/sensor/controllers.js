@@ -162,41 +162,24 @@ exports.getChart = function ( req, res ) {
 
     var data = function ( cleanData, callback ) {
 
-        if ( cleanData.type === 'temperature' ) {
-            SensorReading.chartReadings( 24, 'date temp_c temp_f', function ( err, temperatureReadings ) {
-                if ( err ) {
-                    return callback( err );
-                }
-                return callback( null, temperatureReadings );
-            } );
-        }
+        var fieldsForChart = {
+            temperature: "date temp_c temp_f",
+            humidity: "date humidity",
+            pressure: "date pressure",
+            luminosity: "date luminosity"
+        };
 
-        if ( cleanData.type === 'humidity' ) {
-            SensorReading.chartReadings( 24, 'date humidity', function ( err, temperatureReadings ) {
-                if ( err ) {
-                    return callback( err );
-                }
-                return callback( null, temperatureReadings );
-            } );
-        }
+        var options = {
+            numberOfReadings: 24,
+            fieldsToSelect: fieldsForChart[ cleanData.type ]
+        };
 
-        if ( cleanData.type === 'pressure' ) {
-            SensorReading.chartReadings( 24, 'date pressure', function ( err, temperatureReadings ) {
-                if ( err ) {
-                    return callback( err );
-                }
-                return callback( null, temperatureReadings );
-            } );
-        }
-
-        if ( cleanData.type === 'luminosity' ) {
-            SensorReading.chartReadings( 24, 'date luminosity', function ( err, temperatureReadings ) {
-                if ( err ) {
-                    return callback( err );
-                }
-                return callback( null, temperatureReadings );
-            } );
-        }
+        SensorReading.chartReadings( options, function ( err, readings ) {
+            if ( err ) {
+                return callback( err );
+            }
+            return callback( null, readings );
+        } );
 
     };
 
