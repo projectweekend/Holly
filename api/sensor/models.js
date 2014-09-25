@@ -54,7 +54,7 @@ SensorReadingSchema.statics.chartReadings = function ( numberOfReadings, fieldsT
 };
 
 
-SensorReadingSchema.statics.averageOverDateRange = function ( startDate, endDate, cb ) {
+SensorReadingSchema.statics.statsOverDateRange = function ( startDate, endDate, cb ) {
 
     var matchOptions = {
         date: {
@@ -68,17 +68,47 @@ SensorReadingSchema.statics.averageOverDateRange = function ( startDate, endDate
         avg_temp_c: {
             $avg: "$temp_c"
         },
+        min_temp_c: {
+            $min: "$temp_c"
+        },
+        max_temp_c: {
+            $max: "$temp_c"
+        },
         avg_temp_f: {
             $avg: "$temp_f"
+        },
+        min_temp_f: {
+            $min: "$temp_f"
+        },
+        max_temp_f: {
+            $max: "$temp_f"
         },
         avg_humidity: {
             $avg: "$humidity"
         },
+        min_humidity: {
+            $min: "$humidity"
+        },
+        max_humidity: {
+            $max: "$humidity"
+        },
         avg_pressure: {
             $avg: "$pressure"
         },
+        min_pressure: {
+            $min: "$pressure"
+        },
+        max_pressure: {
+            $max: "$pressure"
+        },
         avg_luminosity: {
             $avg: "$luminosity"
+        },
+        min_luminosity: {
+            $min: "$luminosity"
+        },
+        max_luminosity: {
+            $max: "$luminosity"
         }
     };
 
@@ -98,11 +128,21 @@ exports.SensorReading = mongoose.model( 'SensorReading', SensorReadingSchema );
 var SensorStatsSchema = Schema( {
     date: Date,
     type: String,
-    temp_c: Number,
-    temp_f: Number,
-    humidity: Number,
-    pressure: Number,
-    luminosity: Number
+    avg_temp_c: Number,
+    min_temp_c: Number,
+    max_temp_c: Number,
+    avg_temp_f: Number,
+    min_temp_f: Number,
+    max_temp_f: Number,
+    avg_humidity: Number,
+    min_humidity: Number,
+    max_humidity: Number,
+    avg_pressure: Number,
+    min_pressure: Number,
+    max_pressure: Number,
+    avg_luminosity: Number,
+    min_luminosity: Number,
+    max_luminosity: Number
 } );
 
 
