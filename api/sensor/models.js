@@ -65,19 +65,19 @@ SensorReadingSchema.statics.averageOverDateRange = function ( startDate, endDate
 
     var groupOptions = {
         _id: null,
-        temp_c: {
+        avg_temp_c: {
             $avg: "$temp_c"
         },
-        temp_f: {
+        avg_temp_f: {
             $avg: "$temp_f"
         },
-        humidity: {
+        avg_humidity: {
             $avg: "$humidity"
         },
-        pressure: {
+        avg_pressure: {
             $avg: "$pressure"
         },
-        luminosity: {
+        avg_luminosity: {
             $avg: "$luminosity"
         }
     };
@@ -95,7 +95,7 @@ exports.SensorReading = mongoose.model( 'SensorReading', SensorReadingSchema );
 
 
 // Average Sensor Reading
-var AverageSensorReadingSchema = Schema( {
+var SensorStatsSchema = Schema( {
     date: Date,
     type: String,
     temp_c: Number,
@@ -106,7 +106,7 @@ var AverageSensorReadingSchema = Schema( {
 } );
 
 
-AverageSensorReadingSchema.statics.add = function ( data, cb ) {
+SensorStatsSchema.statics.add = function ( data, cb ) {
     delete data._id;
     this.create( data, function ( err, reading ) {
         if ( err ) {
@@ -117,7 +117,7 @@ AverageSensorReadingSchema.statics.add = function ( data, cb ) {
 };
 
 
-AverageSensorReadingSchema.statics.latestReading = function ( fieldsToSelect, cb ) {
+SensorStatsSchema.statics.latestReading = function ( fieldsToSelect, cb ) {
     var q = this.findOne( {} )
                 .select( fieldsToSelect )
                 .sort( '-date' );
@@ -130,7 +130,7 @@ AverageSensorReadingSchema.statics.latestReading = function ( fieldsToSelect, cb
 };
 
 
-AverageSensorReadingSchema.statics.chartReadings = function ( numberOfReadings, fieldsToSelect, cb ) {
+SensorStatsSchema.statics.chartReadings = function ( numberOfReadings, fieldsToSelect, cb ) {
     var q = this.find( {} )
                 .select( fieldsToSelect )
                 .limit( numberOfReadings )
@@ -144,4 +144,4 @@ AverageSensorReadingSchema.statics.chartReadings = function ( numberOfReadings, 
 };
 
 
-exports.AverageSensorReading = mongoose.model( 'AverageSensorReading', AverageSensorReadingSchema );
+exports.SensorStats = mongoose.model( 'SensorStats', SensorStatsSchema );

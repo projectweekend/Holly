@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 var jobUtils = require( "../../utils/jobs" );
 var SensorReading = require( '../models' ).SensorReading;
-var AverageSensorReading = require( '../models' ).AverageSensorReading;
+var SensorStats = require( '../models' ).SensorStats;
 
 
 // connect to the db
@@ -25,7 +25,9 @@ SensorReading.averageOverDateRange( weekStart, weekEnd, function ( err, data ) {
     data[ 0 ].date = weekEnd;
     data[ 0 ].type = "WEEKLY";
 
-    AverageSensorReading.add( data[ 0 ], function ( err, avgReading ) {
+
+
+    SensorStats.add( data[ 0 ], function ( err, avgReading ) {
 
         if ( err ) {
             console.log( err );
