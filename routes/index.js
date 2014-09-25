@@ -25,6 +25,7 @@ router.get( '/api/latest/:readingType', SensorAPI.read );
 
 router.get( '/api/chart/raspberry-pi', RaspberryPiAPI.getChart );
 router.get( '/api/chart/:chartType', SensorAPI.getChart );
+router.get( '/api/chart/:chartType/stats', SensorAPI.getStatsChart );
 
 router.get( '/api/weather', WeatherAPI.current );
 
