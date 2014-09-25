@@ -21,34 +21,34 @@ app.use( bodyParser.json() );
 app.use( bodyParser.urlencoded() );
 app.use( expressValidator() );
 app.use( express.static( path.join( __dirname, 'public' ) ) );
-app.use( expressJwt( {
-    secret: process.env.JWT_SECRET,
-    skip: [
-        '/',
-        '/partials/home',
-        '/partials/temperature',
-        '/partials/humidity',
-        '/partials/pressure',
-        '/partials/raspberry-pi',
-        '/partials/about',
-        '/api/latest/temperature',
-        '/api/latest/humidity',
-        '/api/latest/pressure',
-        '/api/latest/luminosity',
-        '/api/latest/all',
-        '/api/latest/raspberry-pi',
-        '/api/chart/temperature',
-        '/api/chart/humidity',
-        '/api/chart/pressure',
-        '/api/chart/luminosity',
-        '/api/chart/raspberry-pi',
-        '/api/chart/temperature/stats',
-        '/api/chart/humidity/stats',
-        '/api/chart/pressure/stats',
-        '/api/chart/luminosity/stats',
-        '/api/weather'
-    ]
-} ) );
+
+var noAuth = [
+    '/',
+    '/partials/home',
+    '/partials/temperature',
+    '/partials/humidity',
+    '/partials/pressure',
+    '/partials/raspberry-pi',
+    '/partials/about',
+    '/api/latest/temperature',
+    '/api/latest/humidity',
+    '/api/latest/pressure',
+    '/api/latest/luminosity',
+    '/api/latest/all',
+    '/api/latest/raspberry-pi',
+    '/api/chart/temperature',
+    '/api/chart/humidity',
+    '/api/chart/pressure',
+    '/api/chart/luminosity',
+    '/api/chart/raspberry-pi',
+    '/api/chart/temperature/stats',
+    '/api/chart/humidity/stats',
+    '/api/chart/pressure/stats',
+    '/api/chart/luminosity/stats',
+    '/api/weather'
+];
+
+app.use( expressJwt( { secret: process.env.JWT_SECRET } ).unless( { path: noAuth } ) );
 
 
 // Use routes.index to map URLs to handlers in ./api
