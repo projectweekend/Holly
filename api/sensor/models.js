@@ -170,10 +170,10 @@ SensorStatsSchema.statics.latestReading = function ( fieldsToSelect, cb ) {
 };
 
 
-SensorStatsSchema.statics.chartReadings = function ( numberOfReadings, fieldsToSelect, cb ) {
-    var q = this.find( {} )
-                .select( fieldsToSelect )
-                .limit( numberOfReadings )
+SensorStatsSchema.statics.chartReadings = function ( options, cb ) {
+    var q = this.find( { type: options.statType } )
+                .select( options.fieldsToSelect )
+                .limit( options.numberOfReadings )
                 .sort( '-date' );
     q.exec( function ( err, readings ) {
         if ( err ) {
