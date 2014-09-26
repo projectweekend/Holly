@@ -146,6 +146,9 @@ var SensorStatsSchema = Schema( {
 } );
 
 
+SensorStatsSchema.index( { date: 1, type: 1 }, { unique: true } );
+
+
 SensorStatsSchema.statics.add = function ( data, cb ) {
     delete data._id;
     this.create( data, function ( err, reading ) {
