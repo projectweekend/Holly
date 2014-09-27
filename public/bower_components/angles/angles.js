@@ -10,7 +10,11 @@ angles.chart = function (type) {
             width: "=",
             height: "=",
             resize: "=",
-            chart: "@"
+            chart: "@",
+            segments: "@",
+            responsive: "=",
+            tooltip: "=",
+            legend: "="
         },
         link: function ($scope, $elem) {
             var ctx = $elem[0].getContext("2d");
@@ -23,47 +27,61 @@ angles.chart = function (type) {
 	            } else {
 	                ctx.canvas.width = $scope.width || ctx.canvas.width;
 	                autosize = true;
-	            }				
+	            }
 
                 if($scope.height <= 0){
                     $elem.height($elem.parent().height());
-                    ctx.canvas.height = ctx.canvas.width / 2;   
+                    ctx.canvas.height = ctx.canvas.width / 2;
                 } else {
                     ctx.canvas.height = $scope.height || ctx.canvas.height;
                     autosize = true;
                 }
 			}
 
-            $scope.$watch("data", function (newVal, oldVal) { 
+            $scope.$watch("data", function (newVal, oldVal) {
+                if(chartCreated)
+                    chartCreated.destroy();
+                    
                 // if data not defined, exit
                 if (!newVal) {
-                  return;
+                    return;
                 }
                 if ($scope.chart) { type = $scope.chart; }
                 
                 if(autosize){
                     $scope.size();
                     chart = new Chart(ctx);
-                } else if (!newVal) return;
-                
-                chart[type]($scope.data, $scope.options);
+                };
+
+                if($scope.responsive || $scope.resize)
+                    $scope.options.responsive = true;
+
+                if($scope.responsive !== undefined)
+                    $scope.options.responsive = $scope.responsive;
+
+                chartCreated = chart[type]($scope.data, $scope.options);
+                chartCreated.update();
+                if($scope.legend)
+                    angular.element($elem[0]).parent().after( chartCreated.generateLegend() );
             }, true);
-            
-            if ($scope.resize) {
-		        angular.element(window).bind('resize', function () {
-		            $scope.size();
-		            chart = new Chart(ctx);
-		            chart[type]($scope.data, $scope.options);
-		        });	  
-                
-                //unbind the event when scope destroyed 
-                $scope.$on("$destroy", function() {
-                     angular.element(window).off();
-                });                           
-            }
-            
-			$scope.size();
+
+            $scope.$watch("tooltip", function (newVal, oldVal) {
+                if (chartCreated)
+                    chartCreated.draw();
+                if(newVal===undefined || !chartCreated.segments)
+                    return;
+                if(!isFinite(newVal) || newVal >= chartCreated.segments.length || newVal < 0)
+                    return;
+                var activeSegment = chartCreated.segments[newVal];
+                activeSegment.save();
+                activeSegment.fillColor = activeSegment.highlightColor;
+                chartCreated.showTooltip([activeSegment]);
+                activeSegment.restore();
+            }, true);
+
+            $scope.size();
             var chart = new Chart(ctx);
+            var chartCreated;
         }
     }
 }

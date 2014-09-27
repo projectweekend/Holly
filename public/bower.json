@@ -1,0 +1,30 @@
+{
+  "name": "Holly",
+  "version": "0.0.1",
+  "homepage": "https://github.com/projectweekend/Holly",
+  "authors": [
+    "Brian Hines <brian@projectweekend.net>"
+  ],
+  "description": "The code for http://holly.projectweekend.net/",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angles": "*",
+    "angular-route": "~1.2.19",
+    "angular-skycons": "~0.0.5",
+    "angular": "~1.2.19",
+    "bootstrap": "~3.2.0",
+    "core-elements": "Polymer/core-elements#~0.3.3",
+    "html5-boilerplate": "~4.3.0",
+    "paper-elements": "Polymer/paper-elements#~0.3.3"
+  }
+}
