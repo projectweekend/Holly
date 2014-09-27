@@ -2,7 +2,7 @@ var moment = require( "moment" );
 var mongoose = require( "mongoose" );
 
 
-exports.connectToMongo = function ( inputParams ) {
+exports.connectToMongo = function () {
     var MONGO_DB;
     var FIG_DB = process.env.DB_1_PORT;
     if ( FIG_DB ) {
