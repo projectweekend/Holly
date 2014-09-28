@@ -17,8 +17,8 @@ appMod.config( function( $routeProvider ) {
     } );
 
     $routeProvider.when( '/temperature', {
-        templateUrl: 'partials/temperature',
-        controller: 'Temperature'
+        templateUrl: 'partials/temperature-recent',
+        controller: 'TemperatureRecent'
     } );
 
     $routeProvider.when( '/humidity', {

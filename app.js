@@ -25,7 +25,7 @@ app.use( express.static( path.join( __dirname, 'public' ) ) );
 var noAuth = [
     '/',
     '/partials/home',
-    '/partials/temperature',
+    '/partials/temperature-recent',
     '/partials/humidity',
     '/partials/pressure',
     '/partials/raspberry-pi',

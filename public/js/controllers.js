@@ -20,7 +20,7 @@ cMod.controller( 'Home', function( $scope, SensorReading, RaspberryPi, Weather )
 } );
 
 
-cMod.controller( 'Temperature', function( $scope, SensorChart ) {
+cMod.controller( 'TemperatureRecent', function( $scope, SensorChart ) {
 
     $scope.SensorChart = SensorChart;
     $scope.SensorChart.init( 'temperature' );
