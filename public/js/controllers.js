@@ -28,6 +28,18 @@ cMod.controller( 'TemperatureRecent', function( $scope, SensorChart ) {
 } );
 
 
+cMod.controller( 'TemperatureAverage', function( $scope, SensorChart ) {
+
+
+} );
+
+
+cMod.controller( 'TemperatureMinMax', function( $scope, SensorChart ) {
+
+
+} );
+
+
 cMod.controller( 'Humidity', function( $scope, SensorChart ) {
 
     $scope.SensorChart = SensorChart;

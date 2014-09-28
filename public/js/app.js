@@ -16,9 +16,19 @@ appMod.config( function( $routeProvider ) {
         controller: 'Home'
     } );
 
-    $routeProvider.when( '/temperature', {
+    $routeProvider.when( '/temperature/recent', {
         templateUrl: 'partials/temperature-recent',
         controller: 'TemperatureRecent'
+    } );
+
+    $routeProvider.when( '/temperature/average', {
+        templateUrl: 'partials/temperature-average',
+        controller: 'TemperatureAverage'
+    } );
+
+    $routeProvider.when( '/temperature/min-max', {
+        templateUrl: 'partials/temperature-min-max',
+        controller: 'TemperatureMinMax'
     } );
 
     $routeProvider.when( '/humidity', {

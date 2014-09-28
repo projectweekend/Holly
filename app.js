@@ -26,6 +26,8 @@ var noAuth = [
     '/',
     '/partials/home',
     '/partials/temperature-recent',
+    '/partials/temperature-average',
+    '/partials/temperature-min-max',
     '/partials/humidity',
     '/partials/pressure',
     '/partials/raspberry-pi',
