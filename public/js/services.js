@@ -128,7 +128,7 @@ var makeDataSets = function ( rawChartData, propertyName ) {
 };
 
 
-sMod.factory( 'SensorChart', function ( API, $window ) {
+sMod.factory( 'SensorRecentChart', function ( API, $window ) {
 
     var chartWidth = function () {
 

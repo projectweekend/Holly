@@ -20,9 +20,9 @@ cMod.controller( 'Home', function( $scope, SensorReading, RaspberryPi, Weather )
 } );
 
 
-cMod.controller( 'TemperatureRecent', function( $scope, SensorChart ) {
+cMod.controller( 'TemperatureRecent', function( $scope, SensorRecentChart ) {
 
-    $scope.SensorChart = SensorChart;
+    $scope.SensorChart = SensorRecentChart;
     $scope.SensorChart.init( 'temperature' );
 
 } );
@@ -40,17 +40,17 @@ cMod.controller( 'TemperatureMinMax', function( $scope, SensorChart ) {
 } );
 
 
-cMod.controller( 'Humidity', function( $scope, SensorChart ) {
+cMod.controller( 'Humidity', function( $scope, SensorRecentChart ) {
 
-    $scope.SensorChart = SensorChart;
+    $scope.SensorChart = SensorRecentChart;
     $scope.SensorChart.init( 'humidity' );
 
 } );
 
 
-cMod.controller( 'Pressure', function( $scope, SensorChart ) {
+cMod.controller( 'Pressure', function( $scope, SensorRecentChart ) {
 
-    $scope.SensorChart = SensorChart;
+    $scope.SensorChart = SensorRecentChart;
     $scope.SensorChart.init( 'pressure' );
 
 } );
