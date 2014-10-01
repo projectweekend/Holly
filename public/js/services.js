@@ -177,19 +177,25 @@ sMod.factory( "SensorStatsChart", [ "API", function ( API ) {
             labels: [],
             datasets: []
         },
-        init: function ( chartType ) {
+        init: function ( options ) {
 
             var self = this;
 
-            API.get( "/api/chart/" + chartType + "/stats", function ( err, data ) {
+            var chart = options.chart;
+            var stat = options.stat;
+            var readings = options.readings;
+
+            var url = "/api/chart/" + chart + "/stats?stat=" + stat + "&readings=" + readings;
+
+            API.get( "/api/chart/" + chart + "/stats?stat=" + stat, function ( err, data ) {
 
                 if ( err ) {
                     // TODO: improve error display
-                    return alert( "Error with " + chartType + " stats chart" );
+                    return alert( "Error with " + chart + " stats chart" );
                 }
 
                 self.data.labels = makeLabels( data );
-                self.data.datasets = makeDataSets( data, chartDataProps[ chartType ] );
+                self.data.datasets = makeDataSets( data, chartDataProps[ chart ] );
 
             } );
         }
