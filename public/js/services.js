@@ -93,24 +93,6 @@ sMod.factory( 'SensorReading', function ( API ) {
 
 
 // Helper function used in charting routes
-var makeLabels = function ( rawChartData ) {
-
-    var extractDateParts = function ( chartItem ) {
-        var d = new Date( chartItem.date );
-        var hours = d.getHours();
-        var minutes = d.getMinutes();
-        if ( minutes < 10 ) {
-            return hours + ":0" + minutes;
-        }
-        return hours + ":" + minutes;
-    };
-
-    return rawChartData.map( extractDateParts );
-
-};
-
-
-// Helper function used in charting routes
 var makeDataSets = function ( rawChartData, propertyName ) {
 
     var extractPropertyData = function ( chartItem ) {
@@ -128,18 +110,34 @@ var makeDataSets = function ( rawChartData, propertyName ) {
 };
 
 
-var chartDataProps = {
-    temperature: 'temp_f',
-    humidity: 'humidity',
-    pressure: 'pressure'
-};
-
-
 sMod.factory( 'SensorRecentChart', function ( API, $window ) {
 
     var chartWidth = function () {
 
         return ( $window.innerWidth - 150 );
+
+    };
+
+    var chartDataProps = {
+        temperature: 'temp_f',
+        humidity: 'humidity',
+        pressure: 'pressure'
+    };
+
+    // Helper function used in charting routes
+    var makeLabels = function ( rawChartData ) {
+
+        var extractDateParts = function ( chartItem ) {
+            var d = new Date( chartItem.date );
+            var hours = d.getHours();
+            var minutes = d.getMinutes();
+            if ( minutes < 10 ) {
+                return hours + ":0" + minutes;
+            }
+            return hours + ":" + minutes;
+        };
+
+        return rawChartData.map( extractDateParts );
 
     };
 
@@ -187,15 +185,18 @@ sMod.factory( "SensorStatsChart", [ "API", function ( API ) {
 
             var url = "/api/chart/" + chart + "/stats?stat=" + stat + "&readings=" + readings;
 
-            API.get( "/api/chart/" + chart + "/stats?stat=" + stat, function ( err, data ) {
+            API.get( url, function ( err, data ) {
 
                 if ( err ) {
                     // TODO: improve error display
                     return alert( "Error with " + chart + " stats chart" );
                 }
 
+                // TODO: check data in 'data', labels and structure are different here
                 self.data.labels = makeLabels( data );
                 self.data.datasets = makeDataSets( data, chartDataProps[ chart ] );
+
+                console.log( self.data );
 
             } );
         }
