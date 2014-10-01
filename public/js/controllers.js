@@ -28,13 +28,19 @@ cMod.controller( 'TemperatureRecent', function( $scope, SensorRecentChart ) {
 } );
 
 
-cMod.controller( 'TemperatureAverage', function( $scope, SensorChart ) {
+cMod.controller( 'TemperatureAverage', function( $scope, SensorStatsChart ) {
 
+    $scope.SensorChart = SensorStatsChart;
+    $scope.SensorChart.init( {
+        chart: "temperature",
+        stat: "WEEKLY",
+        readings: 52
+    } );
 
 } );
 
 
-cMod.controller( 'TemperatureMinMax', function( $scope, SensorChart ) {
+cMod.controller( 'TemperatureMinMax', function( $scope, SensorStatsChart ) {
 
 
 } );
