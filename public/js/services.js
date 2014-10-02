@@ -175,6 +175,23 @@ sMod.factory( "SensorStatsChart", [ "API", function ( API ) {
             labels: [],
             datasets: []
         },
+        statTypes: [
+            {
+                display: "Weekly",
+                value: "WEEKLY",
+                readings: 52
+            },
+            {
+                display: "Monthly",
+                value: "MONTHLY",
+                readings: 12
+            },
+            {
+                display: "Yearly",
+                value: "YEARLY",
+                readings: 5
+            }
+        ],
         init: function ( options ) {
 
             var self = this;
