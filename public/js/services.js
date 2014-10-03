@@ -175,23 +175,6 @@ sMod.factory( "SensorStatsChart", [ "API", function ( API ) {
             labels: [],
             datasets: []
         },
-        statTypes: [
-            {
-                display: "Weekly",
-                value: "WEEKLY",
-                readings: 52
-            },
-            {
-                display: "Monthly",
-                value: "MONTHLY",
-                readings: 12
-            },
-            {
-                display: "Yearly",
-                value: "YEARLY",
-                readings: 5
-            }
-        ],
         init: function ( options ) {
 
             var self = this;
@@ -216,6 +199,39 @@ sMod.factory( "SensorStatsChart", [ "API", function ( API ) {
                 console.log( self.data );
 
             } );
+        },
+        weekly: function ( chart ) {
+
+            var self = this;
+
+            return self.init( {
+                chart: chart,
+                stat: "WEEKLY",
+                readings: 52
+            } );
+
+        },
+        monthly: function ( chart ) {
+
+            var self = this;
+
+            return self.init( {
+                chart: chart,
+                stat: "MONTHLY",
+                readings: 12
+            } );
+
+        },
+        yearly: function ( chart ) {
+
+            var self = this;
+
+            return self.init( {
+                chart: chart,
+                stat: "YEARLY",
+                readings: 5
+            } );
+
         }
     };
 
