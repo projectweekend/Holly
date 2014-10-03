@@ -99,13 +99,13 @@ var makeDataSets = function ( rawChartData, propertyName ) {
         return chartItem[ propertyName ];
     };
 
-    return [ {
+    return {
         fillColor : "rgba(151,187,205,0)",
         strokeColor : "#e67e22",
         pointColor : "rgba(151,187,205,0)",
         pointStrokeColor : "#e67e22",
         data: rawChartData.map( extractPropertyData )
-    } ];
+    };
 
 };
 
@@ -124,7 +124,6 @@ sMod.factory( 'SensorRecentChart', function ( API, $window ) {
         pressure: 'pressure'
     };
 
-    // Helper function used in charting routes
     var makeLabels = function ( rawChartData ) {
 
         var extractDateParts = function ( chartItem ) {
@@ -159,7 +158,7 @@ sMod.factory( 'SensorRecentChart', function ( API, $window ) {
                 }
 
                 self.data.labels = makeLabels( data );
-                self.data.datasets = makeDataSets( data, chartDataProps[ chartType ] );
+                self.data.datasets.push( makeDataSets( data, chartDataProps[ chartType ] ) );
 
             } );
         }
@@ -170,15 +169,28 @@ sMod.factory( 'SensorRecentChart', function ( API, $window ) {
 
 sMod.factory( "SensorStatsChart", [ "API", function ( API ) {
 
+    var makeLabels = function ( rawChartData ) {
+
+        var extractDateParts = function ( chartItem ) {
+            var d = new Date( chartItem.date );
+            var day = d.getDate();
+            var month = d.getMonth() + 1;
+            var year = d.getFullYear();
+            return year + "/" + month + "/" + day;
+        };
+
+        return rawChartData.map( extractDateParts );
+
+    };
+
     return {
         data: {
             labels: [],
             datasets: []
         },
-        init: function ( options ) {
+        average: function ( options ) {
 
             var self = this;
-
             var chart = options.chart;
             var stat = options.stat;
             var readings = options.readings;
@@ -192,47 +204,62 @@ sMod.factory( "SensorStatsChart", [ "API", function ( API ) {
                     return alert( "Error with " + chart + " stats chart" );
                 }
 
-                // TODO: check data in 'data', labels and structure are different here
                 self.data.labels = makeLabels( data );
-                self.data.datasets = makeDataSets( data, chartDataProps[ chart ] );
-
-                console.log( self.data );
+                self.data.datasets.push( makeDataSets( data, "avg_temp_f" ) );
 
             } );
+
         },
-        weekly: function ( chart ) {
+        minMax: function ( options ) {
+
+            var self = this;
+            var chart = options.chart;
+            var stat = options.stat;
+            var readings = options.readings;
+
+        },
+        weeklyAverage: function ( chart ) {
 
             var self = this;
 
-            return self.init( {
+            return self.average( {
                 chart: chart,
                 stat: "WEEKLY",
                 readings: 52
             } );
 
         },
-        monthly: function ( chart ) {
+        weeklyMinMax: function ( chart ) {
+
+        },
+        monthlyAverage: function ( chart ) {
 
             var self = this;
 
-            return self.init( {
+            return self.average( {
                 chart: chart,
                 stat: "MONTHLY",
                 readings: 12
             } );
 
         },
-        yearly: function ( chart ) {
+        monthlyMinMax: function ( chart ) {
+
+        },
+        yearlyAverage: function ( chart ) {
 
             var self = this;
 
-            return self.init( {
+            return self.average( {
                 chart: chart,
                 stat: "YEARLY",
                 readings: 5
             } );
 
-        }
+        },
+        yearlyMinMax: function ( chart ) {
+
+        },
     };
 
 } ] );
