@@ -37,14 +37,6 @@ cMod.controller( 'TemperatureAverage', function( $scope, SensorStatsChart ) {
         readings: 52
     } );
 
-    $scope.reloadChart = function ( statType ) {
-        $scope.SensorChart.init( {
-            chart: "temperature",
-            stat: statType.value,
-            readings: statType.readings
-        } );
-    };
-
 } );
 
 
