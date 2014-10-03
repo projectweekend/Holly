@@ -30,18 +30,18 @@ cMod.controller( 'TemperatureRecent', function( $scope, SensorRecentChart ) {
 
 cMod.controller( 'TemperatureAverage', function( $scope, SensorStatsChart ) {
 
-    $scope.SensorChart = SensorStatsChart;
+    $scope.SensorStatsChart = SensorStatsChart;
 
     $scope.weekly = function () {
-        $scope.SensorStatsChart.weekly( "temperature" );
+        $scope.SensorStatsChart.weeklyAverage( "temperature" );
     };
 
     $scope.monthly = function () {
-        $scope.SensorStatsChart.monthly( "temperature" );
+        $scope.SensorStatsChart.monthlyAverage( "temperature" );
     };
 
     $scope.yearly = function () {
-        $scope.SensorStatsChart.yearly( "temperature" );
+        $scope.SensorStatsChart.yearlyAverage( "temperature" );
     };
 
     $scope.weekly();
