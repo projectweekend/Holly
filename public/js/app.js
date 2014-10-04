@@ -21,6 +21,21 @@ appMod.config( function( $routeProvider ) {
         controller: 'TemperatureRecent'
     } );
 
+    $routeProvider.when( '/temperature/average/weekly', {
+        templateUrl: 'partials/temperature-average-weekly',
+        controller: 'TemperatureAverageWeekly'
+    } );
+
+    $routeProvider.when( '/temperature/average/monthly', {
+        templateUrl: 'partials/temperature-average-monthly',
+        controller: 'TemperatureAverageMonthly'
+    } );
+
+    $routeProvider.when( '/temperature/average/yearly', {
+        templateUrl: 'partials/temperature-average-yearly',
+        controller: 'TemperatureAverageYearly'
+    } );
+
     $routeProvider.when( '/temperature/average', {
         templateUrl: 'partials/temperature-average',
         controller: 'TemperatureAverage'

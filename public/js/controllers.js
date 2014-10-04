@@ -28,30 +28,17 @@ cMod.controller( 'TemperatureRecent', function( $scope, SensorRecentChart ) {
 } );
 
 
-cMod.controller( 'TemperatureAverage', function( $scope, SensorStatsChart ) {
+cMod.controller( 'TemperatureAverageWeekly', function( $scope ) {
 
-    $scope.SensorStatsChart = SensorStatsChart;
+} );
 
-    $scope.activeChart = function ( chart ) {
-        return chart === $scope.currentChart ? "active" : "";
-    };
 
-    $scope.weekly = function () {
-        $scope.currentChart = "weekly";
-        $scope.SensorStatsChart.weeklyAverage( "temperature" );
-    };
+cMod.controller( 'TemperatureAverageMonthly', function( $scope ) {
 
-    $scope.monthly = function () {
-        $scope.currentChart = "monthly";
-        $scope.SensorStatsChart.monthlyAverage( "temperature" );
-    };
+} );
 
-    $scope.yearly = function () {
-        $scope.currentChart = "yearly";
-        $scope.SensorStatsChart.yearlyAverage( "temperature" );
-    };
 
-    $scope.weekly();
+cMod.controller( 'TemperatureAverageYearly', function( $scope ) {
 
 } );
 
