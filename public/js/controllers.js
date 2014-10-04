@@ -32,15 +32,22 @@ cMod.controller( 'TemperatureAverage', function( $scope, SensorStatsChart ) {
 
     $scope.SensorStatsChart = SensorStatsChart;
 
+    $scope.activeChart = function ( chart ) {
+        return chart === $scope.currentChart ? "active" : "";
+    };
+
     $scope.weekly = function () {
+        $scope.currentChart = "weekly";
         $scope.SensorStatsChart.weeklyAverage( "temperature" );
     };
 
     $scope.monthly = function () {
+        $scope.currentChart = "monthly";
         $scope.SensorStatsChart.monthlyAverage( "temperature" );
     };
 
     $scope.yearly = function () {
+        $scope.currentChart = "yearly";
         $scope.SensorStatsChart.yearlyAverage( "temperature" );
     };
 

@@ -102,6 +102,8 @@ var makeDataSets = function ( rawChartData, propertyName ) {
     return {
         fillColor : "rgba(151,187,205,0)",
         strokeColor : "#e67e22",
+        highlightFill: "rgba(220,220,220,0.75)",
+        highlightStroke: "rgba(220,220,220,1)",
         pointColor : "rgba(151,187,205,0)",
         pointStrokeColor : "#e67e22",
         data: rawChartData.map( extractPropertyData )
@@ -197,15 +199,18 @@ sMod.factory( "SensorStatsChart", [ "API", function ( API ) {
 
             var url = "/api/chart/" + chart + "/stats?stat=" + stat + "&readings=" + readings;
 
-            API.get( url, function ( err, data ) {
+            API.get( url, function ( err, results ) {
 
                 if ( err ) {
                     // TODO: improve error display
                     return alert( "Error with " + chart + " stats chart" );
                 }
 
-                self.data.labels = makeLabels( data );
-                self.data.datasets.push( makeDataSets( data, "avg_temp_f" ) );
+                self.data.datasets = [];
+                self.data.labels = makeLabels( results );
+                self.data.datasets.push( makeDataSets( results, "avg_temp_f" ) );
+
+                console.log( self.data );
 
             } );
 
