@@ -1,3 +1,6 @@
-div TEMP AVG WEEKLY
-
-include ./temperature-average-menu.jade
+div(class="row")
+    div(class="col-lg-12 chart")
+        div(class="page-header")
+            h1 Weekly Averages: &deg;F
+        include ./temperature-average-menu.jade
+        //- canvas(linechart, resize, data="SensorChart.data")

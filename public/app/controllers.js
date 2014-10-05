@@ -28,8 +28,8 @@ cMod.controller( 'TemperatureRecent', function( $scope, SensorRecentChart ) {
 } );
 
 
-cMod.controller( 'TemperatureAverageWeekly', function( $scope ) {
-
+cMod.controller( 'TemperatureAverageWeekly', function( $scope, $location ) {
+    console.log( $location.path() );
 } );
 
 
