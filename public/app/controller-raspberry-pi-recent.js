@@ -1,4 +1,4 @@
-var cMod = angular.module( 'myApp.controllers', [] );
+var cMod = angular.module( 'myApp.controller-raspberry-pi-recent', [] );
 
 
 cMod.controller( 'RaspberryPi', function ( $scope, RaspberryPiChart ) {

@@ -2,7 +2,14 @@ var appMod = angular.module( 'myApp', [
     'ngRoute',
     'myApp.services',
     'myApp.directives',
-    'myApp.controllers',
+    'myApp.controller-compatibility',
+    'myApp.controller-home',
+    'myApp.controller-temperature-recent',
+    'myApp.controller-temperature-average',
+    'myApp.controller-temperature-min-max',
+    'myApp.controller-humidity-recent',
+    'myApp.controller-pressure-recent',
+    'myApp.controller-raspberry-pi-recent',
     // Third-party modules
     'angles',
     'angular-skycons'

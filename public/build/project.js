@@ -2,7 +2,14 @@ var appMod = angular.module( 'myApp', [
     'ngRoute',
     'myApp.services',
     'myApp.directives',
-    'myApp.controllers',
+    'myApp.controller-compatibility',
+    'myApp.controller-home',
+    'myApp.controller-temperature-recent',
+    'myApp.controller-temperature-average',
+    'myApp.controller-temperature-min-max',
+    'myApp.controller-humidity-recent',
+    'myApp.controller-pressure-recent',
+    'myApp.controller-raspberry-pi-recent',
     // Third-party modules
     'angles',
     'angular-skycons'
@@ -71,12 +78,14 @@ appMod.config( function( $routeProvider ) {
 
 } );
 
-var cMod = angular.module( 'myApp.controllers', [] );
+var cMod = angular.module( 'myApp.controller-compatibility', [] );
 
 
 cMod.controller( 'Compatibility', function ( $scope, $window ) {
     $scope.notChrome = typeof window.chrome === "undefined";
 } );
+
+var cMod = angular.module( 'myApp.controller-home', [] );
 
 
 cMod.controller( 'Home', function( $scope, SensorReading, RaspberryPi, Weather ) {
@@ -92,34 +101,7 @@ cMod.controller( 'Home', function( $scope, SensorReading, RaspberryPi, Weather )
 
 } );
 
-
-cMod.controller( 'TemperatureRecent', function( $scope, SensorRecentChart ) {
-
-    $scope.SensorChart = SensorRecentChart;
-    $scope.SensorChart.init( 'temperature' );
-
-} );
-
-
-cMod.controller( 'TemperatureAverageWeekly', function( $scope, $location ) {
-    console.log( $location.path() );
-} );
-
-
-cMod.controller( 'TemperatureAverageMonthly', function( $scope ) {
-
-} );
-
-
-cMod.controller( 'TemperatureAverageYearly', function( $scope ) {
-
-} );
-
-
-cMod.controller( 'TemperatureMinMax', function( $scope, SensorStatsChart ) {
-
-
-} );
+var cMod = angular.module( 'myApp.controller-humidity-recent', [] );
 
 
 cMod.controller( 'Humidity', function( $scope, SensorRecentChart ) {
@@ -129,6 +111,8 @@ cMod.controller( 'Humidity', function( $scope, SensorRecentChart ) {
 
 } );
 
+var cMod = angular.module( 'myApp.controller-pressure-recent', [] );
+
 
 cMod.controller( 'Pressure', function( $scope, SensorRecentChart ) {
 
@@ -136,6 +120,62 @@ cMod.controller( 'Pressure', function( $scope, SensorRecentChart ) {
     $scope.SensorChart.init( 'pressure' );
 
 } );
+
+var cMod = angular.module( 'myApp.controller-raspberry-pi-recent', [] );
+
+
+cMod.controller( 'RaspberryPi', function ( $scope, RaspberryPiChart ) {
+
+    $scope.RaspberryPiChart = RaspberryPiChart;
+    $scope.RaspberryPiChart.init( 'pressure' );
+
+} );
+
+var cMod = angular.module( 'myApp.controller-temperature-average', [] );
+
+
+cMod.controller( 'TemperatureAverageWeekly',
+    function( $scope, ActiveMenuItem) {
+
+        $scope.ActiveMenuItem = ActiveMenuItem;
+
+    } );
+
+
+cMod.controller( 'TemperatureAverageMonthly',
+    function( $scope, ActiveMenuItem ) {
+
+        $scope.ActiveMenuItem = ActiveMenuItem;
+
+    } );
+
+
+cMod.controller( 'TemperatureAverageYearly',
+    function( $scope, ActiveMenuItem ) {
+
+        $scope.ActiveMenuItem = ActiveMenuItem;
+
+    } );
+
+var cMod = angular.module( 'myApp.controller-temperature-min-max', [] );
+
+
+cMod.controller( 'TemperatureMinMax', function( $scope, SensorStatsChart ) {
+
+
+} );
+
+var cMod = angular.module( 'myApp.controller-temperature-recent', [] );
+
+
+cMod.controller( 'TemperatureRecent', function( $scope, SensorRecentChart ) {
+
+    $scope.SensorChart = SensorRecentChart;
+    $scope.SensorChart.init( 'temperature' );
+
+} );
+
+var cMod = angular.module( 'myApp.controllers', [] );
 
 
 cMod.controller( 'RaspberryPi', function ( $scope, RaspberryPiChart ) {
@@ -204,6 +244,16 @@ sMod.factory( 'API', function ( $http, $location, $window ) {
     };
 
 } );
+
+
+sMod.factory( "ActiveMenuItem", [ "$location", function ( $location ) {
+    return function ( activePath ) {
+        if ( activePath === $location.path() ) {
+            return "active";
+        }
+        return "";
+    };
+} ] );
 
 
 sMod.factory( 'RaspberryPi', function ( API ) {
