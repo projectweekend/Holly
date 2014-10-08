@@ -34,12 +34,10 @@ cMod.controller( 'TemperatureAverageWeekly',
             };
 
             return {
-                fillColor : "rgba(151,187,205,0)",
-                strokeColor : "#e67e22",
-                highlightFill: "rgba(220,220,220,0.75)",
-                highlightStroke: "rgba(220,220,220,1)",
-                pointColor : "rgba(151,187,205,0)",
-                pointStrokeColor : "#e67e22",
+                fillColor : "rgba(230,126,34,0.5)",
+                strokeColor : "rgba(230,126,34,1)",
+                highlightFill: "rgba(230,126,34,0.8)",
+                highlightStroke: "rgba(230,126,34,1)",
                 data: rawChartData.map( extractPropertyData )
             };
 
