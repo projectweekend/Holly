@@ -52,6 +52,9 @@ cMod.controller( 'TemperatureAverageWeekly',
             console.log( data );
             $scope.chart.labels = makeLabels( data );
             $scope.chart.datasets.push( makeDataSets( data ) );
+
+            console.log( $scope.chart.labels );
+            console.log( $scope.chart.datasets );
         } );
 
     } );

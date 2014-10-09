@@ -102,26 +102,6 @@ sMod.factory( 'SensorReading', function ( API ) {
 } );
 
 
-// Helper function used in charting routes
-var makeDataSets = function ( rawChartData, propertyName ) {
-
-    var extractPropertyData = function ( chartItem ) {
-        return chartItem[ propertyName ];
-    };
-
-    return {
-        fillColor : "rgba(151,187,205,0)",
-        strokeColor : "#e67e22",
-        highlightFill: "rgba(220,220,220,0.75)",
-        highlightStroke: "rgba(220,220,220,1)",
-        pointColor : "rgba(151,187,205,0)",
-        pointStrokeColor : "#e67e22",
-        data: rawChartData.map( extractPropertyData )
-    };
-
-};
-
-
 sMod.factory( 'SensorRecentChart', function ( API, $window ) {
 
     var chartWidth = function () {
@@ -152,6 +132,24 @@ sMod.factory( 'SensorRecentChart', function ( API, $window ) {
 
     };
 
+    var makeDataSets = function ( rawChartData, propertyName ) {
+
+        var extractPropertyData = function ( chartItem ) {
+            return chartItem[ propertyName ];
+        };
+
+        return {
+            fillColor : "rgba(151,187,205,0)",
+            strokeColor : "#e67e22",
+            highlightFill: "rgba(220,220,220,0.75)",
+            highlightStroke: "rgba(220,220,220,1)",
+            pointColor : "rgba(151,187,205,0)",
+            pointStrokeColor : "#e67e22",
+            data: rawChartData.map( extractPropertyData )
+        };
+
+    };
+
     return {
         width: chartWidth(),
         data:{
@@ -177,107 +175,6 @@ sMod.factory( 'SensorRecentChart', function ( API, $window ) {
     };
 
 } );
-
-
-sMod.factory( "SensorStatsChart", [ "API", function ( API ) {
-
-    var makeLabels = function ( rawChartData ) {
-
-        var extractDateParts = function ( chartItem ) {
-            var d = new Date( chartItem.date );
-            var day = d.getDate();
-            var month = d.getMonth() + 1;
-            var year = d.getFullYear();
-            return year + "/" + month + "/" + day;
-        };
-
-        return rawChartData.map( extractDateParts );
-
-    };
-
-    return {
-        data: {
-            labels: [],
-            datasets: []
-        },
-        average: function ( options ) {
-
-            var self = this;
-            var chart = options.chart;
-            var stat = options.stat;
-            var readings = options.readings;
-
-            var url = "/api/chart/" + chart + "/stats?stat=" + stat + "&readings=" + readings;
-
-            API.get( url, function ( err, results ) {
-
-                if ( err ) {
-                    // TODO: improve error display
-                    return alert( "Error with " + chart + " stats chart" );
-                }
-
-                self.data.datasets = [];
-                self.data.labels = makeLabels( results );
-                self.data.datasets.push( makeDataSets( results, "avg_temp_f" ) );
-
-                console.log( self.data );
-
-            } );
-
-        },
-        minMax: function ( options ) {
-
-            var self = this;
-            var chart = options.chart;
-            var stat = options.stat;
-            var readings = options.readings;
-
-        },
-        weeklyAverage: function ( chart ) {
-
-            var self = this;
-
-            return self.average( {
-                chart: chart,
-                stat: "WEEKLY",
-                readings: 52
-            } );
-
-        },
-        weeklyMinMax: function ( chart ) {
-
-        },
-        monthlyAverage: function ( chart ) {
-
-            var self = this;
-
-            return self.average( {
-                chart: chart,
-                stat: "MONTHLY",
-                readings: 12
-            } );
-
-        },
-        monthlyMinMax: function ( chart ) {
-
-        },
-        yearlyAverage: function ( chart ) {
-
-            var self = this;
-
-            return self.average( {
-                chart: chart,
-                stat: "YEARLY",
-                readings: 5
-            } );
-
-        },
-        yearlyMinMax: function ( chart ) {
-
-        },
-    };
-
-} ] );
 
 
 sMod.factory( 'RaspberryPiChart', function ( API, $window ) {
