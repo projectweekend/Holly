@@ -1,6 +1,7 @@
 div(class="row")
     div(class="col-lg-12 chart")
-        div(class="page-header")
-            h1 Weekly Averages: &deg;F
-        include ./temperature-average-menu.jade
-        canvas(barchart, resize, data="chart")
+      div(class="page-header")
+          h1 Weekly Averages: &deg;F
+      include ./temperature-average-menu.jade
+      p(ng-if="chart.labels.length == 0", class="no-data-message") No data available for this chart
+      canvas(barchart, resize, data="chart")

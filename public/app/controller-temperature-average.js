@@ -49,6 +49,7 @@ cMod.controller( 'TemperatureAverageWeekly',
             if ( err ) {
                 return alert( "Error with average temperature chart" );
             }
+            console.log( data );
             $scope.chart.labels = makeLabels( data );
             $scope.chart.datasets.push( makeDataSets( data ) );
         } );
