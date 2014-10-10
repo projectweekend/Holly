@@ -3,4 +3,4 @@ div(class="row")
         div(class="page-header")
           h1 Yearly Averages: &deg;F
         include ./temperature-average-menu.jade
-        p(ng-if="chart.labels.length == 0", class="no-data-message") No data available for this chart
+        div(ng-if="chart.labels.length == 0", class="well no-data-message") No data available for this chart
