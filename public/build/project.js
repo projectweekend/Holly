@@ -43,14 +43,19 @@ appMod.config( function( $routeProvider ) {
         controller: 'TemperatureAverageYearly'
     } );
 
-    $routeProvider.when( '/temperature/average', {
-        templateUrl: 'partials/temperature-average',
-        controller: 'TemperatureAverage'
+    $routeProvider.when( '/temperature/min-max/weekly', {
+        templateUrl: 'partials/temperature-min-max-weekly',
+        controller: 'TemperatureMinMaxWeekly'
     } );
 
-    $routeProvider.when( '/temperature/min-max', {
-        templateUrl: 'partials/temperature-min-max',
-        controller: 'TemperatureMinMax'
+    $routeProvider.when( '/temperature/min-max/monthly', {
+        templateUrl: 'partials/temperature-min-max-monthly',
+        controller: 'TemperatureMinMaxMonthly'
+    } );
+
+    $routeProvider.when( '/temperature/min-max/yearly', {
+        templateUrl: 'partials/temperature-min-max-yearly',
+        controller: 'TemperatureMinMaxYearly'
     } );
 
     $routeProvider.when( '/humidity', {
@@ -237,7 +242,19 @@ cMod.controller( 'TemperatureAverageYearly',
 var cMod = angular.module( 'myApp.controller-temperature-min-max', [] );
 
 
-cMod.controller( 'TemperatureMinMax', function( $scope, SensorStatsChart ) {
+cMod.controller( 'TemperatureMinMaxWeekly', function( $scope ) {
+
+
+} );
+
+
+cMod.controller( 'TemperatureMinMaxMonthly', function( $scope ) {
+
+
+} );
+
+
+cMod.controller( 'TemperatureMinMaxYearly', function( $scope ) {
 
 
 } );
