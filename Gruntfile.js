@@ -5,9 +5,13 @@ module.exports = function( grunt ) {
         watch: {
             scripts: {
                 files: [
-                    "public/app/*"
+                    "public/app/*",
+                    "public/partials/*"
                 ],
-                tasks: [ "concat:scripts" ]
+                tasks: [
+                    "concat:scripts",
+                    "jade:compile"
+                ]
             }
         },
         uglify: {
@@ -49,17 +53,32 @@ module.exports = function( grunt ) {
                 ],
                 dest: "public/build/other.js"
             }
+        },
+        jade: {
+            compile: {
+                files: [
+                    {
+                        cwd: 'public/',
+                        src: [ 'partials/*.jade' ],
+                        dest: 'public/build/',
+                        ext: '.html',
+                        expand: true
+                    }
+                ]
+            }
         }
     } );
 
     grunt.loadNpmTasks( "grunt-contrib-watch" );
     grunt.loadNpmTasks( "grunt-contrib-uglify" );
     grunt.loadNpmTasks( "grunt-contrib-concat" );
+    grunt.loadNpmTasks( "grunt-contrib-jade" );
 
     grunt.registerTask( "default", [
         "concat:scripts",
         "concat:angular",
-        "concat:other"
+        "concat:other",
+        "jade:compile"
     ] );
 
     grunt.registerTask( "deploy",  [
