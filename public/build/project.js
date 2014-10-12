@@ -19,62 +19,62 @@ var appMod = angular.module( 'myApp', [
 appMod.config( function( $routeProvider ) {
 
     $routeProvider.when( '/home', {
-        templateUrl: 'partials/home',
+        templateUrl: 'build/partials/home.html',
         controller: 'Home'
     } );
 
     $routeProvider.when( '/temperature/recent', {
-        templateUrl: 'partials/temperature-recent',
+        templateUrl: 'build/partials/temperature-recent.html',
         controller: 'TemperatureRecent'
     } );
 
     $routeProvider.when( '/temperature/average/weekly', {
-        templateUrl: 'partials/temperature-average-weekly',
+        templateUrl: 'build/partials/temperature-average-weekly.html',
         controller: 'TemperatureAverageWeekly'
     } );
 
     $routeProvider.when( '/temperature/average/monthly', {
-        templateUrl: 'partials/temperature-average-monthly',
+        templateUrl: 'build/partials/temperature-average-monthly.html',
         controller: 'TemperatureAverageMonthly'
     } );
 
     $routeProvider.when( '/temperature/average/yearly', {
-        templateUrl: 'partials/temperature-average-yearly',
+        templateUrl: 'build/partials/temperature-average-yearly.html',
         controller: 'TemperatureAverageYearly'
     } );
 
     $routeProvider.when( '/temperature/min-max/weekly', {
-        templateUrl: 'partials/temperature-min-max-weekly',
+        templateUrl: 'build/partials/temperature-min-max-weekly.html',
         controller: 'TemperatureMinMaxWeekly'
     } );
 
     $routeProvider.when( '/temperature/min-max/monthly', {
-        templateUrl: 'partials/temperature-min-max-monthly',
+        templateUrl: 'build/partials/temperature-min-max-monthly.html',
         controller: 'TemperatureMinMaxMonthly'
     } );
 
     $routeProvider.when( '/temperature/min-max/yearly', {
-        templateUrl: 'partials/temperature-min-max-yearly',
+        templateUrl: 'build/partials/temperature-min-max-yearly.html',
         controller: 'TemperatureMinMaxYearly'
     } );
 
     $routeProvider.when( '/humidity', {
-        templateUrl: 'partials/humidity',
+        templateUrl: 'build/partials/humidity.html',
         controller: 'Humidity'
     } );
 
     $routeProvider.when( '/pressure', {
-        templateUrl: 'partials/pressure',
+        templateUrl: 'build/partials/pressure.html',
         controller: 'Pressure'
     } );
 
     $routeProvider.when( '/raspberry-pi', {
-        templateUrl: 'partials/raspberry-pi',
+        templateUrl: 'build/partials/raspberry-pi.html',
         controller: 'RaspberryPi'
     } );
 
     $routeProvider.when( '/about', {
-        templateUrl: 'partials/about'
+        templateUrl: 'build/partials/about.html'
     } );
 
     $routeProvider.otherwise( {
