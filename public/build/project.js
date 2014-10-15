@@ -406,6 +406,25 @@ sMod.factory( 'SensorReading', function ( API ) {
 } );
 
 
+sMod.factory( "StatChartUtils", [ function () {
+    return {
+        makeLabels: function ( rawChartData ) {
+
+            var extractDateParts = function ( chartItem ) {
+                var d = new Date( chartItem.date );
+                var day = d.getDate();
+                var month = d.getMonth() + 1;
+                var year = d.getFullYear();
+                return year + "/" + month + "/" + day;
+            };
+
+            return rawChartData.map( extractDateParts );
+
+        }
+    };
+} ] );
+
+
 sMod.factory( 'SensorRecentChart', function ( API, $window ) {
 
     var chartWidth = function () {
