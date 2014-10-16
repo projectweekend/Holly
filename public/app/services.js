@@ -116,6 +116,21 @@ sMod.factory( "StatChartUtils", [ function () {
 
             return rawChartData.map( extractDateParts );
 
+        },
+        makeDataset: function ( rawChartData, chartDataProp ) {
+
+            var extractPropertyData = function ( chartItem ) {
+                return chartItem[ chartDataProp ];
+            };
+
+            return {
+                fillColor : "rgba(230,126,34,0.5)",
+                strokeColor : "rgba(230,126,34,1)",
+                highlightFill: "rgba(230,126,34,0.8)",
+                highlightStroke: "rgba(230,126,34,1)",
+                data: rawChartData.map( extractPropertyData )
+            };
+
         }
     };
 } ] );
