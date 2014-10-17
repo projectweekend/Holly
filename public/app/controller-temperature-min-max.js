@@ -1,8 +1,8 @@
-var cMod = angular.module( 'myApp.controller-temperature-min-max', [] );
+    var cMod = angular.module( 'myApp.controller-temperature-min-max', [] );
 
 
 cMod.controller( 'TemperatureMinMaxWeekly',
-    function( $scope, ActiveMenuItem, API ) {
+    function( $scope, ActiveMenuItem, API, StatChartUtils ) {
 
         $scope.ActiveMenuItem = ActiveMenuItem;
 
@@ -12,7 +12,7 @@ cMod.controller( 'TemperatureMinMaxWeekly',
 
 
 cMod.controller( 'TemperatureMinMaxMonthly',
-    function( $scope, ActiveMenuItem, API ) {
+    function( $scope, ActiveMenuItem, API, StatChartUtils ) {
 
         $scope.ActiveMenuItem = ActiveMenuItem;
 
@@ -22,7 +22,7 @@ cMod.controller( 'TemperatureMinMaxMonthly',
 
 
 cMod.controller( 'TemperatureMinMaxYearly',
-    function( $scope, ActiveMenuItem, API ) {
+    function( $scope, ActiveMenuItem, API, StatChartUtils ) {
 
         $scope.ActiveMenuItem = ActiveMenuItem;
 
