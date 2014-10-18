@@ -1,5 +1,6 @@
 var appMod = angular.module( 'myApp', [
     'ngRoute',
+    'myApp.service-api',
     'myApp.services',
     'myApp.directives',
     'myApp.controller-compatibility',

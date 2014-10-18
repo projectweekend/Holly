@@ -1,5 +1,6 @@
 var appMod = angular.module( 'myApp', [
     'ngRoute',
+    'myApp.service-api',
     'myApp.services',
     'myApp.directives',
     'myApp.controller-compatibility',
@@ -302,7 +303,7 @@ dMod.directive( 'appVersion', function( version ) {
 
 } );
 
-var sMod = angular.module( 'myApp.services', [] );
+var sMod = angular.module( 'myApp.service-api', [] );
 
 
 sMod.factory( 'API', function ( $http, $location, $window ) {
@@ -350,6 +351,8 @@ sMod.factory( 'API', function ( $http, $location, $window ) {
     };
 
 } );
+
+var sMod = angular.module( 'myApp.services', [] );
 
 
 sMod.factory( "ActiveMenuItem", [ "$location", function ( $location ) {
