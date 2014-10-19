@@ -1,6 +1,7 @@
 var appMod = angular.module( 'myApp', [
     'ngRoute',
     'myApp.service-api',
+    'myApp.service-active-menu',
     'myApp.services',
     'myApp.directives',
     'myApp.controller-compatibility',

@@ -1,16 +1,6 @@
 var sMod = angular.module( 'myApp.services', [] );
 
 
-sMod.factory( "ActiveMenuItem", [ "$location", function ( $location ) {
-    return function ( activePath ) {
-        if ( activePath === $location.path() ) {
-            return "active";
-        }
-        return "";
-    };
-} ] );
-
-
 sMod.factory( 'RaspberryPi', function ( API ) {
 
     return {

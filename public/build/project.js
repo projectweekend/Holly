@@ -1,6 +1,7 @@
 var appMod = angular.module( 'myApp', [
     'ngRoute',
     'myApp.service-api',
+    'myApp.service-active-menu',
     'myApp.services',
     'myApp.directives',
     'myApp.controller-compatibility',
@@ -303,6 +304,18 @@ dMod.directive( 'appVersion', function( version ) {
 
 } );
 
+var sMod = angular.module( 'myApp.service-active-menu', [] );
+
+
+sMod.factory( "ActiveMenuItem", [ "$location", function ( $location ) {
+    return function ( activePath ) {
+        if ( activePath === $location.path() ) {
+            return "active";
+        }
+        return "";
+    };
+} ] );
+
 var sMod = angular.module( 'myApp.service-api', [] );
 
 
@@ -353,16 +366,6 @@ sMod.factory( 'API', function ( $http, $location, $window ) {
 } );
 
 var sMod = angular.module( 'myApp.services', [] );
-
-
-sMod.factory( "ActiveMenuItem", [ "$location", function ( $location ) {
-    return function ( activePath ) {
-        if ( activePath === $location.path() ) {
-            return "active";
-        }
-        return "";
-    };
-} ] );
 
 
 sMod.factory( 'RaspberryPi', function ( API ) {
