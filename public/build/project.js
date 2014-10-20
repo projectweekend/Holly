@@ -2,6 +2,7 @@ var appMod = angular.module( 'myApp', [
     'ngRoute',
     'myApp.service-api',
     'myApp.service-active-menu',
+    'myApp.service-raspberry-pi',
     'myApp.services',
     'myApp.directives',
     'myApp.controller-compatibility',
@@ -365,7 +366,7 @@ sMod.factory( 'API', function ( $http, $location, $window ) {
 
 } );
 
-var sMod = angular.module( 'myApp.services', [] );
+var sMod = angular.module( 'myApp.service-raspberry-pi', [] );
 
 
 sMod.factory( 'RaspberryPi', function ( API ) {
@@ -388,6 +389,8 @@ sMod.factory( 'RaspberryPi', function ( API ) {
     };
 
 } );
+
+var sMod = angular.module( 'myApp.services', [] );
 
 
 sMod.factory( 'SensorReading', function ( API ) {
