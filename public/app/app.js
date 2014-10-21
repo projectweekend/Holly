@@ -3,6 +3,7 @@ var appMod = angular.module( 'myApp', [
     'myApp.service-api',
     'myApp.service-active-menu',
     'myApp.service-raspberry-pi',
+    'myApp.service-sensor-reading',
     'myApp.services',
     'myApp.directives',
     'myApp.controller-compatibility',

@@ -3,6 +3,7 @@ var appMod = angular.module( 'myApp', [
     'myApp.service-api',
     'myApp.service-active-menu',
     'myApp.service-raspberry-pi',
+    'myApp.service-sensor-reading',
     'myApp.services',
     'myApp.directives',
     'myApp.controller-compatibility',
@@ -376,6 +377,30 @@ sMod.factory( 'RaspberryPi', function ( API ) {
         latest: function () {
             var self = this;
             API.get( '/api/latest/raspberry-pi', function ( err, data ) {
+
+                if ( err ) {
+                    // TODO: improve error display
+                    return alert( "Error with latest reading" );
+                }
+
+                self.data = data;
+
+            } );
+        }
+    };
+
+} );
+
+var sMod = angular.module( 'myApp.service-sensor-reading', [] );
+
+
+sMod.factory( 'SensorReading', function ( API ) {
+
+    return {
+        data: {},
+        latest: function () {
+            var self = this;
+            API.get( '/api/latest/all', function ( err, data ) {
 
                 if ( err ) {
                     // TODO: improve error display
