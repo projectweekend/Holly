@@ -418,28 +418,6 @@ sMod.factory( 'SensorReading', function ( API ) {
 var sMod = angular.module( 'myApp.services', [] );
 
 
-sMod.factory( 'SensorReading', function ( API ) {
-
-    return {
-        data: {},
-        latest: function () {
-            var self = this;
-            API.get( '/api/latest/all', function ( err, data ) {
-
-                if ( err ) {
-                    // TODO: improve error display
-                    return alert( "Error with latest reading" );
-                }
-
-                self.data = data;
-
-            } );
-        }
-    };
-
-} );
-
-
 sMod.factory( "StatChartUtils", [ function () {
     return {
         makeLabels: function ( rawChartData ) {
