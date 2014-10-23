@@ -4,6 +4,7 @@ var appMod = angular.module( 'myApp', [
     'myApp.service-active-menu',
     'myApp.service-raspberry-pi',
     'myApp.service-sensor-reading',
+    'myApp.service-stat-chart-utils',
     'myApp.services',
     'myApp.directives',
     'myApp.controller-compatibility',
@@ -415,7 +416,7 @@ sMod.factory( 'SensorReading', function ( API ) {
 
 } );
 
-var sMod = angular.module( 'myApp.services', [] );
+var sMod = angular.module( 'myApp.service-stat-chart-utils', [] );
 
 
 sMod.factory( "StatChartUtils", [ function () {
@@ -450,6 +451,8 @@ sMod.factory( "StatChartUtils", [ function () {
         }
     };
 } ] );
+
+var sMod = angular.module( 'myApp.services', [] );
 
 
 sMod.factory( 'SensorRecentChart', function ( API, $window ) {
