@@ -5,6 +5,7 @@ var appMod = angular.module( 'myApp', [
     'myApp.service-raspberry-pi',
     'myApp.service-sensor-reading',
     'myApp.service-stat-chart-utils',
+    'myApp.service-sensor-chart-recent',
     'myApp.services',
     'myApp.directives',
     'myApp.controller-compatibility',
@@ -392,67 +393,7 @@ sMod.factory( 'RaspberryPi', function ( API ) {
 
 } );
 
-var sMod = angular.module( 'myApp.service-sensor-reading', [] );
-
-
-sMod.factory( 'SensorReading', function ( API ) {
-
-    return {
-        data: {},
-        latest: function () {
-            var self = this;
-            API.get( '/api/latest/all', function ( err, data ) {
-
-                if ( err ) {
-                    // TODO: improve error display
-                    return alert( "Error with latest reading" );
-                }
-
-                self.data = data;
-
-            } );
-        }
-    };
-
-} );
-
-var sMod = angular.module( 'myApp.service-stat-chart-utils', [] );
-
-
-sMod.factory( "StatChartUtils", [ function () {
-    return {
-        makeLabels: function ( rawChartData ) {
-
-            var extractDateParts = function ( chartItem ) {
-                var d = new Date( chartItem.date );
-                var day = d.getDate();
-                var month = d.getMonth() + 1;
-                var year = d.getFullYear();
-                return year + "/" + month + "/" + day;
-            };
-
-            return rawChartData.map( extractDateParts );
-
-        },
-        makeDataset: function ( rawChartData, chartDataProp ) {
-
-            var extractPropertyData = function ( chartItem ) {
-                return chartItem[ chartDataProp ];
-            };
-
-            return {
-                fillColor : "rgba(230,126,34,0.5)",
-                strokeColor : "rgba(230,126,34,1)",
-                highlightFill: "rgba(230,126,34,0.8)",
-                highlightStroke: "rgba(230,126,34,1)",
-                data: rawChartData.map( extractPropertyData )
-            };
-
-        }
-    };
-} ] );
-
-var sMod = angular.module( 'myApp.services', [] );
+var sMod = angular.module( 'myApp.service-sensor-chart-recent', [] );
 
 
 sMod.factory( 'SensorRecentChart', function ( API, $window ) {
@@ -528,6 +469,68 @@ sMod.factory( 'SensorRecentChart', function ( API, $window ) {
     };
 
 } );
+
+var sMod = angular.module( 'myApp.service-sensor-reading', [] );
+
+
+sMod.factory( 'SensorReading', function ( API ) {
+
+    return {
+        data: {},
+        latest: function () {
+            var self = this;
+            API.get( '/api/latest/all', function ( err, data ) {
+
+                if ( err ) {
+                    // TODO: improve error display
+                    return alert( "Error with latest reading" );
+                }
+
+                self.data = data;
+
+            } );
+        }
+    };
+
+} );
+
+var sMod = angular.module( 'myApp.service-stat-chart-utils', [] );
+
+
+sMod.factory( "StatChartUtils", [ function () {
+    return {
+        makeLabels: function ( rawChartData ) {
+
+            var extractDateParts = function ( chartItem ) {
+                var d = new Date( chartItem.date );
+                var day = d.getDate();
+                var month = d.getMonth() + 1;
+                var year = d.getFullYear();
+                return year + "/" + month + "/" + day;
+            };
+
+            return rawChartData.map( extractDateParts );
+
+        },
+        makeDataset: function ( rawChartData, chartDataProp ) {
+
+            var extractPropertyData = function ( chartItem ) {
+                return chartItem[ chartDataProp ];
+            };
+
+            return {
+                fillColor : "rgba(230,126,34,0.5)",
+                strokeColor : "rgba(230,126,34,1)",
+                highlightFill: "rgba(230,126,34,0.8)",
+                highlightStroke: "rgba(230,126,34,1)",
+                data: rawChartData.map( extractPropertyData )
+            };
+
+        }
+    };
+} ] );
+
+var sMod = angular.module( 'myApp.services', [] );
 
 
 sMod.factory( 'RaspberryPiChart', function ( API, $window ) {
