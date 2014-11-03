@@ -3,6 +3,7 @@ var appMod = angular.module( 'myApp', [
     'myApp.service-api',
     'myApp.service-active-menu',
     'myApp.service-raspberry-pi',
+    'myApp.service-raspberry-pi-chart',
     'myApp.service-sensor-reading',
     'myApp.service-stat-chart-utils',
     'myApp.service-sensor-chart-recent',
@@ -369,6 +370,43 @@ sMod.factory( 'API', function ( $http, $location, $window ) {
 
 } );
 
+var sMod = angular.module( 'myApp.service-raspberry-pi-chart', [] );
+
+
+sMod.factory( 'RaspberryPiChart', function ( API, $window ) {
+
+    var chartWidth = function () {
+
+        return ( $window.innerWidth - 150 );
+
+    };
+
+    return {
+        width: chartWidth(),
+        data:{
+            labels: [],
+            datasets: []
+        },
+        init: function () {
+
+            var self = this;
+
+            API.get( '/api/chart/raspberry-pi', function ( err, data ) {
+
+                if ( err ) {
+                    // TODO: improve error display
+                    return alert( "Error with raspberry-pi chart" );
+                }
+
+                self.data.labels = makeLabels( data );
+                self.data.datasets = makeDataSets( data, 'temp_f' );
+
+            } );
+        }
+    };
+
+} );
+
 var sMod = angular.module( 'myApp.service-raspberry-pi', [] );
 
 
@@ -531,41 +569,6 @@ sMod.factory( "StatChartUtils", [ function () {
 } ] );
 
 var sMod = angular.module( 'myApp.services', [] );
-
-
-sMod.factory( 'RaspberryPiChart', function ( API, $window ) {
-
-    var chartWidth = function () {
-
-        return ( $window.innerWidth - 150 );
-
-    };
-
-    return {
-        width: chartWidth(),
-        data:{
-            labels: [],
-            datasets: []
-        },
-        init: function () {
-
-            var self = this;
-
-            API.get( '/api/chart/raspberry-pi', function ( err, data ) {
-
-                if ( err ) {
-                    // TODO: improve error display
-                    return alert( "Error with raspberry-pi chart" );
-                }
-
-                self.data.labels = makeLabels( data );
-                self.data.datasets = makeDataSets( data, 'temp_f' );
-
-            } );
-        }
-    };
-
-} );
 
 
 sMod.factory( 'Weather', function ( API, $window ) {
