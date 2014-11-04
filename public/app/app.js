@@ -7,7 +7,7 @@ var appMod = angular.module( 'myApp', [
     'myApp.service-sensor-reading',
     'myApp.service-stat-chart-utils',
     'myApp.service-sensor-chart-recent',
-    'myApp.services',
+    'myApp.service-weather',
     'myApp.directives',
     'myApp.controller-compatibility',
     'myApp.controller-home',

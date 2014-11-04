@@ -7,7 +7,7 @@ var appMod = angular.module( 'myApp', [
     'myApp.service-sensor-reading',
     'myApp.service-stat-chart-utils',
     'myApp.service-sensor-chart-recent',
-    'myApp.services',
+    'myApp.service-weather',
     'myApp.directives',
     'myApp.controller-compatibility',
     'myApp.controller-home',
@@ -568,7 +568,7 @@ sMod.factory( "StatChartUtils", [ function () {
     };
 } ] );
 
-var sMod = angular.module( 'myApp.services', [] );
+var sMod = angular.module( 'myApp.service-weather', [] );
 
 
 sMod.factory( 'Weather', function ( API, $window ) {
@@ -659,3 +659,4 @@ sMod.factory( 'Weather', function ( API, $window ) {
     };
 
 } );
+
