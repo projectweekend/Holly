@@ -659,4 +659,3 @@ sMod.factory( 'Weather', function ( API, $window ) {
     };
 
 } );
-
