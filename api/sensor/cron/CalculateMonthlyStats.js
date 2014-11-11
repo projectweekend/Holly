@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 var jobUtils = require( "../../utils/jobs" );
 var SensorReading = require( '../models' ).SensorReading;
 var SensorStats = require( '../models' ).SensorStats;

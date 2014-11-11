@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 var async = require( "async" );
 var moment = require( "moment" );
 var jobUtils = require( "../../utils/jobs" );
