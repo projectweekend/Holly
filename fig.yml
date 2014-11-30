@@ -13,7 +13,8 @@ web:
         - db
     environment:
         PORT: 3000
-        JWT_SECRET: SetJwtTokenSecretHere
-        FORECAST_IO_KEY: adsfadsfasdfasfd
+        JWT_SECRET: replace_this
+        FORECAST_IO_KEY: replace_this
         FORECAST_LATITUDE: 41.885246
         FORECAST_LONGITUDE: -87.642853
+        RABBIT_URL: replace_this
