@@ -19,153 +19,26 @@ There are just a couple of configurations managed as environment variables. In t
 * `PORT` - Changes the port number for the web app. The default is 3000.
 * `JWT_SECRET` - This is a secret string that you make up. It is used to encrypt and verify the authentication token on routes that require authentication.
 
+
 ## API Info
 
-The web app uses a handful of API routes transporting JSON data. There is also a single route for receiving sensor readings. I use one of my Raspberry Pi projects ([Pi-Red-Dwarf](https://github.com/projectweekend/Pi-Red-Dwarf)) to transmit this data, but all you need is something capable of making an HTTP POST request.
+This API is currently being redesigned. The previous routes related to charts have been temporarily removed. They will return after some other things are settled.
 
-#### Add new sensor readings
+
+#### Get current reading from sensors
 
 ```
-POST: /api/sensor
+GET: /api/sensor
 ```
 
-**Request Body**
-~~~json
+**Response Body**
+```json
 {
+    "date": "2014-07-06T03:52:23.368Z",
     "temp_c": 22,
     "temp_f": 71.6,
-    "humidity": 55.4,
-    "pressure": 895.3,
-    "luminosity": 1003.3
+    "humidity": 34.99,
+    "pressure":984.61,
+    "luminosity":61
 }
-~~~
-
-**Response Body**
-~~~json
-{
-    "_id": "53b8c7f74a9a52a629de9121",
-    "date": "2014-07-06T13:54:04.358Z",
-    "temp_c": 22,
-    "temp_f": 71.6,
-    "humidity": 55.4,
-    "pressure": 895.3,
-    "luminosity": 1003.3
-}
-~~~
-
-**NOTE**
-I run Holly publically so this route requires an authentication token. If you plan on doing the same, you should also use SSL to encrypt traffic to this route. The project includes a simple command line tool to help you generate a token for any device that will access this route. The tool takes two parameters. For the first one, use the same string as the `JWT_SECRET` environment variable referenced above in the Configuration section. The second is another string you make up that will go into the body of the token.
-
-```
-./get_token JwtTokenSecretHere WhateverYouWant
-```
-
-The value returned from this tool must be set in the `Authorization` header to satisfy authentication. Here is an example formatting of the header/value pair:
-
-```
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IkJ1bGxTaGl0RGF0YSIs
-```
-
-
-#### Get latest temperature reading
-
-```
-GET: /api/sensor/temperature
-```
-
-**Response Body**
-```json
-{
-    "_id": "53b8c7f74a9a52a629de9121",
-    "temp_c": 22,
-    "temp_f": 71.6,
-    "date": "2014-07-06T03:52:23.368Z"
-}
-```
-
-
-#### Get sensor readings for temperature chart
-
-```
-GET: /api/chart/temperature
-```
-
-**Response Body**
-```json
-[
-    {
-        "_id": "53b8c7f74a9a52a629de9121",
-        "temp_c": 22,
-        "temp_f": 71.6,
-        "date": "2014-07-06T03:52:23.368Z"
-    }
-]
-```
-
-
-#### Get latest humdity reading
-
-```
-GET: /api/sensor/humidity
-```
-
-**Response Body**
-```json
-{
-    "_id": "53b954fcf11151202bd12437",
-    "humidity": 55.4,
-    "date": "2014-07-06T13:54:04.358Z"
-}
-```
-
-
-#### Get sensor readings for humidity chart
-
-```
-GET: /api/chart/humidity
-```
-
-**Response Body**
-```json
-[
-    {
-        "_id": "53b954fcf11151202bd12437",
-        "humidity": 55.4,
-        "date": "2014-07-06T13:54:04.358Z"
-    }
-]
-```
-
-
-#### Get latest pressure reading
-
-```
-GET:  /api/sensor/pressure
-```
-
-**Response Body**
-```json
-{
-    "_id": "53b954fcf11151202bd12437",
-    "pressure": 895.3,
-    "date": "2014-07-06T13:54:04.358Z"
-}
-```
-
-
-#### Get sensor readings for pressure chart
-
-```
-GET:  /api/chart/pressure
-```
-
-**Response Body**
-```json
-[
-    {
-        "_id": "53b954fcf11151202bd12437",
-        "pressure": 895.3,
-        "date": "2014-07-06T13:54:04.358Z"
-    }
-]
 ```

@@ -17,15 +17,7 @@ router.get( '/partials/:name', function ( req, res ) {
 
 
 /* Map URLs to handlers in this file */
-router.post( '/api/raspberry-pi', RaspberryPiAPI.create );
-
-router.get( '/api/latest/raspberry-pi', RaspberryPiAPI.read );
-router.get( '/api/latest/:readingType', SensorAPI.read );
-
-router.get( '/api/chart/raspberry-pi', RaspberryPiAPI.getChart );
-router.get( '/api/chart/:chartType', SensorAPI.getChart );
-router.get( '/api/chart/:chartType/stats', SensorAPI.getStatsChart );
-
+router.get( '/api/sensor', SensorAPI.current );
 router.get( '/api/weather', WeatherAPI.current );
 
 
