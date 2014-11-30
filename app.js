@@ -6,9 +6,7 @@ var mongoose = require( 'mongoose' );
 var expressJwt = require( 'express-jwt' );
 var expressValidator = require( 'express-validator' );
 
-
 var routes = require( './routes/index' );
-
 
 var app = express();
 
@@ -25,22 +23,8 @@ app.use( express.static( path.join( __dirname, 'public' ) ) );
 var noAuth = [
     '/',
     '/favicon.ico',
-    '/api/latest/temperature',
-    '/api/latest/humidity',
-    '/api/latest/pressure',
-    '/api/latest/luminosity',
-    '/api/latest/all',
-    '/api/latest/raspberry-pi',
-    '/api/chart/temperature',
-    '/api/chart/humidity',
-    '/api/chart/pressure',
-    '/api/chart/luminosity',
-    '/api/chart/raspberry-pi',
-    '/api/chart/temperature/stats',
-    '/api/chart/humidity/stats',
-    '/api/chart/pressure/stats',
-    '/api/chart/luminosity/stats',
-    '/api/weather'
+    '/api/weather',
+    '/api/sensor'
 ];
 
 app.use( expressJwt( { secret: process.env.JWT_SECRET } ).unless( { path: noAuth } ) );

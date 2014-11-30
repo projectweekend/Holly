@@ -4,6 +4,18 @@ var SensorStats = require( './models' ).SensorStats;
 var handleRouteError = require( '../utils' ).handleRouteError;
 
 
+exports.current = function ( broker ) {
+    return function ( req, res ) {
+        broker.publish( "sensor.get", { serialMessage: "A" }, function ( err, data ) {
+            if ( err ) {
+                return handleRouteError( err, res );
+            }
+            return res.json( JSON.parse( data ), 200 );
+        } );
+    };
+};
+
+
 exports.read = function ( req, res ) {
 
     var validation = function ( callback ) {
