@@ -3,31 +3,13 @@ var SystemTemperature = require( './models' ).SystemTemperature;
 var handleRouteError = require( '../utils' ).handleRouteError;
 
 
-exports.read = function ( req, res ) {
-
-    SystemTemperature.latestReading( 'date temp_c temp_f', function ( err, temperatureReading ) {
-
-        if ( err ) {
-            return handleRouteError( err, res );
-        }
-
-        return res.json( temperatureReading, 200 );
-
-    } );
-
-};
-
-
-exports.getChart = function ( req, res ) {
-
-    SystemTemperature.chartReadings( 24, 'date temp_c temp_f', function ( err, temperatureReadings ) {
-
-        if ( err ) {
-            return handleRouteError( err, res );
-        }
-
-        return res.json( temperatureReadings, 200 );
-
-    } );
-
+exports.current = function ( messageBroker ) {
+    return function ( req, res ) {
+        messageBroker.publish( "system.get", {}, function ( err, data ) {
+            if ( err ) {
+                return handleRouteError( err, res );
+            }
+            return res.json( JSON.parse( data ), 200 );
+        } );
+    };
 };

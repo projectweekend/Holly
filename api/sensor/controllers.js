@@ -4,9 +4,9 @@ var SensorStats = require( './models' ).SensorStats;
 var handleRouteError = require( '../utils' ).handleRouteError;
 
 
-exports.current = function ( broker ) {
+exports.current = function ( messageBroker ) {
     return function ( req, res ) {
-        broker.publish( "sensor.get", { serialMessage: "A" }, function ( err, data ) {
+        messageBroker.publish( "sensor.get", { serialMessage: "A" }, function ( err, data ) {
             if ( err ) {
                 return handleRouteError( err, res );
             }

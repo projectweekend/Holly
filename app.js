@@ -24,7 +24,8 @@ var noAuth = [
     '/',
     '/favicon.ico',
     '/api/weather',
-    '/api/sensor'
+    '/api/sensor',
+    '/api/raspberry-pi'
 ];
 
 app.use( expressJwt( { secret: process.env.JWT_SECRET } ).unless( { path: noAuth } ) );
