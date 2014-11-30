@@ -7,7 +7,7 @@ sMod.factory( 'RaspberryPi', function ( API ) {
         data: {},
         latest: function () {
             var self = this;
-            API.get( '/api/latest/raspberry-pi', function ( err, data ) {
+            API.get( '/api/raspberry-pi', function ( err, data ) {
 
                 if ( err ) {
                     // TODO: improve error display

@@ -7,7 +7,7 @@ cMod.controller( 'Home', function( $scope, SensorReading, RaspberryPi, Weather )
     $scope.SensorReading.latest();
 
     $scope.RaspberryPi = RaspberryPi;
-    // $scope.RaspberryPi.latest();
+    $scope.RaspberryPi.latest();
 
     $scope.Weather = Weather;
     $scope.Weather.init();

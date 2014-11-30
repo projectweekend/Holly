@@ -15,7 +15,7 @@ div(class="row")
         p(class="reading") {{ SensorReading.data.pressure }} hPa
     div(class="col-md-3 latest")
         h3(class="reading-title") Raspberry Pi
-        p(class="reading") {{ RaspberryPi.data.temp_f }}&deg; F    
+        p(class="reading") {{ RaspberryPi.data.cpu_temp_f | number: 2 }}&deg; F    
 
 hr
 
