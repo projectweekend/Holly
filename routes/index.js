@@ -18,7 +18,6 @@ router.get( '/partials/:name', function ( req, res ) {
 
 /* Map URLs to handlers in this file */
 router.post( '/api/raspberry-pi', RaspberryPiAPI.create );
-router.post( '/api/sensor', SensorAPI.create );
 
 router.get( '/api/latest/raspberry-pi', RaspberryPiAPI.read );
 router.get( '/api/latest/:readingType', SensorAPI.read );

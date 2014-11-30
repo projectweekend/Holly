@@ -4,60 +4,6 @@ var SensorStats = require( './models' ).SensorStats;
 var handleRouteError = require( '../utils' ).handleRouteError;
 
 
-exports.create = function ( req, res ) {
-
-    var validation = function ( callback ) {
-
-        req.checkBody( "temp_c", "'temp_c' must be a float" ).isFloat();
-        req.checkBody( "temp_f", "'temp_f' must be a float" ).isFloat();
-        req.checkBody( "humidity", "'humidity' must be a float" ).isFloat();
-        req.checkBody( "pressure", "'pressure' must be a float" ).isFloat();
-        req.checkBody( "luminosity", "'luminosity' must be a float" ).isFloat();
-
-        var errors = req.validationErrors();
-        if ( errors ) {
-            return callback( errors );
-        }
-
-        var cleanData = {
-            temp_c: req.param( "temp_c" ),
-            temp_f: req.param( "temp_f" ),
-            humidity: req.param( "humidity" ),
-            pressure: req.param( "pressure" ),
-            luminosity: req.param( "luminosity" )
-        };
-
-        return callback( null, cleanData );
-
-    };
-
-    var data = function ( cleanData, callback ) {
-
-        SensorReading.add( cleanData, function ( err, newSensorReading ) {
-
-            if ( err ) {
-                return callback( err );
-            }
-
-            return callback( null, newSensorReading );
-
-        } );
-
-    };
-
-    async.waterfall( [ validation, data ], function ( err, newSensorReading ) {
-
-        if ( err ) {
-            return handleRouteError( err, res );
-        }
-
-        return res.json( newSensorReading, 201 );
-
-    } );
-
-};
-
-
 exports.read = function ( req, res ) {
 
     var validation = function ( callback ) {
