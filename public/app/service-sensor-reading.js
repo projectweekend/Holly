@@ -7,7 +7,7 @@ sMod.factory( 'SensorReading', function ( API ) {
         data: {},
         latest: function () {
             var self = this;
-            API.get( '/api/latest/all', function ( err, data ) {
+            API.get( '/api/sensor', function ( err, data ) {
 
                 if ( err ) {
                     // TODO: improve error display

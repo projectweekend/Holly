@@ -106,7 +106,7 @@ cMod.controller( 'Home', function( $scope, SensorReading, RaspberryPi, Weather )
     $scope.SensorReading.latest();
 
     $scope.RaspberryPi = RaspberryPi;
-    $scope.RaspberryPi.latest();
+    // $scope.RaspberryPi.latest();
 
     $scope.Weather = Weather;
     $scope.Weather.init();
@@ -517,7 +517,7 @@ sMod.factory( 'SensorReading', function ( API ) {
         data: {},
         latest: function () {
             var self = this;
-            API.get( '/api/latest/all', function ( err, data ) {
+            API.get( '/api/sensor', function ( err, data ) {
 
                 if ( err ) {
                     // TODO: improve error display
