@@ -42,3 +42,18 @@ GET: /api/sensor
     "luminosity":61
 }
 ```
+
+#### Get current reading from Raspberry Pi system
+
+```
+GET: /api/raspberry-pi
+```
+
+**Response Body**
+```json
+{
+    "date": "2014-07-06T03:52:23.368Z",
+    "cpu_temp_c": 22,
+    "cpu_temp_f": 71.6
+}
+```
