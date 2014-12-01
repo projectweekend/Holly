@@ -6,6 +6,8 @@ var RaspberryPiAPI = require( '../api/raspberry_pi/controllers' );
 var WeatherAPI = require( '../api/weather/controllers' );
 
 
+var broker = jackrabbit( process.env.RABBIT_URL, 1 );
+
 // Serve the index page for the Angular app
 router.get( '/', function ( req, res ) {
     res.render( 'index' );
@@ -17,8 +19,6 @@ router.get( '/partials/:name', function ( req, res ) {
 } );
 
 router.get( '/api/weather', WeatherAPI.current );
-
-var broker = jackrabbit( process.env.RABBIT_URL, 1 );
 
 var sensorReady = function () {
     // This route depends on the broker being ready
