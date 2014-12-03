@@ -10,7 +10,7 @@ exports.current = function ( messageBroker ) {
             if ( err ) {
                 return handleRouteError( err, res );
             }
-            return res.json( JSON.parse( data ), 200 );
+            return res.json( data, 200 );
         } );
     };
 };
