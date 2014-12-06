@@ -18,8 +18,6 @@ router.get( '/partials/:name', function ( req, res ) {
     res.render( 'partials/' + req.params.name );
 } );
 
-router.get( '/api/weather', WeatherAPI.current );
-
 var sensorReady = function () {
     // This route depends on the broker being ready
     router.get( '/api/sensor', SensorAPI.current( broker ) );
@@ -30,9 +28,15 @@ var systemReady = function () {
     router.get( '/api/raspberry-pi', RaspberryPiAPI.current( broker ) );
 };
 
+var forecastReady = function () {
+    // This route depends on the broker being ready
+    router.get( '/api/weather', WeatherAPI.current( broker ) );
+};
+
 var create = function () {
     broker.create( "sensor.get", { prefetch: 5 }, sensorReady );
     broker.create( "system.get", { prefetch: 5 }, systemReady );
+    broker.create( "forecast.get", { prefetch: 5 }, forecastReady );
 };
 
 broker.once( "connected", create );
