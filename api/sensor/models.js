@@ -26,23 +26,9 @@ SensorReadingSchema.statics.add = function ( data, cb ) {
 };
 
 
-SensorReadingSchema.statics.latestReading = function ( fieldsToSelect, cb ) {
-    var q = this.findOne( {} )
-                .select( fieldsToSelect )
-                .sort( '-date' );
-    q.exec( function ( err, readings ) {
-        if ( err ) {
-            return cb( systemError( err ) );
-        }
-        return cb( null, readings );
-    } );
-};
-
-
-SensorReadingSchema.statics.chartReadings = function ( options, cb ) {
+SensorReadingSchema.statics.chartReadings = function ( numberOfReadings, cb ) {
     var q = this.find( {} )
-                .select( options.fieldsToSelect )
-                .limit( options.numberOfReadings )
+                .limit( numberOfReadings )
                 .sort( '-date' );
     q.exec( function ( err, readings ) {
         if ( err ) {
@@ -123,7 +109,7 @@ SensorReadingSchema.statics.statsOverDateRange = function ( startDate, endDate, 
 exports.SensorReading = mongoose.model( 'SensorReading', SensorReadingSchema );
 
 
-// Average Sensor Reading
+// Sensor Stats
 var SensorStatsSchema = Schema( {
     date: Date,
     type: String,
@@ -159,22 +145,8 @@ SensorStatsSchema.statics.add = function ( data, cb ) {
 };
 
 
-SensorStatsSchema.statics.latestReading = function ( fieldsToSelect, cb ) {
-    var q = this.findOne( {} )
-                .select( fieldsToSelect )
-                .sort( '-date' );
-    q.exec( function ( err, readings ) {
-        if ( err ) {
-            return cb( systemError( err ) );
-        }
-        return cb( null, readings );
-    } );
-};
-
-
 SensorStatsSchema.statics.chartReadings = function ( options, cb ) {
     var q = this.find( { type: options.statType } )
-                .select( options.fieldsToSelect )
                 .limit( options.numberOfReadings )
                 .sort( '-date' );
     q.exec( function ( err, readings ) {
