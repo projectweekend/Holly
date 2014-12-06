@@ -3,14 +3,12 @@ var mongoose = require( "mongoose" );
 
 
 exports.connectToMongo = function () {
-    var MONGO_DB;
-    var FIG_DB = process.env.DB_1_PORT;
-    if ( FIG_DB ) {
-      MONGO_DB = FIG_DB.replace( "tcp", "mongodb" ) + "/dev_db";
+    var fig_db = process.env.DB_1_PORT;
+    if ( fig_db ) {
+        mongoose.connect( fig_db.replace( "tcp", "mongodb" ) + "/dev_db" );
     } else {
-      MONGO_DB = process.env.MONGO_URL;
+        mongoose.connect( process.env.MONGO_URL );
     }
-    mongoose.connect( MONGO_DB );
 };
 
 
