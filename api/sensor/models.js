@@ -17,7 +17,6 @@ var SensorReadingSchema = Schema( {
 
 
 SensorReadingSchema.statics.add = function ( data, cb ) {
-    data.date = new Date();
     this.create( data, function ( err, reading ) {
         if ( err ) {
             return cb( systemError( err ) );
