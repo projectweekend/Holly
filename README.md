@@ -57,3 +57,12 @@ GET: /api/raspberry-pi
     "cpu_temp_f": 71.6
 }
 ```
+
+#### Get forecast
+
+```
+GET: /api/weather
+```
+
+**Response Body:**
+See [Forecast.io API documentation](https://developer.forecast.io/docs/v2)
