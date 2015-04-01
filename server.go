@@ -2,10 +2,10 @@ package main
 
 import (
     "flag"
-    "fmt"
     "github.com/codegangsta/negroni"
     "github.com/gorilla/mux"
     "net/http"
+    "html/template"
 )
 
 func main() {
@@ -20,9 +20,22 @@ func main() {
     n := negroni.Classic()
     n.UseHandler(router)
     n.Run(*port)
+
 }
 
 
 func HomeHandler(w http.ResponseWriter, req *http.Request) {
-        fmt.Fprintf(w, "Don't worry, I'll be back")
+
+    tmpl, err := template.New("index.html").ParseFiles("templates/index.html")
+    if err != nil {
+        http.Error(w, err.Error(), http.StatusInternalServerError)
+    }
+
+    data := []string{}
+
+    err = tmpl.Execute(w, data)
+    if err != nil {
+        http.Error(w, err.Error(), http.StatusInternalServerError)
+    }
+
 }
