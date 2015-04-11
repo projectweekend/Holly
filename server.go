@@ -31,9 +31,12 @@ func HomeHandler(w http.ResponseWriter, req *http.Request) {
         http.Error(w, err.Error(), http.StatusInternalServerError)
     }
 
-    data := []string{}
+    forecastData, err := forecast()
+    if err != nil {
+        http.Error(w, err.Error(), http.StatusInternalServerError)
+    }
 
-    err = tmpl.Execute(w, data)
+    err = tmpl.Execute(w, forecastData)
     if err != nil {
         http.Error(w, err.Error(), http.StatusInternalServerError)
     }
