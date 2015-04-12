@@ -24,9 +24,18 @@ func main() {
 }
 
 
+func toPercent(f float64) float64 {
+    return f * 100
+}
+
+
 func HomeHandler(w http.ResponseWriter, req *http.Request) {
 
-    tmpl, err := template.New("index.html").ParseFiles("templates/index.html")
+    funcMap := template.FuncMap{
+        "toPercent": toPercent,
+    }
+
+    tmpl, err := template.New("index.html").Funcs(funcMap).ParseFiles("templates/index.html")
     if err != nil {
         http.Error(w, err.Error(), http.StatusInternalServerError)
     }
