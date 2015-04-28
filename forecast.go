@@ -50,8 +50,8 @@ func forecast() (Forecast, error)  {
         log.Fatal(err)
     }
 
+    defer r.Body.Close()
     data, err := ioutil.ReadAll(r.Body)
-    r.Body.Close()
     if err != nil {
         log.Fatal(err)
     }
